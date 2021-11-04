@@ -3,6 +3,16 @@ package Chatu.model;
 
 import Chatu.model.Pieza;
 import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import Chatu.model.Pieza;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -10,6 +20,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Board extends JPanel {
@@ -117,11 +131,53 @@ public class Board extends JPanel {
     public static void main(String [] args){
         ArrayList<Pieza> piezas = new ArrayList<>();
         // hace el frame de fondo 
-        JFrame frame = new JFrame();
+       final JFrame frame = new JFrame();
+       JMenu menu; 
+        final JMenuItem i1;
+        final JMenuItem i2;
+        final JMenuItem i3;
+        JMenuItem i4, i5;
+        JMenuBar mb=new JMenuBar(); 
+        String opc1="1.Reglas";
+          menu=new JMenu("Menu");  
+          i1=new JMenuItem(opc1);
+          i1.addActionListener( new ActionListener()
+           {
+            @Override
+            public void actionPerformed(ActionEvent e)
+             {
+               if(e.getSource()== i1) {
+                   
+                   JOptionPane.showMessageDialog(null,"Reglas: \n" +
+                   "1. Cada jugador tiene ocho piezas: 1 Rey, 1 Elefante, 1 caballo, 1 Barco y 4 Peones. \n" +
+                   "2. El barco se mueve en diagonal en cualquier dirección, pero solo puede moverse\n" +
+                   "3. Los peones pueden avanzar solo en la dirección en la que miran y pueden ascender a \n" +
+                   "cualquier otro tipo de pieza excepto rey cuando alcanzan el octavo rango.\n" +
+                   "4. No hay un movimiento doble inicial para los peones.\n"+ 
+                   "5. No hay noción de jaque o mate, por lo que se deben tomar reyes para eliminar a un jugador. \n"+
+                   "6. Las piezas de los jugadores eliminados permanecen en el tablero como obstáculos, \n" +
+                   "pero no pueden moverse. \n"+
+                   "7. El juego termina cuando queda un solo rey, ocurre una posición idéntica \n" +
+                   "tres veces durante el juego, o cada jugador ha realizado al menos 50 movimientos \n" +
+                    "consecutivos sin mover un peón o capturar una pieza. \n"+""
+                  + "8. Un punto se divide en partes iguales entre todos los jugadores con reyes en \n" +
+                  "el tablero cuando finaliza el juego; cualquier jugador sin rey obtiene una puntuación de 0.\n");
+                    
+         
+             }
+             }
+            });
+          i2=new JMenuItem("2.Guardar Partida"); 
+         
+          
+          menu.add(i1); menu.add(i2);   
+          mb.add(menu);  
+        
+       
         frame.setSize(700,700);
         frame.setTitle("Prueba chess Board");
         frame.getContentPane().add(new Board());
-        
+        frame.setJMenuBar(mb);
         frame.setLocationRelativeTo(null);
         frame.setBackground(Color.GRAY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
