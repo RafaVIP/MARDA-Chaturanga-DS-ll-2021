@@ -68,6 +68,7 @@ public class Chaturanga extends PartidaAbstracta{
   this.TOTAL_JUGADORES = 4;
   this.jugadores = new JugadorChaturanga [this.TOTAL_JUGADORES];
   this.jugadorActual = 0;
+  this.jugadores[0] = new JugadorChaturanga(null, null);
 
   // Tablero
   int filas = 8;
@@ -81,7 +82,7 @@ public class Chaturanga extends PartidaAbstracta{
 }
 
  public Chaturanga(String tittle){
- 
+
  }
 
  public void setEstadoInicialDeLasPiezas() {
