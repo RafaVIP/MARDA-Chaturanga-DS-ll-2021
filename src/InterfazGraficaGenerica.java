@@ -47,8 +47,9 @@ public class InterfazGraficaGenerica extends JFrame {
     // ---------------
   }
 
-  public void agregarBoton(String texto, ActionListener action) {
+  public void agregarBoton(String texto, ActionListener action, int ejeX, int ejeY) {
     JButton boton = new JButton(texto);
+    boton.setBounds(ejeX, ejeY, 50, 50);
     boton.setSize(100, 20);
     boton.setBackground(Color.LIGHT_GRAY);
     boton.addActionListener(action);

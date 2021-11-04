@@ -95,11 +95,10 @@ public class Chaturanga extends PartidaAbstracta{
     public void actionPerformed(ActionEvent ae){
       FileManagerDePartidasAbstracto fileManager = new FileManagerChaturanga();
       String content = fileManager.readFile("src/rules.txt");
-      System.out.println("Content: [" + content + "]");
       interfaz.mostrarCuadroDialogo(null,content); // Jalar contenido de txt de las reglas
     }
    };
-  interfaz.agregarBoton("Reglas", rules);
+  interfaz.agregarBoton("Reglas", rules, 0,0);
 
   /** Guardar Partida*/
   ActionListener guardarPartida = new ActionListener(){
@@ -108,7 +107,7 @@ public class Chaturanga extends PartidaAbstracta{
       guardarPartida();
     }
    };
-  interfaz.agregarBoton("Guardar partida", guardarPartida);
+  interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
  }
 
 }
