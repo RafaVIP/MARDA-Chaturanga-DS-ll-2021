@@ -20,4 +20,8 @@ public class Elefante extends PiezaAbstracta {
     path += this.nombre + "_" + color + ".png";
     return path;
   }
+
+  public String to_String() {
+    return this.nombre + "_" + this.color;
+  }
 }

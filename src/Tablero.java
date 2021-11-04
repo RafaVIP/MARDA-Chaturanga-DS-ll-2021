@@ -29,4 +29,19 @@ public class Tablero {
       }
     }
   }
+
+  public String toString(){
+    String tablero = "[";
+    for (int fila = 0; fila < this.filas; fila++) {
+      for (int columna = 0; columna < this.columnas; columna++) {
+        if (this.tablero[fila][columna].getContenido() != null) {
+          tablero += " true{" + this.tablero[fila][columna].getContenido().toString() + "},";
+        } else {
+          tablero += " false{},";
+        }
+      }
+    }
+    tablero += "]\n";
+    return tablero;
+  }
 }

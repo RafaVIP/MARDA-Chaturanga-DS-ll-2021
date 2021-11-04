@@ -1,12 +1,6 @@
 import java.awt.event.*;
-import java.util.ArrayList;
-
 
 public class Chaturanga extends PartidaAbstracta{
-
-  int jugadorActual = 0;
-  Tablero tablero;
-  ArrayList<Jugador> jugadores;
   /*----------------- De Partida Abstracta*/
   public  void iniciarPartida() {
 
@@ -37,9 +31,44 @@ public class Chaturanga extends PartidaAbstracta{
  public  PartidaAbstracta cargarPartida(String partida) {
   return this;
  }
+
+ /**
+    Formato:
+    Indice de Jugador actual 
+                                        (piezas perdidas)
+    Jugador actual 1 : Nombre, Color, [Caballo_verde, Elefante_verde, Peon_verde]
+    Jugador actual 2
+    Jugador actual 3
+    Jugador actual 4
+
+    Fila tablero 1 : [ true{Caballo_verde}, false {}, false {}, false {}, false {}, false {}, false {}, false {},]
+    Fila tablero 2
+    Fila tablero 3
+    Fila tablero 4
+    Fila tablero 5
+    Fila tablero 6
+    Fila tablero 7
+    Fila tablero 8
+  */
+ public String to_String(){
+   String chaturanga = "";
+   chaturanga += this.jugadorActual + "\n\n";
+   // Jugadores
+   for (int jugador = 0; jugador < this.TOTAL_JUGADORES; jugador++) {
+     chaturanga += this.jugadores[jugador].to_String();
+   }
+   chaturanga += "\n" + this.tablero.toString();
+   return chaturanga;
+ }
+
  /*----------------- Propios de Chaturanga*/
 
  public Chaturanga(){
+  this.TOTAL_JUGADORES = 4;
+  this.jugadores = new JugadorChaturanga [this.TOTAL_JUGADORES];
+  this.jugadorActual = 0;
+
+  // Tablero
   int filas = 8;
   int columnas = 8;
   InterfazGraficaGenerica interfaz = new InterfazGraficaGenerica("Chaturanga");
