@@ -24,11 +24,11 @@ public class InterfazGraficaGenerica extends JFrame{
 
   public void printImage(final String filePath, final int ejeX, final int ejeY){
     ImageIcon imagen = new ImageIcon(filePath);
-    JLabel label = new JLabel(new ImageIcon(imagen.getImage().getScaledInstance(75,75,Image.SCALE_SMOOTH)));
+    // JLabel label = new JLabel(new ImageIcon(imagen.getImage().getScaledInstance(75,75,Image.SCALE_SMOOTH)));
+    JLabel label = new JLabel("texto");
     this.panel.setBackground(Color.DARK_GRAY);
-    label.setOpaque(true);
     label.setLayout(null);
-    label.setBounds(ejeX, ejeY, 25, 25);
+    label.setBounds(ejeX, ejeY, 75, 75);
     this.panel.add(label);
   }
 
