@@ -29,7 +29,7 @@ public class Chaturanga extends PartidaAbstracta{
   return fileManager.guardarPartida(this);
  }
 
- public  PartidaAbstracta cargarPartida(String partida) {
+ public  PartidaAbstracta cargarPartida(String filepath) {
   return this;
  }
 
@@ -80,7 +80,7 @@ public class Chaturanga extends PartidaAbstracta{
   this.tablero.imprimirTablero();
 }
 
- public Chaturanga(String tittle){
+ public Chaturanga(String filepath){
  
  }
 
@@ -93,7 +93,10 @@ public class Chaturanga extends PartidaAbstracta{
    ActionListener rules = new ActionListener(){
     @Override
     public void actionPerformed(ActionEvent ae){
-      interfaz.mostrarCuadroDialogo(null,"hola mundo"); // Jalar contenido de txt de las reglas
+      FileManagerDePartidasAbstracto fileManager = new FileManagerChaturanga();
+      String content = fileManager.readFile("src/rules.txt");
+      System.out.println("Content: [" + content + "]");
+      interfaz.mostrarCuadroDialogo(null,content); // Jalar contenido de txt de las reglas
     }
    };
   interfaz.agregarBoton("Reglas", rules);

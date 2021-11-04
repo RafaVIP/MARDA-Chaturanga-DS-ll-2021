@@ -10,6 +10,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
     this.nombre = nombre;
     this.color = color;
     this.piezasPerdidas = new ArrayList<PiezaAbstracta>(); // ver esto
+    
   }
 
   public String to_String(){

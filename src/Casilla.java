@@ -1,7 +1,7 @@
 public class Casilla {
 
-  int TAM_CASILLA = 75;
-  int BASE = 50;
+  private int TAM_CASILLA = 75;
+  private int BASE = 50;
 
   public PiezaAbstracta contenido;
   public int fila, columna;

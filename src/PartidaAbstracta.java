@@ -10,7 +10,7 @@ public abstract class PartidaAbstracta {
 
   public abstract boolean guardarPartida();
 
-  public abstract PartidaAbstracta cargarPartida(String partida);
+  public abstract PartidaAbstracta cargarPartida(String filepath);
 
   public abstract String to_String();
 
