@@ -1,8 +1,13 @@
-import Partida;
+package Chaturanga;
 
 public class Menu{
 
-	public static void main(String [] args){
 
+	public Menu() {
+
+	}
+
+	public static void main(String [] args) {
+		Menu menuPrincipal = new Menu();
 	}
 }
