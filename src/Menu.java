@@ -1,11 +1,3 @@
-import src.*;
-
-import java.util.Scanner;
-// import Partida;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.io.*;
 
 public class Menu{
 
@@ -39,7 +31,7 @@ public class Menu{
 
 	public void cargarPartida() {
 		/*Buscar archivo que toque cargar, jalar el nombre*/
-		string filePath = "filepath";
+		String filePath = "filepath";
 		PartidaAbstracta partida = new Chaturanga(filePath);
 		partida.iniciarPartida();
 	}

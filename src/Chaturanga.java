@@ -1,5 +1,7 @@
-package Chaturanga;
+import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 
 public class Chaturanga extends PartidaAbstracta{
 
@@ -8,6 +10,7 @@ public class Chaturanga extends PartidaAbstracta{
   ArrayList<Jugador> jugadores;
   /*----------------- De Partida Abstracta*/
   public  void iniciarPartida() {
+
     /*
     int jugadorActual = 0;
     int [2] coordenadas elegidas;
@@ -22,24 +25,61 @@ public class Chaturanga extends PartidaAbstracta{
       }
     }
     */
-    int filas = 8;
-    int columnas = 8;
-    this.tablero = new Tablero(filas,columnas);
  }
 
- public  boolean elJuegoHaTerminado() {
-
+ public boolean elJuegoHaTerminado() {
+  return false;
  }
 
- public  string guardarPartida() {
-
+ public String guardarPartida() {
+  return "";
  }
 
- public  PartidaAbstracta cargarPartida(string partida) {
-
+ public  PartidaAbstracta cargarPartida(String partida) {
+  return this;
  }
  /*----------------- Propios de Chaturanga*/
  public  void desplegarInstrucciones() {
 
  }
+
+ public Chaturanga(){
+  int filas = 8;
+  int columnas = 8;
+  InterfazGraficaGenerica interfaz = new InterfazGraficaGenerica("Chaturanga");
+  
+  this.tablero = new Tablero(filas,columnas, interfaz);
+  setEstadoInicialDeLasPiezas();
+  setElementosDeInterfazIniciales(interfaz);
+  this.tablero.imprimirTablero();
+}
+
+ public Chaturanga(String tittle){
+ 
+ }
+
+ public void setEstadoInicialDeLasPiezas() {
+
+ }
+
+ public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz){
+   /** Agrega el boton de las reglas en la interfaz del juego */
+   ActionListener rules = new ActionListener(){
+    @Override
+    public void actionPerformed(ActionEvent ae){
+      JOptionPane.showMessageDialog(null, "Hello World"); // Jalar el contenido del TXT de las reglas
+    }
+   };
+  interfaz.agregarBoton("Reglas", rules);
+
+  /** Guardar Partida*/
+  ActionListener guardarPartida = new ActionListener(){
+    @Override
+    public void actionPerformed(ActionEvent ae){
+      guardarPartida();
+    }
+   };
+  interfaz.agregarBoton("Guardar partida", guardarPartida);
+ }
+
 }

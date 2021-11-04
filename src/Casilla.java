@@ -1,5 +1,3 @@
-package Chaturanga;
-
 public class Casilla {
 
   int TAM_CASILLA = 75;
@@ -10,20 +8,22 @@ public class Casilla {
   public InterfazGraficaGenerica interfaz;
   
 
-  public Casilla(final int fila, final int columna){
+  public Casilla(final int fila, final int columna, InterfazGraficaGenerica interfaz){
     this.contenido = null;
     this.fila = fila;
     this.columna = columna;
+    this.interfaz = interfaz;
   }
 
-  public setContenido(PiezaAbstracta contenido) {
+  public void setContenido(PiezaAbstracta contenido) {
     this.contenido = contenido;
   }
 
   void imprimir(){
     // Imprime la casilla
-    if ((esPar(this.fila) && !esPar(this.columna)) || ((!esPar(this.fila) && esPar(this.columna)){ // Casilla Blanca
+    if ((esPar(this.fila) && !esPar(this.columna)) || (!esPar(this.fila) && esPar(this.columna))){ // Casilla Blanca
       imprimirCasilla("blanca");
+      
     } else { // Casilla Negra
       imprimirCasilla("negra");
     }
@@ -32,18 +32,18 @@ public class Casilla {
       }
   }
 
-  void imprimirCasilla(final string color){
+  void imprimirCasilla(final String color){
     // Imprimir las casillas del tablero
-    string filePath = "src/Chatu/images/Casilla_" + color + ".png";
+    String filePath = "src/Chatu/images/Casilla_" + color + ".png";
     this.dibujarEnInterfaz(filePath);
   }
 
   void imprimirPieza() {
-    string filePath = this.contenido.getImageFilePath();
+    String filePath = this.contenido.getImageFilePath();
     this.dibujarEnInterfaz(filePath);
   }
 
-  void dibujarEnInterfaz(final string filePath){
+  void dibujarEnInterfaz(final String filePath){
     int ejeX = this.BASE + (this.TAM_CASILLA * this.fila);
     int ejeY = this.BASE + (this.TAM_CASILLA * this.columna);
     this.interfaz.printImage(filePath, ejeX, ejeY);

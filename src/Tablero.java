@@ -1,5 +1,3 @@
-package Chaturanga;
-
 public class Tablero {
 
   public Casilla [][] tablero;
@@ -10,27 +8,28 @@ public class Tablero {
 
 
 
-  public Tablero(final int filas, final int columnas) {
+  public Tablero(final int filas, final int columnas, InterfazGraficaGenerica interfaz) {
     this.filas = filas;
     this.columnas = columnas;
-    this.tablero = new [filas][columnas];
-
+    this.tablero = new Casilla[filas][columnas];
     // Setea Casillas
     for (int fila = 0; fila < this.filas; fila++){
-      for (int columna = 0; columna < this.columna; columna++) {
-        this.tablero[fila][columna] = new Casilla(fila, columna);
+      for (int columna = 0; columna < this.columnas; columna++) {
+        
+        this.tablero[fila][columna] = new Casilla(fila, columna, interfaz);
+        PiezaAbstracta pieza = new Elefante("verde");
+        this.tablero[fila][columna].setContenido(pieza);
       }
     }
-
+    
     // Setea Piezas Iniciales
       // Deberia ir aqui en caso de ser un tablero generico deberia hacerlo otro??
-
-    imprimirTablero();
+    
   }
 
   void imprimirTablero(){
     for (int fila = 0; fila < this.filas; fila++){
-      for (int columna = 0; columna < this.columna; columna++) {
+      for (int columna = 0; columna < this.columnas; columna++) {
         this.tablero[fila][columna].imprimir();
       }
     }

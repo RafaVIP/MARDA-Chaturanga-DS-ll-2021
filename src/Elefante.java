@@ -1,24 +1,22 @@
-package Chaturanga;
-
 public class Elefante extends PiezaAbstracta {
 
   public String nombre;
 
   public String color;
 
-  public Elefante(final string color){
+  public Elefante(final String color){
     this.nombre = "Elefante";
     this.color = color;
   }
 
   @Override
   public boolean movimiento() {
-
+    return true;
   }
 
   @Override
-  public string getImageFilePath() {
-    string path = "src/Chatu/images/"; //Img directory path
+  public String getImageFilePath() {
+    String path = "src/Chatu/images/"; //Img directory path
     path += this.nombre + "_" + color + ".png";
     return path;
   }

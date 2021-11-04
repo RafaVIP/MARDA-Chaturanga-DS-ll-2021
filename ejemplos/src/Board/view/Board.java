@@ -111,7 +111,6 @@ public class Board extends JPanel {
                 gp.clearRect(x, y, 75, 75);
             }
         }
-        this.imprimirPiezasIniciales(gp);
     }
 
     public static void main(String [] args){

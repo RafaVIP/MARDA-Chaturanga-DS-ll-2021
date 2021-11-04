@@ -1,43 +1,50 @@
-package Chaturanga;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.event.*;
 
-public class InterfazGraficaGenerica extends JPanel{
 
-  Toolkit toolkit;
+public class InterfazGraficaGenerica extends JFrame{
+  JPanel panel;
 
-  public InterfazGraficaGenerica(string title){
-    this.toolkit = Toolkit.getDefaultToolkit(); 
+  public InterfazGraficaGenerica(){
+  }
+  public InterfazGraficaGenerica(String title){
     abrirNuevaInterfaz(title);
-    super(gp);
   }
 
-  public Graphics getGP(){return this.gp;}
-
-  public void printImage(final string filePath, final int ejeX, final int ejeY){
-    Image imagen = this.toolkit.getImage(filePath).getScaledInstance(75,75,75);
-
-    gp.drawImage(imagen,ejeX,ejeY,this);
+  public void printImage(final String filePath, final int ejeX, final int ejeY){
+    ImageIcon imagen = new ImageIcon(filePath);
+    JLabel label = new JLabel(new ImageIcon(imagen.getImage().getScaledInstance(75,75,Image.SCALE_SMOOTH)));
+    this.panel.setBackground(Color.DARK_GRAY);
+    label.setOpaque(true);
+    label.setLayout(null);
+    label.setBounds(ejeX, ejeY, 25, 25);
+    this.panel.add(label);
   }
 
-  public void abrirNuevaInterfaz(string title){
-    JFrame frame = new JFrame();
-    frame.setSize(700,700);
-    frame.setTitle(title);
-    frame.getContentPane().add(new Board());
+  public void abrirNuevaInterfaz(String title){
+    this.setSize(700,700);
+    this.setTitle(title);
+    this.setLocationRelativeTo(null);
+    this.panel = new JPanel();
+    this.getContentPane().add(this.panel);
+    this.panel.setLayout(null);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setVisible(true);
+    // ---------------
+  }
 
-    frame.setLocationRelativeTo(null);
-    frame.setBackground(Color.GRAY);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setVisible(true);
+  public void agregarBoton(String texto, ActionListener action){
+    JButton boton = new JButton(texto);
+    boton.addActionListener(action);
+    this.panel.add(boton);
   }
 }

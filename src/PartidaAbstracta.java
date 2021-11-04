@@ -1,13 +1,11 @@
-package src;
-
 public abstract class PartidaAbstracta {
-  
+
   public abstract void iniciarPartida();
 
   public abstract boolean elJuegoHaTerminado();
 
-  public abstract string guardarPartida();
+  public abstract String guardarPartida();
 
-  public abstract PartidaAbstracta cargarPartida(string partida);
+  public abstract PartidaAbstracta cargarPartida(String partida);
 
 }
