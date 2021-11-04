@@ -1,19 +1,7 @@
 package Chaturanga;
 
-import java.util.ArrayList; // import the ArrayList class ... tomado de https://www.w3schools.com/java/java_arraylist.asp
-
 public class Tablero {
 
-  public class Jugador {
-    public String nombre;
-
-    public String color;
-
-    public ArrayList<Pieza> piezas;
-
-    public ArrayList<Pieza> piezasPerdidas;
-  }
-  
   public Casilla [][] tablero;
 
   public int filas;
@@ -36,10 +24,8 @@ public class Tablero {
 
     // Setea Piezas Iniciales
       // Deberia ir aqui en caso de ser un tablero generico deberia hacerlo otro??
-  }
 
-  public boolean verificarFinal() {
-
+    imprimirTablero();
   }
 
   void imprimirTablero(){

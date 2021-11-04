@@ -1,3 +1,5 @@
+import src.*;
+
 import java.util.Scanner;
 // import Partida;
 import java.awt.*;
@@ -6,18 +8,15 @@ import javax.swing.*;
 import java.io.*;
 
 public class Menu{
-  private InterfazGrafica ventana;
-  private Tablero tablero;
 
 	public static void main(String [] args){
-		this.desplegarMenuPrincipal();
+		Menu menu = new Menu();
+		menu.desplegarMenuPrincipal();
 	}
 
 	public void desplegarMenuPrincipal() {
-		ventana = new InterfazGrafica();
-
-		system.out.println("Opciones: \n 1. Nueva Partida\n2. Cargar Partida\n3. Salir\n");
-		int opcion = 0;
+		System.out.println("Opciones: \n 1. Nueva Partida\n2. Cargar Partida\n3. Salir\n");
+		int opcion = 1;
 		switch (opcion) {
 			case 1: 
 				crearNuevaPartida();
@@ -29,24 +28,20 @@ public class Menu{
 				// Nothing
 			break;
 			default:
-			system.out.println("Error\n");
+			System.out.println("Error\n");
 		}
 	}
 
 	public void crearNuevaPartida() {
-		//to do
-		// this.ventana.desplieguePantallaNuevaPartida();
-		// this.tablero.empezarNuevaPartida();
+		PartidaAbstracta partida = new Chaturanga();
+		partida.iniciarPartida();
 	}
 
 	public void cargarPartida() {
-		//to do
+		/*Buscar archivo que toque cargar, jalar el nombre*/
+		string filePath = "filepath";
+		PartidaAbstracta partida = new Chaturanga(filePath);
+		partida.iniciarPartida();
 	}
  }
 
- public class InterfazGraficaChaturanga extends InterfazGrafica {
-	@Override
-	public void mostrarJuego() {
-		// todo
-	}
- }

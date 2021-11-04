@@ -1,3 +1,5 @@
+package src;
+
 public abstract class PartidaAbstracta {
   
   public abstract void iniciarPartida();
@@ -6,6 +8,6 @@ public abstract class PartidaAbstracta {
 
   public abstract string guardarPartida();
 
-  public abstract void cargarPartida(string partida);
+  public abstract PartidaAbstracta cargarPartida(string partida);
 
 }

@@ -53,6 +53,10 @@ public class Casilla {
     this.contenido = null;
   }
 
+  PiezaAbstracta getContenido(){
+    return this.contenido;
+  }
+
   boolean esPar(final int numero) {
     return numero % 2 == 0;
   }
