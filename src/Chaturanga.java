@@ -1,6 +1,5 @@
 import java.awt.event.*;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 
 public class Chaturanga extends PartidaAbstracta{
@@ -39,9 +38,6 @@ public class Chaturanga extends PartidaAbstracta{
   return this;
  }
  /*----------------- Propios de Chaturanga*/
- public  void desplegarInstrucciones() {
-
- }
 
  public Chaturanga(){
   int filas = 8;
@@ -67,7 +63,7 @@ public class Chaturanga extends PartidaAbstracta{
    ActionListener rules = new ActionListener(){
     @Override
     public void actionPerformed(ActionEvent ae){
-      JOptionPane.showMessageDialog(null, "Hello World"); // Jalar el contenido del TXT de las reglas
+      interfaz.mostrarCuadroDialogo(null,"hola mundo"); // Jalar contenido de txt de las reglas
     }
    };
   interfaz.agregarBoton("Reglas", rules);

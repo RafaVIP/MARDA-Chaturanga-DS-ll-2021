@@ -15,16 +15,11 @@ public class Tablero {
     // Setea Casillas
     for (int fila = 0; fila < this.filas; fila++){
       for (int columna = 0; columna < this.columnas; columna++) {
-        
         this.tablero[fila][columna] = new Casilla(fila, columna, interfaz);
         PiezaAbstracta pieza = new Elefante("verde");
         this.tablero[fila][columna].setContenido(pieza);
       }
     }
-    
-    // Setea Piezas Iniciales
-      // Deberia ir aqui en caso de ser un tablero generico deberia hacerlo otro??
-    
   }
 
   void imprimirTablero(){

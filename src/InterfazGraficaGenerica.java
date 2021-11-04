@@ -6,9 +6,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.event.*;
+import java.awt.Component;
 
 
 public class InterfazGraficaGenerica extends JFrame{
@@ -46,5 +48,9 @@ public class InterfazGraficaGenerica extends JFrame{
     JButton boton = new JButton(texto);
     boton.addActionListener(action);
     this.panel.add(boton);
+  }
+
+  public void mostrarCuadroDialogo(Component parentComponent, String texto){
+    JOptionPane.showMessageDialog(parentComponent, texto); 
   }
 }
