@@ -24,8 +24,9 @@ public class Chaturanga extends PartidaAbstracta{
   return false;
  }
 
- public String guardarPartida() {
-  return "";
+ public boolean guardarPartida() {
+   FileManagerDePartidasAbstracto fileManager = new FileManagerChaturanga();
+  return fileManager.guardarPartida(this);
  }
 
  public  PartidaAbstracta cargarPartida(String partida) {
