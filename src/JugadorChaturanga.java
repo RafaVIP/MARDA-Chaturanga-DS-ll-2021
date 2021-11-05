@@ -1,9 +1,10 @@
 
 /**
- ** Primera iteraci�n Proyecto Programado: Dise�o 
- ** Rafael Porras (B75915)
- ** Fabian Gonzalez (B83493)
- ** Kevin Salas (B87161) 
+ ** Primera iteración Proyecto Programado: Diseño 
+ ** Rafael Porras (B75915) 
+ ** Fabian Gonzalez (B83493) 
+ ** Kevin Salas (B87161)
+ ** Wendy Ortiz (B75594)
  **/
 
 import java.util.ArrayList;
@@ -49,7 +50,8 @@ public class JugadorChaturanga extends JugadorAbstracto {
 
   /**
    ** M�todo encargado de convertir a string
-   ** @return retorna un string
+   ** 
+   * @return retorna un string
    **/
   public String to_String() {
     String jugador = this.nombre + ", " + this.color + ", [";
