@@ -20,9 +20,7 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   public void printImage(String filePath, final int ejeX, final int ejeY) {
-     System.out.println(filePath);
-     String elefante = "imgs/Elefante_verde.png";
-     // ImageIcon imagen = new ImageIcon(new ImageIcon("imgs/Elefante_verde.png").getImage().getScaledInstance(45, 45, 45));
+    System.out.println(filePath);
     ImageIcon imagen = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(75, 75, 75));
     JLabel label = new JLabel();
     label.setBackground(Color.GREEN);

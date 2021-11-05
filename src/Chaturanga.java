@@ -10,6 +10,11 @@ public class Chaturanga extends PartidaAbstracta{
     this.jugadorActual = 0;
     asignarColores();
   }
+
+  public Chaturanga(String filepath){
+    // to do
+  }
+
   /**
    * Método encargado de asignar los colores 
    */
@@ -37,16 +42,12 @@ public class Chaturanga extends PartidaAbstracta{
   int filas = 8;
   int columnas = 8;
   InterfazGraficaGenerica interfaz = new InterfazGraficaGenerica("Chaturanga");
-  
-  this.tablero = new Tablero(filas,columnas, interfaz);
+  //C:\Users\fabia\MARDA-Chaturanga-DS-ll-2021\src\inicio.txt
+  this.tablero = new Tablero( "src/inicio.txt", filas,columnas, interfaz);
   setEstadoInicialDeLasPiezas();
   setElementosDeInterfazIniciales(interfaz);
   this.tablero.imprimirTablero();
 }
-
- public Chaturanga(String filepath){
- 
- }
 
  public void setEstadoInicialDeLasPiezas() {
 
