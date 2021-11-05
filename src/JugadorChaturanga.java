@@ -11,7 +11,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
   public JugadorChaturanga(ArrayList<String> colorArray) {
     // TODO
     this.piezasPerdidas = new ArrayList<PiezaAbstracta>(); 
-    pedirDatos(colorArray);
+    // pedirDatos(colorArray);
   }
 
   public void pedirDatos(ArrayList<String> colorArray) {

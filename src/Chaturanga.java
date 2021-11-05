@@ -32,7 +32,7 @@ public class Chaturanga extends PartidaAbstracta{
           iterador = colores.size();
         }
       }
-  }
+    }
   // Tablero
   int filas = 8;
   int columnas = 8;

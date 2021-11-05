@@ -16,9 +16,7 @@ public class Barco extends PiezaAbstracta {
   
     @Override
     public String getImageFilePath() {
-      String path = "src/Chatu/images/"; //Img directory path
-      path += this.nombre + "_" + color + ".png";
-      return path;
+      return "imgs/" + this.nombre + "_" + color + ".png";
     }
     @Override
     public String to_String() {

@@ -20,6 +20,9 @@ public class Casilla {
   }
 
   void imprimir(){
+    if (this.contenido != null) {
+        imprimirPieza();
+      }
     // Imprime la casilla
     if ((esPar(this.fila) && !esPar(this.columna)) || (!esPar(this.fila) && esPar(this.columna))){ // Casilla Blanca
       imprimirCasilla("blanca");
@@ -27,14 +30,12 @@ public class Casilla {
     } else { // Casilla Negra
       imprimirCasilla("negra");
     }
-    if (this.contenido != null) {
-        imprimirPieza();
-      }
+    
   }
 
   void imprimirCasilla(final String color){
     // Imprimir las casillas del tablero
-    String filePath = "src/Chatu/images/Casilla_" + color + ".png";
+    String filePath = "imgs/Casilla_" + color + ".png";
     this.dibujarEnInterfaz(filePath);
   }
 
@@ -43,7 +44,7 @@ public class Casilla {
     this.dibujarEnInterfaz(filePath);
   }
 
-  void dibujarEnInterfaz(final String filePath){
+  void dibujarEnInterfaz( String filePath){
     int ejeX = this.BASE + (this.TAM_CASILLA * this.fila);
     int ejeY = this.BASE + (this.TAM_CASILLA * this.columna);
     this.interfaz.printImage(filePath, ejeX, ejeY);
