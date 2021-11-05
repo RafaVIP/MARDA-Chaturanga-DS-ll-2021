@@ -13,7 +13,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
     this.color = color;
     // TODO
     this.piezasPerdidas = new ArrayList<PiezaAbstracta>(); 
-    pedirDatos();
+    // pedirDatos();
   }
 
   public String to_String(){

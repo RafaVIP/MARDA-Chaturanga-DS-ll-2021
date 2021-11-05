@@ -68,7 +68,10 @@ public class Chaturanga extends PartidaAbstracta{
   this.TOTAL_JUGADORES = 4;
   this.jugadores = new JugadorChaturanga [this.TOTAL_JUGADORES];
   this.jugadorActual = 0;
-  this.jugadores[0] = new JugadorChaturanga(null, null);
+  this.jugadores[0] = new JugadorChaturanga("rafa", "verde");
+  this.jugadores[1] = new JugadorChaturanga("Wendy", "blanco");
+  this.jugadores[2] = new JugadorChaturanga("Fabian", "Rojo");
+  this.jugadores[3] = new JugadorChaturanga("Kevin", "Amarillo");
 
   // Tablero
   int filas = 8;

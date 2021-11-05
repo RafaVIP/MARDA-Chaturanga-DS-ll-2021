@@ -7,8 +7,8 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
      * junto con los archivos .java
      */
 
-    final String PARTIDAS_PATH = "Partidas_guardadas.txt"; // Archivo donde se encuentran los nombres de las partidas guardadas
-    final String BASE_PATH = "PartidaChaturanga_"; // Formato base para el nombre del archivo a guardar
+    final String PARTIDAS_PATH = "src/Partidas_guardadas.txt"; // Archivo donde se encuentran los nombres de las partidas guardadas
+    final String BASE_PATH = "src/PartidaChaturanga_"; // Formato base para el nombre del archivo a guardar
     
     public  PartidaAbstracta cargarPartida(String filepath) {
         PartidaAbstracta partida = new Chaturanga();
@@ -23,10 +23,10 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
             FileWriter fw = new FileWriter(filename);
             fw.write(partida.to_String());
             fw.close();
-            
+            System.out.println("Guarda " + filename + " en el de archivos");
             // Guarda el nombre del archivo en el archivo que contiene las partidas guardadas
-            fw = new FileWriter(PARTIDAS_PATH);
-            fw.write(filename);
+            fw = new FileWriter(PARTIDAS_PATH, true);
+            fw.write(filename + "\n");
             fw.close();
 
             return true;
@@ -72,7 +72,6 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
             System.out.println(e);
             System.out.println("Error en lectura del archivo");
         }
-        
         return content;
     }
 }
