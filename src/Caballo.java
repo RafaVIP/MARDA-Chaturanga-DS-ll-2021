@@ -1,26 +1,48 @@
-public class Caballo extends PiezaAbstracta {
+/**
+ ** Primera iteración Proyecto Programado: Diseño 
+ ** Rafael Porras (B75915) 
+ ** Fabian Gonzalez (B83493) 
+ ** Kevin Salas (B87161) 
+ ** Wendy Ortiz (B75594)
+ **/
 
-    public String nombre;
-  
-    public String color;
-  
-    public Caballo(final String color){
-      this.nombre = "Caballo";
-      this.color = color;
-    }
-  
-    @Override
-    public boolean movimiento() {
-      return true;
-    }
-  
-    @Override
-    public String getImageFilePath() {
-      return "imgs/" + this.nombre + "_" + color + ".png";
-    }
-    @Override
-    public String to_String() {
-      return this.nombre + "_" + this.color;
-    }
+public class Caballo extends PiezaAbstracta {
+  /// Atributos de la clase
+  public String nombre;
+
+  public String color;
+
+  /// Constructor
+  public Caballo(final String color) {
+    this.nombre = "Caballo";
+    this.color = color;
   }
-  
+
+  /**
+   ** @brief Override de Método movimiento heredado de Pieza Abstracta, indica el
+   *        movimiento de la ficha
+   ** @return true si el movimiento se hizo correctamente
+   **/
+  @Override
+  public boolean movimiento() {
+    return true;
+  }
+
+  /**
+   ** @brief Override de Método encargado de obtener el path del archivo imagen
+   ** @return String del path de la imagen
+   **/
+  @Override
+  public String getImageFilePath() {
+    return "imgs/" + this.nombre + "_" + color + ".png";
+  }
+
+  /**
+   ** @brief Override de Método encargado de convertir a string
+   ** @return String
+   */
+  @Override
+  public String to_String() {
+    return this.nombre + "_" + this.color;
+  }
+}

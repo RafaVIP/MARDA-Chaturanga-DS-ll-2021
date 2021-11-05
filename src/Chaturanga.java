@@ -1,9 +1,10 @@
 
 /**
  ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915)
- ** Fabian Gonzalez (B83493)
- ** Kevin Salas (B87161) 
+ ** Rafael Porras (B75915) 
+ ** Fabian Gonzalez (B83493) 
+ ** Kevin Salas (B87161)
+ ** Wendy Ortiz (B75594)
  **/
 
 import java.awt.event.*;
