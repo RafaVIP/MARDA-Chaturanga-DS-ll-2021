@@ -35,11 +35,12 @@ public class Tablero {
     for (int fila = 0; fila < this.filas; fila++) {
       for (int columna = 0; columna < this.columnas; columna++) {
         if (this.tablero[fila][columna].getContenido() != null) {
-          tablero += " true{" + this.tablero[fila][columna].getContenido().toString() + "},";
+          tablero += " true{" + this.tablero[fila][columna].getContenido().to_String() + "},";
         } else {
           tablero += " false{},";
         }
       }
+      tablero += '\n';
     }
     tablero += "]\n";
     return tablero;
