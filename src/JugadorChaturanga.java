@@ -8,12 +8,10 @@ public class JugadorChaturanga extends JugadorAbstracto {
   ArrayList<PiezaAbstracta> piezasPerdidas;
   int cantidadPiezasPerdidas = 0;
 
-  public JugadorChaturanga(String nombre, String color) {
-    this.nombre = nombre;
-    this.color = color;
+  public JugadorChaturanga(ArrayList<String> colorArray) {
     // TODO
     this.piezasPerdidas = new ArrayList<PiezaAbstracta>(); 
-    pedirDatos();
+    pedirDatos(colorArray);
   }
 
   public String to_String(){
@@ -25,11 +23,14 @@ public class JugadorChaturanga extends JugadorAbstracto {
     return jugador;
   }
 
-  public void pedirDatos() {
+  public void pedirDatos(ArrayList<String> colorArray) {
     this.nombre = JOptionPane.showInputDialog("Digite el nombre del jugador:");
-    String []  colorArray = {"Blanco", "Verde", "Amarillo", "Rojo"};
+    String[] colorArrayCopy = new String[colorArray.size()];
+    for(int i = 0; i < colorArrayCopy.length; i++) {
+      colorArrayCopy[i] = colorArray.get(i);
+    }
     int option = JOptionPane.showOptionDialog(null, "Eliga un color para el jugador: ", 
-      "Colores", 0, JOptionPane.QUESTION_MESSAGE, null, colorArray, "Blanco");
+      "Colores", 0, JOptionPane.QUESTION_MESSAGE, null, colorArrayCopy, "Blanco");
     
     if (option == 0) {
       this.color = "blanco";
@@ -42,4 +43,8 @@ public class JugadorChaturanga extends JugadorAbstracto {
     }
 
   }
+  public String getColor(){
+    return this.color;
+  }
 }
+

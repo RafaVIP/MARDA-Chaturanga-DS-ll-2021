@@ -1,4 +1,5 @@
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class Chaturanga extends PartidaAbstracta{
   /*----------------- De Partida Abstracta*/
@@ -68,11 +69,21 @@ public class Chaturanga extends PartidaAbstracta{
   this.TOTAL_JUGADORES = 4;
   this.jugadores = new JugadorChaturanga [this.TOTAL_JUGADORES];
   this.jugadorActual = 0;
-  this.jugadores[0] = new JugadorChaturanga("rafa", "verde");
-  this.jugadores[1] = new JugadorChaturanga("Wendy", "blanco");
-  this.jugadores[2] = new JugadorChaturanga("Fabian", "Rojo");
-  this.jugadores[3] = new JugadorChaturanga("Kevin", "Amarillo");
+  ArrayList<String> colores = new ArrayList<String>();
+  
+  colores.add("amarillo");
+  colores.add("blanco");
+  colores.add("verde");
+  colores.add("rojo");
 
+  for(int i = 0; i < jugadores.length; i++) {
+    this.jugadores[i] = new JugadorChaturanga(colores);
+    String colorElegido = this.jugadores[i].getColor();
+    for(int iterador = 0; iterador< colores.size(); iterador++) {
+      if (colores.get(iterador) == colorElegido)
+        colores.remove(iterador);
+    }
+  }
   // Tablero
   int filas = 8;
   int columnas = 8;
