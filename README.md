@@ -12,6 +12,6 @@ Integrantes:
               
 MANUAL DE USO
 
-1. Luego de ubicarse en el path correspondiente al proyecto, se debe ingresar a la carpeta src, compilar con "javac Menu.java" y correrlo con "jave Menu".
+1. Luego de ubicarse en el path correspondiente al proyecto, se debe ingresar a la carpeta src, compilar con "javac Menu.java" y correrlo con "java Menu".
 2. Seguido de eso se mostrara una interfaz gráfica donde se solicitará los nombres y el respectivo color de cada uno de los 4 jugadores.
 3. Por ultimo se mostrará el tablero de juegos.
