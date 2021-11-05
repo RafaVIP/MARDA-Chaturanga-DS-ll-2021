@@ -19,7 +19,7 @@ public class Peon extends PiezaAbstracta {
   }
 
   /**
-   ** @brief Override de Método movimiento heredado de Pieza Abstracta, indica el
+   ** @brief Override de Metodo movimiento heredado de Pieza Abstracta, indica el
    *        movimiento de la ficha
    ** @return true si el movimiento se hizo correctamente
    **/
@@ -29,7 +29,7 @@ public class Peon extends PiezaAbstracta {
   }
 
   /**
-   ** @brief Override de Método encargado de obtener el path del archivo imagen
+   ** @brief Override de Metodo encargado de obtener el path del archivo imagen
    ** @return String del path de la imagen
    **/
   @Override
@@ -38,7 +38,7 @@ public class Peon extends PiezaAbstracta {
   }
 
   /**
-   ** @brief Override de Método encargado de convertir a string
+   ** @brief Override de Metodo encargado de convertir a string
    ** @return String
    */
   @Override

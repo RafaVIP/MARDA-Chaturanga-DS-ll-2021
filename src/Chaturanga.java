@@ -32,7 +32,7 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   ** @brief Método encargado de asignar los colores
+   ** @brief Metodo encargado de asignar los colores
    **/
   public void asignarColores() {
     ArrayList<String> colores = new ArrayList<String>();
@@ -75,7 +75,7 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   ** @brief Método encargado de mostrar y configurar elementos en la interfaz
+   ** @brief Metodo encargado de mostrar y configurar elementos en la interfaz
    ** @param interfaz
    */
   public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz) {
@@ -104,7 +104,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   // TODO: Segundo Sprint
   /**
-   ** @brief Método encargado de Iniciar una partida
+   ** @brief Metodo encargado de Iniciar una partida
    **/
   public void iniciarPartida() {
     /*
@@ -121,7 +121,7 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   ** @brief Método encargado de guardar una partida en un .txt
+   ** @brief Metodo encargado de guardar una partida en un .txt
    ** @return true si guarda correctamente
    **/
   public boolean guardarPartida() {
@@ -131,14 +131,14 @@ public class Chaturanga extends PartidaAbstracta {
 
   // TODO: Segundo Sprint
   /**
-   ** @brief Método encargado de verificar que el juego haya terminado
+   ** @brief Metodo encargado de verificar que el juego haya terminado
    **/
   public boolean elJuegoHaTerminado() {
     return false;
   }
 
   /**
-   ** @brief Método de clase abstracta encargado de cargar la partida
+   ** @brief Metodo de clase abstracta encargado de cargar la partida
    ** @param filepath recibe un string con un path
    ** @return un objeto de toipo PartidaAbstracta
    **/
@@ -157,7 +157,7 @@ public class Chaturanga extends PartidaAbstracta {
    */
 
   /**
-   ** @brief Método encargado de convertir a un string
+   ** @brief Metodo encargado de convertir a un string
    ** @return String
    **/
   public String to_String() {
