@@ -1,6 +1,6 @@
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
+ ** Primera iteraci�n Proyecto Programado: Dise�o 
  ** Rafael Porras (B75915)
  ** Fabian Gonzalez (B83493)
  ** Kevin Salas (B87161) 
@@ -25,7 +25,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   ** @brief Método encargado de asignar y pedir los datos al jugador
+   ** @brief M�todo encargado de asignar y pedir los datos al jugador
    ** @param colorArray un arreglo con los colores disponibles para el juego
    **/
   public void pedirDatos(ArrayList<String> colorArray) {
@@ -48,7 +48,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   ** Método encargado de convertir a string
+   ** M�todo encargado de convertir a string
    ** @return retorna un string
    **/
   public String to_String() {
