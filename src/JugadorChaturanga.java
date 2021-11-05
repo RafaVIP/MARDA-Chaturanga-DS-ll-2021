@@ -26,9 +26,9 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   ** @brief M�todo encargado de asignar y pedir los datos al jugador
-   ** @param colorArray un arreglo con los colores disponibles para el juego
-   **/
+   * @brief Metodo encargado de asignar y pedir los datos al jugador
+   * @param colorArray un arreglo con los colores disponibles para el juego
+   */
   public void pedirDatos(ArrayList<String> colorArray) {
     this.nombre = JOptionPane.showInputDialog("Digite el nombre del jugador:");
     String[] colorArrayCopy = new String[colorArray.size()];
@@ -41,18 +41,17 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   ** @brief metodo encargado de retornar el valor del atributo color
-   ** @return String devuleve el valor del atributo color para este jugador
-   **/
+   * @brief Metodo encargado de retornar el valor del atributo color
+   * @return String devuleve el valor del atributo color para este jugador
+   */
   public String getColor() {
     return this.color;
   }
 
   /**
-   ** M�todo encargado de convertir a string
-   ** 
+   * @brief Metodo encargado de convertir a string
    * @return retorna un string
-   **/
+   */
   public String to_String() {
     String jugador = this.nombre + ", " + this.color + ", [";
     for (int piezaPerdida = 0; piezaPerdida < this.cantidadPiezasPerdidas; piezaPerdida++) {

@@ -7,11 +7,20 @@
  **/
 
 /**
- ** Clase abstracta para Jugador
- **/
+ * @brief Clase abstracta para Jugador
+ */
 public abstract class JugadorAbstracto {
-  /// Métodos abstractos
+  /// Metodos abstractos
+
+  /**
+   * @brief Metodo encargado de convertir a String
+   * @return String (convertido)
+   */
   public abstract String to_String();
 
+  /**
+   * @brief Metodo encargado de obtener el color que eligio el jugador
+   * @return String (Color)
+   */
   public abstract String getColor();
 }

@@ -1,37 +1,27 @@
+/**
+ ** Primera iteración Proyecto Programado: Diseño 
+ ** Rafael Porras (B75915) 
+ ** Fabian Gonzalez (B83493) 
+ ** Kevin Salas (B87161)
+ ** Wendy Ortiz (B75594)
+ **/
+
 import java.io.*;
 
 public class Tablero {
-
-  public Casilla [][] tablero;
+  /// Atributos de la clase
+  public Casilla[][] tablero;
 
   public int filas;
 
   public int columnas;
 
-
-/*
-public void cargarPartida(String direccion) {
-    try {
-            BufferedReader bf = new BufferedReader(new FileReader(direccion));
-            String tipo = null;
-            String color = null;
-            String tmp = null;
-            for(int x =  0; x < 8; ++x) {
-                // System.out.println("Fila: " + x);
-                for(int y =  0; y < 8; ++y) {
-                    tipo = bf.readLine();
-                    color = bf.readLine();
-                    // System.out.print("\t" + tipo + " " + color + " " + x + " " + y + "\n");
-                    matriz[x][y] = new Pieza(tipo, color, x, y);
-                }
-                tmp = bf.readLine();
-                // System.out.println(tmp);
-            }        
-            bf.close();
-    } catch (Exception e) { System.out.println("Error en lectura de la partida"); }
-}
-*/
-
+  /**
+   * @brief Metodo constructor encargado de construir el objeto tablero
+   * @param filas
+   * @param columnas
+   * @param interfaz
+   */
   public Tablero(String pathfile, final int filas, final int columnas, InterfazGraficaGenerica interfaz) {
     this.filas = filas;
     this.columnas = columnas;
@@ -77,15 +67,22 @@ public void cargarPartida(String direccion) {
     return null;
   }
 
-  void imprimirTablero(){
-    for (int fila = 0; fila < this.filas; fila++){
+  /**
+   * @brief Metodo encargado de imprimir el tablero en pantalla
+   */
+  public void imprimirTablero() {
+    for (int fila = 0; fila < this.filas; fila++) {
       for (int columna = 0; columna < this.columnas; columna++) {
         this.tablero[fila][columna].imprimir();
       }
     }
   }
 
-  public String toString(){
+  /**
+   * @brief Metodo encargado de convertir a string
+   * @return String convertido
+   */
+  public String toString() {
     String tablero = "[";
     for (int fila = 0; fila < this.filas; fila++) {
       for (int columna = 0; columna < this.columnas; columna++) {
