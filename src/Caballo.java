@@ -19,27 +19,27 @@ public class Caballo extends PiezaAbstracta {
   }
 
   /**
-   ** @brief Override de Metodo movimiento heredado de Pieza Abstracta, indica el
+   * Override de Metodo movimiento heredado de Pieza Abstracta, indica el
    *        movimiento de la ficha
-   ** @return true si el movimiento se hizo correctamente
-   **/
+   * @return true si el movimiento se hizo correctamente
+   */
   @Override
   public boolean movimiento() {
     return true;
   }
 
   /**
-   ** @brief Override de Metodo encargado de obtener el path del archivo imagen
-   ** @return String del path de la imagen
-   **/
+   * Override de Metodo encargado de obtener el path del archivo imagen
+   * @return String del path de la imagen
+   */
   @Override
   public String getImageFilePath() {
     return "imgs/" + this.nombre + "_" + color + ".png";
   }
 
   /**
-   ** @brief Override de Metodo encargado de convertir a string
-   ** @return String
+   * Override de Metodo encargado de convertir a string
+   * @return String
    */
   @Override
   public String to_String() {

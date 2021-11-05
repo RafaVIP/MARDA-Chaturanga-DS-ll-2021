@@ -26,7 +26,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   * @brief Metodo encargado de asignar y pedir los datos al jugador
+   * Metodo encargado de asignar y pedir los datos al jugador
    * @param colorArray un arreglo con los colores disponibles para el juego
    */
   public void pedirDatos(ArrayList<String> colorArray) {
@@ -41,7 +41,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   * @brief Metodo encargado de retornar el valor del atributo color
+   * Metodo encargado de retornar el valor del atributo color
    * @return String devuleve el valor del atributo color para este jugador
    */
   public String getColor() {
@@ -49,7 +49,7 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /**
-   * @brief Metodo encargado de convertir a string
+   * Metodo encargado de convertir a string
    * @return retorna un string
    */
   public String to_String() {

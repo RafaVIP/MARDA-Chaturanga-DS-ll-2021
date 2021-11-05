@@ -32,8 +32,8 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   ** @brief Metodo encargado de asignar los colores
-   **/
+   * Metodo encargado de asignar los colores
+   */
   public void asignarColores() {
     ArrayList<String> colores = new ArrayList<String>();
 
@@ -57,26 +57,25 @@ public class Chaturanga extends PartidaAbstracta {
 
   // TODO: Segundo sprint
   /**
-   ** @brief
-   ** @param filepath
-   ** @return
-   **/
+   *
+   * @param filepath
+   */
   public Chaturanga(String filepath) {
   }
 
   // TODO: Segundo sprint
   /**
-   ** @brief
-   ** @param
-   ** @return
+   * Setea el estado inicial de las piezas
+   * @param
+   * @return
    **/
   public void setEstadoInicialDeLasPiezas() {
 
   }
 
   /**
-   ** @brief Metodo encargado de mostrar y configurar elementos en la interfaz
-   ** @param interfaz
+   * Metodo encargado de mostrar y configurar elementos en la interfaz
+   * @param interfaz
    */
   public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz) {
     /** Agrega el boton de las reglas en la interfaz del juego */
@@ -104,7 +103,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   // TODO: Segundo Sprint
   /**
-   ** @brief Metodo encargado de Iniciar una partida
+   * Metodo encargado de Iniciar una partida
    **/
   public void iniciarPartida() {
     /*
@@ -121,9 +120,9 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   ** @brief Metodo encargado de guardar una partida en un .txt
-   ** @return true si guarda correctamente
-   **/
+   * Metodo encargado de guardar una partida en un .txt
+   * @return true si guarda correctamente
+   */
   public boolean guardarPartida() {
     FileManagerDePartidasAbstracto fileManager = new FileManagerChaturanga();
     return fileManager.guardarPartida(this);
@@ -131,17 +130,17 @@ public class Chaturanga extends PartidaAbstracta {
 
   // TODO: Segundo Sprint
   /**
-   ** @brief Metodo encargado de verificar que el juego haya terminado
-   **/
+   * Metodo encargado de verificar que el juego haya terminado
+   */
   public boolean elJuegoHaTerminado() {
     return false;
   }
 
   /**
-   ** @brief Metodo de clase abstracta encargado de cargar la partida
-   ** @param filepath recibe un string con un path
-   ** @return un objeto de toipo PartidaAbstracta
-   **/
+   * Metodo de clase abstracta encargado de cargar la partida
+   * @param filepath recibe un string con un path
+   * @return un objeto de toipo PartidaAbstracta
+   */
   public PartidaAbstracta cargarPartida(String filepath) {
     return this;
   }
@@ -157,9 +156,9 @@ public class Chaturanga extends PartidaAbstracta {
    */
 
   /**
-   ** @brief Metodo encargado de convertir a un string
-   ** @return String
-   **/
+   * Metodo encargado de convertir a un string
+   * @return String
+   */
   public String to_String() {
     String chaturanga = "";
     chaturanga += this.jugadorActual + "\n\n";

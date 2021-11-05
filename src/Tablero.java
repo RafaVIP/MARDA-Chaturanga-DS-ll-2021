@@ -17,7 +17,7 @@ public class Tablero {
   public int columnas;
 
   /**
-   * @brief Metodo constructor encargado de construir el objeto tablero
+   * Metodo constructor encargado de construir el objeto tablero
    * @param filas
    * @param columnas
    * @param interfaz
@@ -48,6 +48,12 @@ public class Tablero {
     } catch (Exception e) { System.out.println("Error en lectura de la partida"); }
   }
 
+  /**
+   * Crea una pieza abstracta distinta
+   * @param tipo
+   * @param color
+   * @return
+   */
   private PiezaAbstracta crearPiezaAbstracta(final String tipo, final String color) {
     if(tipo.equals("rey")) {
       return new Rey(color);
@@ -68,7 +74,7 @@ public class Tablero {
   }
 
   /**
-   * @brief Metodo encargado de imprimir el tablero en pantalla
+   * Metodo encargado de imprimir el tablero en pantalla
    */
   public void imprimirTablero() {
     for (int fila = 0; fila < this.filas; fila++) {
@@ -79,7 +85,7 @@ public class Tablero {
   }
 
   /**
-   * @brief Metodo encargado de convertir a string
+   * Metodo encargado de convertir a string
    * @return String convertido
    */
   public String toString() {

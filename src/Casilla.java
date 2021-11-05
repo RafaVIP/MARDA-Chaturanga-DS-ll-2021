@@ -16,7 +16,7 @@ public class Casilla {
   public InterfazGraficaGenerica interfaz;
 
   /**
-   * @brief Constructor de la clase
+   * Constructor de la clase
    * @param fila
    * @param columna
    * @param interfaz
@@ -29,7 +29,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de configurar el contenido de una pieza abstracta
+   * Metodo encargado de configurar el contenido de una pieza abstracta
    * @param contenido
    */
   public void setContenido(PiezaAbstracta contenido) {
@@ -37,7 +37,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de imprimir casilla
+   * Metodo encargado de imprimir casilla
    */
   void imprimir() {
     if (this.contenido != null) {
@@ -54,7 +54,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de imprimir casilla con su respectivo color
+   * Metodo encargado de imprimir casilla con su respectivo color
    * @param color
    */
   void imprimirCasilla(final String color) {
@@ -64,7 +64,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de imprimir la pieza en la casilla
+   * Metodo encargado de imprimir la pieza en la casilla
    */
   void imprimirPieza() {
     String filePath = this.contenido.getImageFilePath();
@@ -72,7 +72,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de dibujar en la interfaz
+   * Metodo encargado de dibujar en la interfaz
    * @param filePath
    */
   void dibujarEnInterfaz(String filePath) {
@@ -82,14 +82,14 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de convertir una Casilla a vacia
+   * Metodo encargado de convertir una Casilla a vacia
    */
   void setCasillaVacia() {
     this.contenido = null;
   }
 
   /**
-   * @brief Metodo encargado de obtener el contenido
+   * Metodo encargado de obtener el contenido
    * @return PiezaAbstracta
    */
   PiezaAbstracta getContenido() {
@@ -97,7 +97,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de revidar si un núméro es par
+   * Metodo encargado de revidar si un núméro es par
    * @param numero
    * @return true si es par
    */
@@ -106,7 +106,7 @@ public class Casilla {
   }
 
   /**
-   * @brief Metodo encargado de cambiar la base y el tamaño de la casilla
+   * Metodo encargado de cambiar la base y el tamaño de la casilla
    * @param base
    * @param tam_casilla
    */

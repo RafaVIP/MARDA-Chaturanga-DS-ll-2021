@@ -9,7 +9,7 @@
 public class Menu {
 
 	/**
-	 * @brief Metodo principal
+	 * Metodo principal
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class Menu {
 	}
 
 	/**
-	 * @brief Metodo encargado de mostrarles las opciones de menu al usuario
+	 * Metodo encargado de mostrarles las opciones de menu al usuario
 	 */
 	public void desplegarMenuPrincipal() {
 		System.out.println("Opciones: \n 1. Nueva Partida\n2. Cargar Partida\n3. Salir\n");
@@ -39,7 +39,7 @@ public class Menu {
 	}
 
 	/**
-	 * @brief Metodo encargado de crear una nueva partida
+	 * Metodo encargado de crear una nueva partida
 	 */
 	public void crearNuevaPartida() {
 		PartidaAbstracta partida = new Chaturanga();
@@ -47,7 +47,7 @@ public class Menu {
 	}
 
 	/**
-	 * @brief Metodo encargado de cargar una partida anterior
+	 * Metodo encargado de cargar una partida anterior
 	 */
 	public void cargarPartida() {
 		/* Buscar archivo que toque cargar, jalar el nombre */

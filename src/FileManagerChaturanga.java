@@ -24,7 +24,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     final String BASE_PATH = "src/PartidaChaturanga_";
 
     /**
-     * @brief Metodo encargado de cargar una partida desde un .txt
+     * Metodo encargado de cargar una partida desde un .txt
      * @param filepath dirección donde se encuentra el .txt
      * @return PartidaAbstracta Crea una partida nueva
      */
@@ -35,7 +35,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     }
 
     /**
-     * @brief Metodo encargado de guardar la partida actual
+     * Metodo encargado de guardar la partida actual
      * @param partida Recibe la partida actual
      * @return true si la partida se guardo correctamente
      */
@@ -61,7 +61,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     }
 
     /**
-     * @brief Busca en los archivos el nombre que deberia tener la partida guardada
+     * Busca en los archivos el nombre que deberia tener la partida guardada
      * @return String con el nombre del archivo
      */
     public String getFilename() {
@@ -76,7 +76,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     }
 
     /**
-     * @brief Metodo encargado de obtener el numero de identificador del archivo
+     * Metodo encargado de obtener el numero de identificador del archivo
      * @return int (el identificador del archivo)
      */
     public int getIdentifierNumber() {
@@ -94,7 +94,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     }
 
     /**
-     * @brief Metodo encargado de leer el archivo
+     * Metodo encargado de leer el archivo
      * @param filepath la ubicación del archivo
      */
     public String readFile(String filepath) {

@@ -32,7 +32,7 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   /**
-   * @Brief Método encargado de imprimir una imagen en el tablero
+   * Método encargado de imprimir una imagen en el tablero
    * @param filePath
    * @param ejeX
    * @param ejeY
@@ -54,7 +54,7 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   /**
-   * @brief Método encargado de abrir una nueva interfaz
+   * Método encargado de abrir una nueva interfaz
    * @param title
    */
   public void abrirNuevaInterfaz(String title) {
@@ -72,7 +72,7 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   /**
-   * @brief Método encargado de agregar in botón en la interfaz
+   * Método encargado de agregar in botón en la interfaz
    * @param texto
    * @param action
    * @param ejeX
@@ -88,7 +88,7 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   /**
-   * @brief Método encargado de mostar un mensaje
+   * Método encargado de mostar un mensaje
    * @param parentComponent
    * @param texto
    */
