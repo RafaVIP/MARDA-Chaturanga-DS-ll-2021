@@ -23,20 +23,13 @@ public class Chaturanga extends PartidaAbstracta {
     int filas = 8;
     int columnas = 8;
     InterfazGraficaGenerica interfaz = new InterfazGraficaGenerica("Chaturanga");
-
-    this.tablero = new Tablero(filas, columnas, interfaz);
+    // To do for 2nd sprind: especificar el path para cuando se carga partida
+    this.tablero = new Tablero( "src/inicio.txt", filas, columnas, interfaz);
     setEstadoInicialDeLasPiezas();
     setElementosDeInterfazIniciales(interfaz);
     this.tablero.imprimirTablero();
   }
 
-<<<<<<< HEAD
-  public Chaturanga(String filepath){
-    // to do
-  }
-
-=======
->>>>>>> 64cd97c625f28df633d85ac9a5ef035b01fe429f
   /**
    ** @brief Método encargado de asignar los colores
    **/
@@ -59,56 +52,6 @@ public class Chaturanga extends PartidaAbstracta {
         }
       }
     }
-<<<<<<< HEAD
-  // Tablero
-  int filas = 8;
-  int columnas = 8;
-  InterfazGraficaGenerica interfaz = new InterfazGraficaGenerica("Chaturanga");
-  //C:\Users\fabia\MARDA-Chaturanga-DS-ll-2021\src\inicio.txt
-  this.tablero = new Tablero( "src/inicio.txt", filas,columnas, interfaz);
-  setEstadoInicialDeLasPiezas();
-  setElementosDeInterfazIniciales(interfaz);
-  this.tablero.imprimirTablero();
-}
-
- public void setEstadoInicialDeLasPiezas() {
-
- }
-
- public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz){
-   /** Agrega el boton de las reglas en la interfaz del juego */
-   ActionListener rules = new ActionListener(){
-    @Override
-    public void actionPerformed(ActionEvent ae){
-      FileManagerDePartidasAbstracto fileManager = new FileManagerChaturanga();
-      String content = fileManager.readFile("src/rules.txt");
-      interfaz.mostrarCuadroDialogo(null,content); // Jalar contenido de txt de las reglas
-    }
-   };
-  interfaz.agregarBoton("Reglas", rules, 0,0);
-
-  /** Guardar Partida*/
-  ActionListener guardarPartida = new ActionListener(){
-    @Override
-    public void actionPerformed(ActionEvent ae){
-      guardarPartida();
-    }
-   };
-  interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
- }
-  /*----------------- De Partida Abstracta*/
-  public  void iniciarPartida() {
-    /*
-    int jugadorActual = 0;
-    int [2] coordenadas elegidas;
-    while(!elJuegoHaTerminado()){
-     coordenadasElegidas = jugador.solicitarCasillaAMoverse();
-        // Check si la casilla elegida es valida
-      if (tablero[x_actual][y_actual].movimiento(x_actual, y_actual, x_solicitado, y_solicitado)) {
-        tablero[x_solicitado][y_solicitado] = tablero[x_actual][y_actual].getContenido();
-        tablero[x_actual][y_actual].setCasillaVacia();
-      } else {
-=======
   }
 
   // TODO: Segundo sprint
@@ -145,7 +88,6 @@ public class Chaturanga extends PartidaAbstracta {
       }
     };
     interfaz.agregarBoton("Reglas", rules, 0, 0);
->>>>>>> 64cd97c625f28df633d85ac9a5ef035b01fe429f
 
     /** Guardar Partida */
     ActionListener guardarPartida = new ActionListener() {
