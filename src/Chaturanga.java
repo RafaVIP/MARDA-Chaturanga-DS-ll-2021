@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Chaturanga extends PartidaAbstracta {
   /*----------------- Propios de Chaturanga------------------*/
+  InterfazGraficaGenerica interfaz;
 
   /// Contructor
   public Chaturanga() {
@@ -23,13 +24,31 @@ public class Chaturanga extends PartidaAbstracta {
     // Tablero
     int filas = 8;
     int columnas = 8;
-    InterfazGraficaGenerica interfaz = new InterfazGraficaGenerica("Chaturanga");
-    // To do for 2nd sprind: especificar el path para cuando se carga partida
-    this.tablero = new Tablero( "src/inicio.txt", filas, columnas, interfaz);
+    this.interfaz = new InterfazGraficaGenerica("Chaturanga");
+    // TODO: for 2nd sprind: especificar el path para cuando se carga partida
+    this.tablero = new Tablero( "src/inicio.txt", filas, columnas);
     setEstadoInicialDeLasPiezas();
     setElementosDeInterfazIniciales(interfaz);
-    this.tablero.imprimirTablero();
+    imprimirTablero();
   }
+
+  public void imprimirTablero(){
+    /**
+     * Recibe:
+     * {Casilla, Casilla, ...}
+     * Casilla = {Pieza, Casilla} o {Casilla}
+     * Pieza / Casilla = {filepath, ejeX, ejeY}
+     */
+    ArrayList<ArrayList<ArrayList<String>>> tablero = this.tablero.imprimirTablero();
+    for (int casilla = 0; casilla < tablero.size(); casilla++){
+      for (int contenidoDeCasilla = 0; contenidoDeCasilla < tablero.get(casilla).size(); contenidoDeCasilla++){
+        interfaz.printImage(tablero.get(casilla).get(contenidoDeCasilla).get(0), /** Filepath de imagen (casilla o pieza) */
+           Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(1)), /** Eje X donde tiene que imprimirse */
+           Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(2))); /** Eje Y donde tiene que imprimirse */
+      }
+    }
+  }
+
 
   /**
    * Metodo encargado de asignar los colores

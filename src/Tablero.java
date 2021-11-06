@@ -7,6 +7,7 @@
  **/
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class Tablero {
   /// Atributos de la clase
@@ -22,12 +23,11 @@ public class Tablero {
    * @param columnas
    * @param interfaz
    */
-  public Tablero(String pathfile, final int filas, final int columnas, InterfazGraficaGenerica interfaz) {
+  public Tablero(String pathfile, final int filas, final int columnas) {
     this.filas = filas;
     this.columnas = columnas;
     this.tablero = new Casilla[filas][columnas];
     try {
-      System.out.println(pathfile);
       BufferedReader bf = new BufferedReader(new FileReader(pathfile));
       String tipo = "";
       String color = "";
@@ -35,7 +35,7 @@ public class Tablero {
       // Setea Casillas  
       for (int fila = 0; fila < this.filas; fila++){
         for (int columna = 0; columna < this.columnas; columna++) {
-          this.tablero[fila][columna] = new Casilla(fila, columna, interfaz);
+          this.tablero[fila][columna] = new Casilla(fila, columna);
           tipo = bf.readLine();
           color = bf.readLine();
           
@@ -76,12 +76,14 @@ public class Tablero {
   /**
    * Metodo encargado de imprimir el tablero en pantalla
    */
-  public void imprimirTablero() {
+  public ArrayList<ArrayList<ArrayList<String>>> imprimirTablero() {
+    ArrayList<ArrayList<ArrayList<String>>> tablero = new ArrayList<ArrayList<ArrayList<String>>>();
     for (int fila = 0; fila < this.filas; fila++) {
       for (int columna = 0; columna < this.columnas; columna++) {
-        this.tablero[fila][columna].imprimir();
+        tablero.add(this.tablero[fila][columna].imprimir());
       }
     }
+    return tablero;
   }
 
   /**

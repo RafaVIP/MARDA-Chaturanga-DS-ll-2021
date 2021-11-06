@@ -38,9 +38,6 @@ public class InterfazGraficaGenerica extends JFrame {
    * @param ejeY
    */
   public void printImage(String filePath, final int ejeX, final int ejeY) {
-     System.out.println(filePath);
-     String elefante = "imgs/Elefante_verde.png";
-     // ImageIcon imagen = new ImageIcon(new ImageIcon("imgs/Elefante_verde.png").getImage().getScaledInstance(45, 45, 45));
     ImageIcon imagen = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(75, 75, 75));
     JLabel label = new JLabel();
     label.setBackground(Color.GREEN);
@@ -61,14 +58,12 @@ public class InterfazGraficaGenerica extends JFrame {
 
     this.setSize(800, 800);
     this.setTitle(title);
-    // this.add(btn);
     this.setLocationRelativeTo(null);
     this.panel = new JPanel();
     this.getContentPane().add(this.panel);
     this.panel.setLayout(null);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
-    // ---------------
   }
 
   /**

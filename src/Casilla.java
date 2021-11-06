@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  ** Primera iteración Proyecto Programado: Diseño 
  ** Rafael Porras (B75915) 
@@ -13,19 +15,16 @@ public class Casilla {
 
   public PiezaAbstracta contenido;
   public int fila, columna;
-  public InterfazGraficaGenerica interfaz;
 
   /**
    * Constructor de la clase
    * @param fila
    * @param columna
-   * @param interfaz
    */
-  public Casilla(final int fila, final int columna, InterfazGraficaGenerica interfaz) {
+  public Casilla(final int fila, final int columna) {
     this.contenido = null;
     this.fila = fila;
     this.columna = columna;
-    this.interfaz = interfaz;
   }
 
   /**
@@ -38,47 +37,67 @@ public class Casilla {
 
   /**
    * Metodo encargado de imprimir casilla
+   * Arraylist<Arraylist<String>> = {{filepath,x,y},{Caballo,x,y}} o {{filepath,x,y},{}}
    */
-  void imprimir() {
+  ArrayList<ArrayList<String>> imprimir() {
+    ArrayList<ArrayList<String>> casilla = new ArrayList<ArrayList<String>>();
     if (this.contenido != null) {
-      imprimirPieza();
+      casilla.add(imprimirPieza());
     }
     // Imprime la casilla
     if ((esPar(this.fila) && !esPar(this.columna)) || (!esPar(this.fila) && esPar(this.columna))) { // Casilla Blanca
-      imprimirCasilla("blanca");
+      casilla.add(imprimirCasilla("blanca"));
 
     } else { // Casilla Negra
-      imprimirCasilla("negra");
+      casilla.add(imprimirCasilla("negra"));
     }
-
+    return casilla;
   }
 
   /**
    * Metodo encargado de imprimir casilla con su respectivo color
    * @param color
    */
-  void imprimirCasilla(final String color) {
-    // Imprimir las casillas del tablero
+  ArrayList<String> imprimirCasilla(final String color) {
+    ArrayList<String> casilla = new ArrayList<String>();
+    ArrayList<String> coordenadas = getCoordenadasDeDibujo();
     String filePath = "imgs/Casilla_" + color + ".png";
-    this.dibujarEnInterfaz(filePath);
+    // Agrega la casilla
+    casilla.add(filePath);
+    // Agrega las coordenadas donde deberia imprimirse
+    for (int coordenada = 0; coordenada < coordenadas.size(); coordenada++){
+      casilla.add(coordenadas.get(coordenada));
+    }
+    return casilla;
   }
 
   /**
    * Metodo encargado de imprimir la pieza en la casilla
    */
-  void imprimirPieza() {
+  ArrayList<String> imprimirPieza() {
+    ArrayList<String> pieza = new ArrayList<String>();
+    ArrayList<String> coordenadas = getCoordenadasDeDibujo();
     String filePath = this.contenido.getImageFilePath();
-    this.dibujarEnInterfaz(filePath);
+    // Agrega la pieza
+    pieza.add(filePath);
+    // Agrega las coordenadas donde deberia imprimirse
+    for (int coordenada = 0; coordenada < coordenadas.size(); coordenada++){
+      pieza.add(coordenadas.get(coordenada));
+    }
+    return pieza;
   }
 
   /**
    * Metodo encargado de dibujar en la interfaz
    * @param filePath
    */
-  void dibujarEnInterfaz(String filePath) {
+  ArrayList<String> getCoordenadasDeDibujo() {
+    ArrayList<String> coordenadas = new ArrayList<String>();
     int ejeX = this.BASE + (this.TAM_CASILLA * this.fila);
     int ejeY = this.BASE + (this.TAM_CASILLA * this.columna);
-    this.interfaz.printImage(filePath, ejeX, ejeY);
+    coordenadas.add(Integer.toString(ejeX));
+    coordenadas.add(Integer.toString(ejeY));
+    return coordenadas;
   }
 
   /**
