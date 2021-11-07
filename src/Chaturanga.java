@@ -10,6 +10,8 @@
 import java.awt.event.*;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 public class Chaturanga extends PartidaAbstracta {
   /*----------------- Propios de Chaturanga------------------*/
   InterfazGraficaGenerica interfaz;
@@ -26,29 +28,29 @@ public class Chaturanga extends PartidaAbstracta {
     int columnas = 8;
     this.interfaz = new InterfazGraficaGenerica("Chaturanga");
     // TODO: for 2nd sprind: especificar el path para cuando se carga partida
-    this.tablero = new Tablero( "src/inicio.txt", filas, columnas);
+    this.tablero = new Tablero("src/inicio.txt", filas, columnas);
     setEstadoInicialDeLasPiezas();
     setElementosDeInterfazIniciales(interfaz);
     imprimirTablero();
   }
 
-  public void imprimirTablero(){
+  public void imprimirTablero() {
     /**
-     * Recibe:
-     * {Casilla, Casilla, ...}
-     * Casilla = {Pieza, Casilla} o {Casilla}
-     * Pieza / Casilla = {filepath, ejeX, ejeY}
+     * Recibe: {Casilla, Casilla, ...} Casilla = {Pieza, Casilla} o {Casilla} Pieza
+     * / Casilla = {filepath, ejeX, ejeY}
      */
     ArrayList<ArrayList<ArrayList<String>>> tablero = this.tablero.imprimirTablero();
-    for (int casilla = 0; casilla < tablero.size(); casilla++){
-      for (int contenidoDeCasilla = 0; contenidoDeCasilla < tablero.get(casilla).size(); contenidoDeCasilla++){
-        interfaz.printImage(tablero.get(casilla).get(contenidoDeCasilla).get(0), /** Filepath de imagen (casilla o pieza) */
-           Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(1)), /** Eje X donde tiene que imprimirse */
-           Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(2))); /** Eje Y donde tiene que imprimirse */
+    for (int casilla = 0; casilla < tablero.size(); casilla++) {
+      for (int contenidoDeCasilla = 0; contenidoDeCasilla < tablero.get(casilla).size(); contenidoDeCasilla++) {
+        interfaz.printImage(tablero.get(casilla).get(contenidoDeCasilla).get(0),
+            /** Filepath de imagen (casilla o pieza) */
+            Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(1)),
+            /** Eje X donde tiene que imprimirse */
+            Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(2)));
+            /** Eje Y donde tiene que imprimirse */
       }
     }
   }
-
 
   /**
    * Metodo encargado de asignar los colores
@@ -85,6 +87,7 @@ public class Chaturanga extends PartidaAbstracta {
   // TODO: Segundo sprint
   /**
    * Setea el estado inicial de las piezas
+   * 
    * @param
    * @return
    **/
@@ -94,6 +97,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   /**
    * Metodo encargado de mostrar y configurar elementos en la interfaz
+   * 
    * @param interfaz
    */
   public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz) {
@@ -116,6 +120,15 @@ public class Chaturanga extends PartidaAbstracta {
       }
     };
     interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
+
+    /**Color de los jugadores */
+    String datos  = "";
+    for (int i = 0; i < this.jugadores.length; i++ ) {
+      datos = jugadores[i].getNombre()+ ": Juega con"+ jugadores[i].getColor()+"\n";
+    }
+    JLabel informacionJugador = new JLabel(datos);
+    informacionJugador.setBounds(500, 500s, 0, 0);
+    interfaz.add(informacionJugador);
   }
 
   /*----------------- De Partida Abstracta---------------------*/
@@ -140,6 +153,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   /**
    * Metodo encargado de guardar una partida en un .txt
+   * 
    * @return true si guarda correctamente
    */
   public boolean guardarPartida() {
@@ -157,6 +171,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   /**
    * Metodo de clase abstracta encargado de cargar la partida
+   * 
    * @param filepath recibe un string con un path
    * @return un objeto de toipo PartidaAbstracta
    */
@@ -176,6 +191,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   /**
    * Metodo encargado de convertir a un string
+   * 
    * @return String
    */
   public String to_String() {

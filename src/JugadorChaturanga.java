@@ -48,6 +48,14 @@ public class JugadorChaturanga extends JugadorAbstracto {
     return this.color;
   }
 
+   /**
+   * Metodo encargado de retornar el valor del atributo nombre
+   * @return String devuleve el valor del atributo nombre del jugador
+   */
+  public String getNombre() {
+    return this.nombre;
+  }
+
   /**
    * Metodo encargado de convertir a string
    * @return retorna un string

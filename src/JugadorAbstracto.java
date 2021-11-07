@@ -23,4 +23,10 @@ public abstract class JugadorAbstracto {
    * @return String (Color)
    */
   public abstract String getColor();
+
+  /**
+   * Metodo encargado de obtener el nombre del jugador
+   * @return String (nombre)
+   */
+  public abstract String getNombre();
 }
