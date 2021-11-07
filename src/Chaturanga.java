@@ -120,15 +120,22 @@ public class Chaturanga extends PartidaAbstracta {
       }
     };
     interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
-
+    
     /**Color de los jugadores */
     String datos  = "";
     for (int i = 0; i < this.jugadores.length; i++ ) {
-      datos = jugadores[i].getNombre()+ ": Juega con"+ jugadores[i].getColor()+"\n";
+      datos += jugadores[i].getNombre()+ ": Juega con "+ jugadores[i].getColor()+"\n";
     }
-    JLabel informacionJugador = new JLabel(datos);
-    informacionJugador.setBounds(500, 500, 0, 0);
-    interfaz.add(informacionJugador);
+    System.out.println(datos);
+    final String datos2 = datos;
+    ActionListener players = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent ae) {
+        System.out.println(datos2);
+        interfaz.mostrarCuadroDialogo(null, datos2);
+      }
+    };
+    interfaz.agregarBoton("Jugadores", players, 204, 0);
   }
 
   /*----------------- De Partida Abstracta---------------------*/
