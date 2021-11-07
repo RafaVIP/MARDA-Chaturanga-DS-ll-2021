@@ -127,7 +127,7 @@ public class Chaturanga extends PartidaAbstracta {
       datos = jugadores[i].getNombre()+ ": Juega con"+ jugadores[i].getColor()+"\n";
     }
     JLabel informacionJugador = new JLabel(datos);
-    informacionJugador.setBounds(500, 500s, 0, 0);
+    informacionJugador.setBounds(500, 500, 0, 0);
     interfaz.add(informacionJugador);
   }
 
