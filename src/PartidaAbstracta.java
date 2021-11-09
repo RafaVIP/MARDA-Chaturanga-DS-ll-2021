@@ -32,10 +32,11 @@ public abstract class PartidaAbstracta {
 
   /**
    * Metodo encargado de cargar una partida desde un archivo de texto
+   * @param partida
    * @param filepath
    * @return PartidaAbstracta (la partida que cargo)
    */
-  public abstract PartidaAbstracta cargarPartida(String filepath);
+  public abstract void cargarPartida(String filepath);
 
   /**
    * Metodo encargado de convertir a string

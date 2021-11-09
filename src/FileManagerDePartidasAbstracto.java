@@ -12,7 +12,21 @@ public abstract class FileManagerDePartidasAbstracto {
      * @param filepath dirección donde se encuentra el .txt
      * @return PartidaAbstracta Crea una partida nueva
      */
-    public abstract PartidaAbstracta cargarPartida(String filepath);
+    public abstract int cargarJugadorActual(String filepath);
+
+    /**
+     * Metodo encargado de cargar una partida desde un .txt
+     * @param filepath dirección donde se encuentra el .txt
+     * @return PartidaAbstracta Crea una partida nueva
+     */
+    public abstract JugadorAbstracto[] cargarJugadores(String filepath);
+
+    /**
+     * Metodo encargado de cargar una partida desde un .txt
+     * @param filepath dirección donde se encuentra el .txt
+     * @return PartidaAbstracta Crea una partida nueva
+     */
+    public abstract Tablero cargarTablero(String filepath);
 
     /**
      * Metodo encargado de guardar la partida actual

@@ -22,7 +22,7 @@ public class Menu {
 	 */
 	public void desplegarMenuPrincipal() {
 		System.out.println("Opciones: \n 1. Nueva Partida\n2. Cargar Partida\n3. Salir\n");
-		int opcion = 1;
+		int opcion = 2;
 		switch (opcion) {
 		case 1:
 			crearNuevaPartida();
@@ -43,6 +43,7 @@ public class Menu {
 	 */
 	public void crearNuevaPartida() {
 		PartidaAbstracta partida = new Chaturanga();
+		partida.cargarPartida("src/inicio.txt");
 		partida.iniciarPartida();
 	}
 
@@ -51,8 +52,9 @@ public class Menu {
 	 */
 	public void cargarPartida() {
 		/* Buscar archivo que toque cargar, jalar el nombre */
-		String filePath = "filepath";
-		PartidaAbstracta partida = new Chaturanga(filePath);
+		String filepath = "src/ejemploDEcarga.txt";
+		PartidaAbstracta partida = new Chaturanga();
+		partida.cargarPartida(filepath);
 		partida.iniciarPartida();
 	}
 }

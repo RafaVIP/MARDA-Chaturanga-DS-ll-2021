@@ -10,7 +10,7 @@
 import java.awt.event.*;
 import java.util.ArrayList;
 
-import javax.swing.JLabel;
+// import javax.swing.JLabel;
 
 public class Chaturanga extends PartidaAbstracta {
   /*----------------- Propios de Chaturanga------------------*/
@@ -19,17 +19,26 @@ public class Chaturanga extends PartidaAbstracta {
   /// Contructor
   public Chaturanga() {
     this.TOTAL_JUGADORES = 4;
-    this.jugadores = new JugadorChaturanga[this.TOTAL_JUGADORES];
-    this.jugadorActual = 0;
-    asignarColores();
-
-    // Tablero
-    int filas = 8;
-    int columnas = 8;
     this.interfaz = new InterfazGraficaGenerica("Chaturanga");
-    // TODO: for 2nd sprind: especificar el path para cuando se carga partida
-    this.tablero = new Tablero("src/inicio.txt", filas, columnas);
-    setEstadoInicialDeLasPiezas();
+  }
+
+    /**
+   * Metodo de clase abstracta encargado de cargar la partida
+   * 
+   * @param filepath recibe un string con un path
+   * @return un objeto de toipo PartidaAbstracta
+   */
+  public void cargarPartida(String filepath) {
+    FileManagerChaturanga manager = new FileManagerChaturanga();
+    if (filepath.equals("src/inicio.txt")) {
+      this.jugadores = new JugadorChaturanga[this.TOTAL_JUGADORES];
+      this.jugadorActual = 0;
+      asignarColores();
+    } else {
+      this.jugadores = manager.cargarJugadores(filepath);
+      this.jugadorActual = manager.cargarJugadorActual(filepath);
+    }
+    this.tablero = manager.cargarTablero(filepath);
     setElementosDeInterfazIniciales(interfaz);
     imprimirTablero();
   }
@@ -74,25 +83,6 @@ public class Chaturanga extends PartidaAbstracta {
         }
       }
     }
-  }
-
-  // TODO: Segundo sprint
-  /**
-   *
-   * @param filepath
-   */
-  public Chaturanga(String filepath) {
-  }
-
-  // TODO: Segundo sprint
-  /**
-   * Setea el estado inicial de las piezas
-   * 
-   * @param
-   * @return
-   **/
-  public void setEstadoInicialDeLasPiezas() {
-
   }
 
   /**
@@ -174,16 +164,6 @@ public class Chaturanga extends PartidaAbstracta {
    */
   public boolean elJuegoHaTerminado() {
     return false;
-  }
-
-  /**
-   * Metodo de clase abstracta encargado de cargar la partida
-   * 
-   * @param filepath recibe un string con un path
-   * @return un objeto de toipo PartidaAbstracta
-   */
-  public PartidaAbstracta cargarPartida(String filepath) {
-    return this;
   }
 
   /**

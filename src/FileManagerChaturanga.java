@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  ** Primera iteración Proyecto Programado: Diseño 
@@ -26,12 +27,122 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     /**
      * Metodo encargado de cargar una partida desde un .txt
      * @param filepath dirección donde se encuentra el .txt
+     * @return Retorna el jugador actual ddentro del archivo
+     */
+    public int cargarJugadorActual(String filepath) {
+        int jugador_actual = 0;
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(filepath));
+            jugador_actual =  Integer.parseInt(bf.readLine());
+            System.out.println("Jugador actual: " + jugador_actual);
+            bf.close();
+        } catch (Exception e) { System.out.println("Error en lectura del tablero"); }
+        return jugador_actual;
+    }
+    
+    /**
+     * Metodo encargado de cargar una partida desde un .txt
+     * @param filepath dirección donde se encuentra el .txt
      * @return PartidaAbstracta Crea una partida nueva
      */
-    public PartidaAbstracta cargarPartida(String filepath) {
-        PartidaAbstracta partida = new Chaturanga();
+    public JugadorAbstracto[] cargarJugadores(String filepath) {
+        JugadorAbstracto[] jugadores = new JugadorChaturanga[4]; /*
+        ArrayList<String> colores = new ArrayList<String>();
+        colores.add("blanco");
+        colores.add("verde");
+        colores.add("amarillo");
+        colores.add("rojo");
+        for (int i = 0; i < jugadores.length; i++) {
+            jugadores[i] = new JugadorChaturanga(colores);
+            String colorElegido = jugadores[i].getColor();
+            for (int iterador = 0; iterador < colores.size(); iterador++) {
+                if (colores.get(iterador) == colorElegido) {
+                  /// permite que el jugador no escoja un color repetido
+                  colores.remove(iterador);
+                  iterador = colores.size();
+                }
+            }
+        }
+        */
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(filepath));
+            String nombre = "";
+            String color = "";
+            int numero_piezas_perdidas = 0;
+            String pieza_perdida = "";
+            // Se salta las casillas de numero de jugadores y las casillas
+            for(int i = 0; i < 137; ++i) { 
+                bf.readLine();
+            }
+            for (int jugador_actual = 0; jugador_actual < 4; ++jugador_actual){
+                nombre = bf.readLine();
+                color = bf.readLine();
+                // TODO: crear jugadores con lo que se lee
+                numero_piezas_perdidas = Integer.parseInt(bf.readLine());
+                System.out.println("Nombre color piezas_perdidas\n" + nombre + " " + color + " " + numero_piezas_perdidas);
+                for (int columna = 0; columna < numero_piezas_perdidas; columna++) {
+                    pieza_perdida = bf.readLine();
+                    System.out.println(pieza_perdida);
+                    // TODO: crear piezas con lo que lee
+                }
+            }
+            bf.close();
+        } catch (Exception e) { System.out.println("Error en lectura de los jugadores"); }
+        return jugadores;
+    }
 
-        return partida;
+    /**
+     * Metodo encargado de cargar una partida desde un .txt
+     * @param filepath dirección donde se encuentra el .txt
+     * @return PartidaAbstracta Crea una partida nueva
+     */
+    public Tablero cargarTablero(String filepath) {
+        Casilla[][] tablero = new Casilla[8][8];
+        try {
+            BufferedReader bf = new BufferedReader(new FileReader(filepath));
+            String tipo = "";
+            String color = "";
+            // Setea Casillas  
+            // Se salta la linea donde se encuentra el jugador actual
+            bf.readLine();
+            for (int fila = 0; fila < 8; fila++){
+              for (int columna = 0; columna < 8; columna++) {
+                tablero[fila][columna] = new Casilla(fila, columna);
+                tipo = bf.readLine();
+                color = bf.readLine();
+                PiezaAbstracta pieza = crearPiezaAbstracta(tipo, color);
+                tablero[fila][columna].setContenido(pieza);
+              }
+              bf.readLine();
+            }
+            bf.close();
+        } catch (Exception e) { System.out.println("Error en lectura del tablero"); }
+        return new Tablero(tablero, 8, 8);
+    }
+
+    /**
+    * Crea una pieza abstracta distinta
+    * @param tipo Tipo de pieza
+    * @param color Color de la pieza
+    * @return La pieza creada a partir de los 2 parametros
+    */
+    private PiezaAbstracta crearPiezaAbstracta(final String tipo, final String color) {
+        if(tipo.equals("rey")) {
+          return new Rey(color);
+        }
+        if(tipo.equals("elefante")) {
+          return new Elefante(color);
+        }
+        if(tipo.equals("barco")) {
+          return new Barco(color);
+        }
+        if(tipo.equals("caballo")) {
+          return new Caballo(color);
+        }
+        if(tipo.equals("peon")) {
+          return new Peon(color);
+        }
+        return null;
     }
 
     /**

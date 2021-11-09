@@ -23,29 +23,10 @@ public class Tablero {
    * @param columnas
    * @param interfaz
    */
-  public Tablero(String pathfile, final int filas, final int columnas) {
+  public Tablero(Casilla[][] tablero, final int filas, final int columnas) {
     this.filas = filas;
     this.columnas = columnas;
-    this.tablero = new Casilla[filas][columnas];
-    try {
-      BufferedReader bf = new BufferedReader(new FileReader(pathfile));
-      String tipo = "";
-      String color = "";
-      String tmp = "";
-      // Setea Casillas  
-      for (int fila = 0; fila < this.filas; fila++){
-        for (int columna = 0; columna < this.columnas; columna++) {
-          this.tablero[fila][columna] = new Casilla(fila, columna);
-          tipo = bf.readLine();
-          color = bf.readLine();
-          
-          PiezaAbstracta pieza = crearPiezaAbstracta(tipo, color);
-          this.tablero[fila][columna].setContenido(pieza);
-        }
-        tmp = bf.readLine();
-      }
-      bf.close();
-    } catch (Exception e) { System.out.println("Error en lectura de la partida"); }
+    this.tablero = tablero;
   }
 
   /**
