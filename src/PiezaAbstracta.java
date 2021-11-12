@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  ** Primera iteración Proyecto Programado: Diseño 
  ** Rafael Porras (B75915) 
@@ -7,11 +9,18 @@
  **/
 
 public abstract class PiezaAbstracta {
+
   /**
-   * Metodo encargado de indicar el movimiento de la ficha
-   * @return true si el movimiento se hizo correctamente
+   * 
+   * @param tablero
+   * @param filas
+   * @param columnas
+   * @param ejeXActual
+   * @param ejeYActual
+   * @param direccion
+   * @return Arraylist de string en formato [0] = x,y [1] = x1,y1
    */
-  abstract boolean movimiento();
+  abstract ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int filas, int columnas, int ejeXActual, int ejeYActual, int direccion);
 
   /**
    * Metodo encargado de obtener el path del archivo imagen

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  ** Primera iteración Proyecto Programado: Diseño 
  ** Rafael Porras (B75915) 
@@ -24,8 +26,11 @@ public class Rey extends PiezaAbstracta {
    * @return true si el movimiento se hizo correctamente
    */
   @Override
-  public boolean movimiento() {
-    return true;
+  
+  public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int filas, int columnas, int ejeXActual, int ejeYActual, int direccion) {
+    ArrayList<String> movimientos = new ArrayList<String>();
+
+    return movimientos;
   }
 
   /**
