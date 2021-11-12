@@ -25,6 +25,14 @@ public class JugadorChaturanga extends JugadorAbstracto {
     pedirDatos(colorArray);
   }
 
+  /// Constructor para partidas cargadas
+  public JugadorChaturanga(String nombre, String color, ArrayList<PiezaAbstracta> piezasPerdidas, int cantidadPiezasPerdidas) {
+    this.nombre = nombre;
+    this.color = color;
+    this.piezasPerdidas = piezasPerdidas;
+    this.cantidadPiezasPerdidas = cantidadPiezasPerdidas;
+  }
+  
   /**
    * Metodo encargado de asignar y pedir los datos al jugador
    * @param colorArray un arreglo con los colores disponibles para el juego

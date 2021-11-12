@@ -46,30 +46,13 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
      * @return PartidaAbstracta Crea una partida nueva
      */
     public JugadorAbstracto[] cargarJugadores(String filepath) {
-        JugadorAbstracto[] jugadores = new JugadorChaturanga[4]; /*
-        ArrayList<String> colores = new ArrayList<String>();
-        colores.add("blanco");
-        colores.add("verde");
-        colores.add("amarillo");
-        colores.add("rojo");
-        for (int i = 0; i < jugadores.length; i++) {
-            jugadores[i] = new JugadorChaturanga(colores);
-            String colorElegido = jugadores[i].getColor();
-            for (int iterador = 0; iterador < colores.size(); iterador++) {
-                if (colores.get(iterador) == colorElegido) {
-                  /// permite que el jugador no escoja un color repetido
-                  colores.remove(iterador);
-                  iterador = colores.size();
-                }
-            }
-        }
-        */
+        JugadorAbstracto[] jugadores = new JugadorChaturanga[4];
         try {
             BufferedReader bf = new BufferedReader(new FileReader(filepath));
             String nombre = "";
             String color = "";
-            int numero_piezas_perdidas = 0;
             String pieza_perdida = "";
+            String color_pieza_perdida = "";
             // Se salta las casillas de numero de jugadores y las casillas
             for(int i = 0; i < 137; ++i) { 
                 bf.readLine();
@@ -77,14 +60,16 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
             for (int jugador_actual = 0; jugador_actual < 4; ++jugador_actual){
                 nombre = bf.readLine();
                 color = bf.readLine();
-                // TODO: crear jugadores con lo que se lee
-                numero_piezas_perdidas = Integer.parseInt(bf.readLine());
+                ArrayList<PiezaAbstracta> piezas_perdidas = new ArrayList<PiezaAbstracta>();
+                int numero_piezas_perdidas = Integer.parseInt(bf.readLine());
                 System.out.println("Nombre color piezas_perdidas\n" + nombre + " " + color + " " + numero_piezas_perdidas);
                 for (int columna = 0; columna < numero_piezas_perdidas; columna++) {
                     pieza_perdida = bf.readLine();
+                    color_pieza_perdida = bf.readLine();
                     System.out.println(pieza_perdida);
-                    // TODO: crear piezas con lo que lee
+                    piezas_perdidas.add(crearPiezaAbstracta(pieza_perdida, color_pieza_perdida));
                 }
+                jugadores[jugador_actual] = new JugadorChaturanga(nombre, color, piezas_perdidas, numero_piezas_perdidas);
             }
             bf.close();
         } catch (Exception e) { System.out.println("Error en lectura de los jugadores"); }

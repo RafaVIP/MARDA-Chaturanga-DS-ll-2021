@@ -51,7 +51,8 @@ public class Menu {
 	 * Metodo encargado de cargar una partida anterior
 	 */
 	public void cargarPartida() {
-		/* Buscar archivo que toque cargar, jalar el nombre */
+	/* Buscar archivo que toque cargar, jalar el nombre */
+		System.out.println("Estoy donde es");
 		String filepath = "src/ejemploDEcarga.txt";
 		PartidaAbstracta partida = new Chaturanga();
 		partida.cargarPartida(filepath);

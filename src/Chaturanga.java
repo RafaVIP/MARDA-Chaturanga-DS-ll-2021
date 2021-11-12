@@ -35,6 +35,7 @@ public class Chaturanga extends PartidaAbstracta {
       this.jugadorActual = 0;
       asignarColores();
     } else {
+      System.out.println("Wtf? " + filepath);
       this.jugadores = manager.cargarJugadores(filepath);
       this.jugadorActual = manager.cargarJugadorActual(filepath);
     }
