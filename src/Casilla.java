@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class Casilla {
   /// Atributos de la clase
   private int TAM_CASILLA = 75;
-  private int BASE = 50;
+  private int BASEx = 5;
+  private int BASEy = 25;
 
   public PiezaAbstracta contenido;
   public int fila, columna;
@@ -93,8 +94,8 @@ public class Casilla {
    */
   ArrayList<String> getCoordenadasDeDibujo() {
     ArrayList<String> coordenadas = new ArrayList<String>();
-    int ejeX = this.BASE + (this.TAM_CASILLA * this.fila);
-    int ejeY = this.BASE + (this.TAM_CASILLA * this.columna);
+    int ejeX = this.BASEx + (this.TAM_CASILLA * this.fila);
+    int ejeY = this.BASEy + (this.TAM_CASILLA * this.columna);
     coordenadas.add(Integer.toString(ejeX));
     coordenadas.add(Integer.toString(ejeY));
     return coordenadas;
@@ -122,15 +123,5 @@ public class Casilla {
    */
   boolean esPar(final int numero) {
     return numero % 2 == 0;
-  }
-
-  /**
-   * Metodo encargado de cambiar la base y el tamaño de la casilla
-   * @param base
-   * @param tam_casilla
-   */
-  void setBaseYTamanoDeCasilla(final int base, final int tam_casilla) {
-    BASE = base;
-    TAM_CASILLA = tam_casilla;
   }
 }

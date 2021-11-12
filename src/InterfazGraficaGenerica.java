@@ -45,7 +45,7 @@ public class InterfazGraficaGenerica extends JFrame {
     label.setOpaque(false);
     this.panel.setBackground(Color.darkGray);
     label.setLayout(null);
-    label.setBounds(ejeX, ejeY, 72, 72);
+    label.setBounds(ejeX, ejeY, 75, 75);
 
     this.panel.add(label);
   }
@@ -60,6 +60,17 @@ public class InterfazGraficaGenerica extends JFrame {
     this.setTitle(title);
     this.setLocationRelativeTo(null);
     this.panel = new JPanel();
+    // Este metodo sirve para ver cual casilla se clickea
+    panel.addMouseListener(new MouseAdapter() {// provides empty implementation of all
+      // MouseListener`s methods, allowing us to
+      // override only those which interests us
+      @Override //I override only one method for presentation
+      public void mousePressed(MouseEvent e) {
+        int x = (e.getX()-5)/75;
+        int y = (e.getY()-25)/75;
+        System.out.println("Casilla seleccionada: (" + x + "," + y + ")");
+      }
+    });
     this.getContentPane().add(this.panel);
     this.panel.setLayout(null);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
