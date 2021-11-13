@@ -27,7 +27,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     /**
      * Metodo encargado de cargar una partida desde un .txt
      * @param filepath dirección donde se encuentra el .txt
-     * @return Retorna el jugador actual ddentro del archivo
+     * @return Retorna el jugador actual dentro del archivo
      */
     public int cargarJugadorActual(String filepath) {
         int jugador_actual = 0;

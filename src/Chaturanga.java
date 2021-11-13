@@ -192,12 +192,24 @@ public class Chaturanga extends PartidaAbstracta {
     return chaturanga;
   }
 
-  public void devuelveContenido(int x, int y) {
+  public void enviarCoordenadasMouse(int cordX, int cordy) {
+    cordX = (cordX - 5) / 75;
+    cordy = (cordy - 25) / 75;
+    if(cordX < 8 && cordy < 8) {
+      System.out.print("Casilla (" + cordX + "," + cordy + "): ");
+      if ( tablero.tablero[cordX][cordy].contenido != null) {
+        System.out.println(tablero.tablero[cordX][cordy].contenido.to_String());
+      } else {
+        System.out.println("Casilla vacia");
+      }
+      this.interfaz.pintarCasilla(cordX, cordy);
+    } else {
+      System.out.println("Fuera de rango");
+    }
+  }
 
-    x = (x - 5) / 75;
-    y = (y - 25) / 75;
-    System.out.println(tablero.tablero[x][y].contenido.toString());
-
+  public void enviarTexto(String texto) {
+    System.out.println(texto);
   }
 
 }

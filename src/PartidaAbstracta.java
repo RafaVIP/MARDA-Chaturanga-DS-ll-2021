@@ -46,8 +46,12 @@ public abstract class PartidaAbstracta {
   public abstract String to_String();
 
   /**
-   * Metodo encargado de iniciar una partida
+   * 
    */
-  public abstract void devuelveContenido(int x, int y);
+  public abstract void enviarCoordenadasMouse(int cordX, int cordY);
 
+  /**
+   * 
+   */
+  public abstract void enviarTexto(String texto);
 }

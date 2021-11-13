@@ -24,6 +24,10 @@ public class InterfazGraficaGenerica extends JFrame {
   JPanel panel;
   PartidaAbstracta partida;
   JLabel label;
+  int cordenadaSeleccionadaX = 0;
+  int cordenadaSeleccionadaY = 0;
+  boolean seleccionada = false;
+  JLabel[][] matrix;
 
   /// Constructor
   public InterfazGraficaGenerica() {
@@ -44,42 +48,36 @@ public class InterfazGraficaGenerica extends JFrame {
    *
    */
   public void printImage(String filePath, final int ejeX, final int ejeY) {
-
     ImageIcon imagen = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(75, 75, 75));
-    ImageIcon img = new ImageIcon(new ImageIcon("Barco_verde.png").getImage().getScaledInstance(75, 75, 75));
-    JLabel[][] matrix = new JLabel[8][8];
+    matrix = new JLabel[8][8];
     int x = 0;
     int y = 0;
-
     for (x = 0; x < matrix.length; x++) {
       for (y = 0; y < matrix[x].length; y++) {
-
         matrix[x][y] = new JLabel();
         matrix[x][y].setBounds(ejeX, ejeY, 72, 72);
         matrix[x][y].setOpaque(false);
         matrix[x][y].setIcon(imagen);
-
         this.panel.add(matrix[x][y]);
-
       }
     }
+    panel.revalidate();
+    panel.repaint();
+  }
 
-    matrix[0][2].setOpaque(true);
-    matrix[0][2].setIcon(null);
-    matrix[0][2].setBackground(Color.green);
-    matrix[0][2].setBounds(ejeX, ejeY, 72, 72);
+  public void pintarCasilla(int ejeX, int ejeY) {
+    //panel.remove(this.matrix[ejeX][ejeY]);
 
-    this.panel.setBackground(Color.darkGray);
-
-    // this.label = new JLabel();
-    // label.setBackground(Color.GREEN);
-    // label.setIcon(imagen);
-    // label.setOpaque(false);
-    // this.panel.setBackground(Color.darkGray);
-    // label.setLayout(null);
-    // label.setBounds(ejeX, ejeY, 75, 75);
-
-    // this.panel.add(matrix);
+    matrix[ejeX][ejeY].setOpaque(true);
+    matrix[ejeX][ejeY].setIcon(null);
+    matrix[ejeX][ejeY].setBackground(Color.blue);
+    ImageIcon img222 = new ImageIcon(new ImageIcon("imgs/Barco_amarillo.png").getImage().getScaledInstance(75, 75, 75));
+    matrix[ejeX][ejeY].setIcon(img222);
+    matrix[ejeX][ejeY].setBounds((ejeX*75)+5+75, (ejeY*75)+25, 72, 72);
+    this.panel.add(matrix[ejeX][ejeY]);
+    
+    panel.revalidate();
+    panel.repaint();
   }
 
   /**
@@ -92,21 +90,14 @@ public class InterfazGraficaGenerica extends JFrame {
     this.setTitle(title);
     this.setLocationRelativeTo(null);
     this.panel = new JPanel();
+  
     // Este metodo sirve para ver cual casilla se clickea
-    /*
-     * panel.addMouseListener(new MouseAdapter() {// provides empty implementation
-     * of all // MouseListener`s methods, allowing us to // override only those
-     * which interests us
-     * 
-     * @Override // I override only one method for presentation public void
-     * mousePressed(MouseEvent e) { int x = (e.getX() - 5) / 75; int y = (e.getY() -
-     * 25) / 75; System.out.println("Casilla seleccionada: (" + x + "," + y + ")");
-     * partida.devuelveContenido(e.getX(), e.getY());
-     * 
-     * }
-     * 
-     * });
-     */
+    panel.addMouseListener(new MouseAdapter() {
+      @Override
+      public void mousePressed(MouseEvent e) {
+        partida.enviarCoordenadasMouse(e.getX(), e.getY());
+      }
+    });
 
     this.getContentPane().add(this.panel);
     this.panel.setLayout(null);
