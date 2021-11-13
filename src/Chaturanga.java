@@ -19,10 +19,10 @@ public class Chaturanga extends PartidaAbstracta {
   /// Contructor
   public Chaturanga() {
     this.TOTAL_JUGADORES = 4;
-    this.interfaz = new InterfazGraficaGenerica("Chaturanga");
+    this.interfaz = new InterfazGraficaGenerica("Chaturanga", this);
   }
 
-    /**
+  /**
    * Metodo de clase abstracta encargado de cargar la partida
    * 
    * @param filepath recibe un string con un path
@@ -56,7 +56,7 @@ public class Chaturanga extends PartidaAbstracta {
             Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(1)),
             /** Eje X donde tiene que imprimirse */
             Integer.parseInt(tablero.get(casilla).get(contenidoDeCasilla).get(2)));
-            /** Eje Y donde tiene que imprimirse */
+        /** Eje Y donde tiene que imprimirse */
       }
     }
   }
@@ -110,11 +110,11 @@ public class Chaturanga extends PartidaAbstracta {
       }
     };
     interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
-    
-    /**Color de los jugadores */
-    String datos  = "";
-    for (int i = 0; i < this.jugadores.length; i++ ) {
-      datos += jugadores[i].getNombre()+ ": Juega con "+ jugadores[i].getColor()+"\n";
+
+    /** Color de los jugadores */
+    String datos = "";
+    for (int i = 0; i < this.jugadores.length; i++) {
+      datos += jugadores[i].getNombre() + ": Juega con " + jugadores[i].getColor() + "\n";
     }
     System.out.println(datos);
     final String datos2 = datos;
@@ -190,6 +190,14 @@ public class Chaturanga extends PartidaAbstracta {
     }
     chaturanga += "\n" + this.tablero.toString();
     return chaturanga;
+  }
+
+  public void devuelveContenido(int x, int y) {
+
+    x = (x - 5) / 75;
+    y = (y - 25) / 75;
+    System.out.println(tablero.tablero[x][y].contenido.toString());
+
   }
 
 }
