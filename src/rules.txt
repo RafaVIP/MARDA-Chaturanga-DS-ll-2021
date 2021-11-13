@@ -1,15 +1,39 @@
-REGLAS DEL JUEGO:
-1. Cada jugador tiene ocho piezas: 1 Rey, 1 Elefante, 1 caballo, 1 Barco y 4 Peones.
-2. El barco se mueve en diagonal en cualquier dirección, pero solo puede moverse
-    al segundo cuadrado; debe saltar exactamente 1 espacio. 
-3. Los peones pueden avanzar solo en la dirección en la que miran y pueden ascender a 
-    cualquier otro tipo de pieza excepto rey cuando alcanzan el octavo rango. 
-4. No hay un movimiento doble inicial para los peones. 
-5. No hay noción de jaque o mate, por lo que se deben tomar reyes para eliminar a un jugador.
-6. Las piezas de los jugadores eliminados permanecen en el tablero como obstáculos, 
-    pero no pueden moverse. 
-7. El juego termina cuando queda un solo rey, ocurre una posición idéntica 
-    tres veces durante el juego, o cada jugador ha realizado al menos 50 movimientos 
-    consecutivos sin mover un peón o capturar una pieza. 
-8. Un punto se divide en partes iguales entre todos los jugadores con reyes en 
-    el tablero cuando finaliza el juego; cualquier jugador sin rey obtiene una puntuación de 0.
+-Descripción-
+
+Describiremos aquí la versión que se ofrece para jugar, la más moderna y bastante similar en sus normas al moderno ajedrez. 
+Precisamente por su similitud con el ajedrez se explicará el Chaturanga desde los rasgos que lo diferencian del juego al que
+evolucionó y es hoy mundialmente conocido y practicado.
+
+El Chaturanga enfrenta a dos jugadores sobre un tablero de 8x8. A diferencia del ajedrez el tablero no es un damero de dos
+colores sino que las 64 casillas son de un solo color. Como en el ajedrez, cada jugador dispone de 16 fichas (blancas o verdes 
+para uno, rojas para el otro); son las mismas que en el ajedrez y con idéntica disposición, salvo las siguientes diferencias:
+
+- Los dos alfiles se cambian por dos elefantes
+- La reina se cambia por un consejero o visir
+- La ubicación del rey y el consejero, sin que el color de las fichas sea relevante, será en las casillas centrales de la 
+primera fila de cada jugador (como en ajedrez), pero situado el rey siempre a la derecha y el consejero a la izquierda
+
+-Objetivo del juego-
+
+Como en el ajedrez, el objetivo es dar jaque mate al rey contrario. El ahogo del rey, que en ajedrez provoca el final de 
+la partida en tablas, en Chaturanga provoca la victoria del rey ahogado.
+
+-Desarrollo del juego-
+
+El desarrollo del juego es idéntico al ajedrez; salen blancas (o verdes), los movimientos son alternativos con posibilidad 
+de capturas, buscando el mate del rey contrario; las características especiales se describen a continuación:
+
+Movimientos
+
+- Peón: idéntico movimiento que en ajedrez con la particularidad de no poder avanzar dos casillas en su primer movimiento; 
+siempre mueve una casilla hacia delante en su turno y captura avanzando una casilla en diagonal
+- Torre(barco): idéntico movimiento a la torre de ajedrez: movimiento ortogonal en cualquier dirección con número ilimitado
+ de casillas, sin poder saltar sobre fichas propias ni contrarias
+- Caballo: idéntico movimiento al caballo en ajedrez: Movimiento en L en cualquier dirección saltando por encima de fichas
+ propias y contrarias
+- Elefante: movimiento en diagonal de sólo dos casillas (no una) tanto hacia delante como hacia atrás, pudiendo saltar sobre
+ fichas propias y contrarias
+- Visir o Consejero(reina): movimiento de una casilla en diagonal hacia delante o hacia atrás
+- Rey o Rajah: idéntico movimiento al rey del Ajedrez: movimiento ortogonal y diagonal de una casilla hacia delante y hacia
+ atrás. Puede además a lo largo de la partida realizar una sola vez un movimiento en L como un caballo; dicho movimiento no
+  puede ser realizado si el rey se encuentra en jaque. No existe el enroque.

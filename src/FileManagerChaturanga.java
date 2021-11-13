@@ -115,6 +115,9 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
         if(tipo.equals("rey")) {
           return new Rey(color);
         }
+        if(tipo.equals("reina")) {
+            return new Reina(color);
+        }
         if(tipo.equals("elefante")) {
           return new Elefante(color);
         }
