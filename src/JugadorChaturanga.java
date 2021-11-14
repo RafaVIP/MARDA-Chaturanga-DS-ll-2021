@@ -69,11 +69,11 @@ public class JugadorChaturanga extends JugadorAbstracto {
    * @return retorna un string
    */
   public String to_String() {
-    String jugador = this.nombre + ", " + this.color + ", [";
+    String jugador = this.nombre + "\n" + this.color + "\n";
+    jugador += Integer.toString(this.cantidadPiezasPerdidas) + "\n";
     for (int piezaPerdida = 0; piezaPerdida < this.cantidadPiezasPerdidas; piezaPerdida++) {
-      jugador += "{" + piezasPerdidas.get(piezaPerdida).toString() + "}";
+      jugador += piezasPerdidas.get(piezaPerdida).toString();
     }
-    jugador += "\n";
     return jugador;
   }
 }

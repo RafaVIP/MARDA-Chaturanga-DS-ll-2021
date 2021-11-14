@@ -18,7 +18,7 @@ public class Chaturanga extends PartidaAbstracta {
 
   /// Contructor
   public Chaturanga() {
-    this.TOTAL_JUGADORES = 4;
+    this.TOTAL_JUGADORES = 2;
     this.interfaz = new InterfazGraficaGenerica("Chaturanga", this);
   }
 
@@ -66,12 +66,8 @@ public class Chaturanga extends PartidaAbstracta {
    */
   public void asignarColores() {
     ArrayList<String> colores = new ArrayList<String>();
-
     colores.add("blanco");
-    colores.add("verde");
-    colores.add("amarillo");
     colores.add("rojo");
-
     for (int i = 0; i < jugadores.length; i++) {
       this.jugadores[i] = new JugadorChaturanga(colores);
       String colorElegido = this.jugadores[i].getColor();
@@ -167,13 +163,12 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   * Formato: Indice de Jugador actual (piezas perdidas) Jugador actual 1 :
-   * Nombre, Color, [Caballo_verde, Elefante_verde, Peon_verde] Jugador actual 2
-   * Jugador actual 3 Jugador actual 4
-   * 
-   * Fila tablero 1 : [ true{Caballo_verde}, false {}, false {}, false {}, false
-   * {}, false {}, false {}, false {},] Fila tablero 2 Fila tablero 3 Fila tablero
-   * 4 Fila tablero 5 Fila tablero 6 Fila tablero 7 Fila tablero 8
+   * Formato: JugadorActual
+   *          Tablero
+   *          Jugador1
+   *          NumeroPiezasPerdidas1
+   *          Jugador2
+   *          NumeroPiezasPerdidas2
    */
 
   /**
@@ -183,12 +178,14 @@ public class Chaturanga extends PartidaAbstracta {
    */
   public String to_String() {
     String chaturanga = "";
-    chaturanga += this.jugadorActual + "\n\n";
+    // Jugador actual
+    chaturanga += this.jugadorActual + "\n";
+    // Tablero
+    chaturanga += this.tablero.toString();
     // Jugadores
     for (int jugador = 0; jugador < this.TOTAL_JUGADORES; jugador++) {
       chaturanga += this.jugadores[jugador].to_String();
     }
-    chaturanga += "\n" + this.tablero.toString();
     return chaturanga;
   }
 
@@ -211,5 +208,4 @@ public class Chaturanga extends PartidaAbstracta {
   public void enviarTexto(String texto) {
     System.out.println(texto);
   }
-
 }

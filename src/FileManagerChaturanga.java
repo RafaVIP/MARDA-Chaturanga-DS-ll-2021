@@ -12,11 +12,6 @@ import java.io.FileWriter;
 import java.io.*;
 
 public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
-    /**
-     * TODO: Guardar todos los archivos generados en alguna carpeta para que no
-     * quede todo junto con los archivos .java
-     */
-
     /// atributos de la clase
 
     /** Archivo donde se encuentran los nombres de las partidas guardadas */
@@ -34,7 +29,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
         try {
             BufferedReader bf = new BufferedReader(new FileReader(filepath));
             jugador_actual =  Integer.parseInt(bf.readLine());
-            System.out.println("Jugador actual: " + jugador_actual);
+            System.out.println("Jugador actual: " + jugador_actual + "\n");
             bf.close();
         } catch (Exception e) { System.out.println("Error en lectura del tablero"); }
         return jugador_actual;
@@ -46,7 +41,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
      * @return PartidaAbstracta Crea una partida nueva
      */
     public JugadorAbstracto[] cargarJugadores(String filepath) {
-        JugadorAbstracto[] jugadores = new JugadorChaturanga[4];
+        JugadorAbstracto[] jugadores = new JugadorChaturanga[2];
         try {
             BufferedReader bf = new BufferedReader(new FileReader(filepath));
             String nombre = "";
@@ -57,12 +52,12 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
             for(int i = 0; i < 137; ++i) { 
                 bf.readLine();
             }
-            for (int jugador_actual = 0; jugador_actual < 4; ++jugador_actual){
+            for (int jugador_actual = 0; jugador_actual < 2; ++jugador_actual){
                 nombre = bf.readLine();
                 color = bf.readLine();
                 ArrayList<PiezaAbstracta> piezas_perdidas = new ArrayList<PiezaAbstracta>();
                 int numero_piezas_perdidas = Integer.parseInt(bf.readLine());
-                System.out.println("Nombre color piezas_perdidas\n" + nombre + " " + color + " " + numero_piezas_perdidas);
+                System.out.println("Nombre Color Piezas_perdidas: [" + nombre + ", " + color + ": " + numero_piezas_perdidas + "]");
                 for (int columna = 0; columna < numero_piezas_perdidas; columna++) {
                     pieza_perdida = bf.readLine();
                     color_pieza_perdida = bf.readLine();
@@ -112,22 +107,22 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     * @return La pieza creada a partir de los 2 parametros
     */
     private PiezaAbstracta crearPiezaAbstracta(final String tipo, final String color) {
-        if(tipo.equals("rey")) {
+        if(tipo.equals("Rey")) {
           return new Rey(color);
         }
-        if(tipo.equals("reina")) {
+        if(tipo.equals("Reina")) {
             return new Reina(color);
         }
-        if(tipo.equals("elefante")) {
+        if(tipo.equals("Elefante")) {
           return new Elefante(color);
         }
-        if(tipo.equals("barco")) {
+        if(tipo.equals("Barco")) {
           return new Barco(color);
         }
-        if(tipo.equals("caballo")) {
+        if(tipo.equals("Caballo")) {
           return new Caballo(color);
         }
-        if(tipo.equals("peon")) {
+        if(tipo.equals("Peon")) {
           return new Peon(color);
         }
         return null;
@@ -170,7 +165,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
          * asignar el nombre al file
          */
         int partidasGuardadas = getIdentifierNumber();
-        filename = BASE_PATH + partidasGuardadas++;
+        filename = BASE_PATH + partidasGuardadas++ + ".txt";
         return filename;
     }
 

@@ -72,18 +72,17 @@ public class Tablero {
    * @return String convertido
    */
   public String toString() {
-    String tablero = "[";
+    String tablero = "";
     for (int fila = 0; fila < this.filas; fila++) {
       for (int columna = 0; columna < this.columnas; columna++) {
         if (this.tablero[fila][columna].getContenido() != null) {
-          tablero += " true{" + this.tablero[fila][columna].getContenido().to_String() + "},";
+          tablero += this.tablero[fila][columna].getContenido().to_String();
         } else {
-          tablero += " false{},";
+          tablero += "null\nnull\n";
         }
       }
       tablero += '\n';
     }
-    tablero += "]\n";
     return tablero;
   }
 }

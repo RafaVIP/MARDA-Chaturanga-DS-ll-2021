@@ -52,8 +52,8 @@ public class Menu {
 	 */
 	public void cargarPartida() {
 	/* Buscar archivo que toque cargar, jalar el nombre */
-		//String filepath = "src/ejemploDEcarga.txt";
-		String filepath = "src/chess.txt";
+		String filepath = "src/PartidaChaturanga_0.txt";
+		//String filepath = "src/chess.txt";
 		PartidaAbstracta partida = new Chaturanga();
 		partida.cargarPartida(filepath);
 		partida.iniciarPartida();

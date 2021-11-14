@@ -47,6 +47,6 @@ public class Caballo extends PiezaAbstracta {
    */
   @Override
   public String to_String() {
-    return this.nombre + "_" + this.color;
+    return this.nombre + "\n" + this.color + "\n";
   }
 }

@@ -1,10 +1,3 @@
-src/PartidaChaturanga_0
-src/PartidaChaturanga_1
-src/PartidaChaturanga_2
-src/PartidaChaturanga_3
-src/PartidaChaturanga_4
-src/PartidaChaturanga_5
-src/PartidaChaturanga_6
-src/PartidaChaturanga_7
-src/PartidaChaturanga_8
-src/PartidaChaturanga_9
+src/PartidaChaturanga_0.txt
+src/PartidaChaturanga_1.txt
+src/PartidaChaturanga_2.txt
