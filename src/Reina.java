@@ -29,6 +29,7 @@ public class Reina extends PiezaAbstracta {
   
   public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
+    String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
 
     return movimientos;
   }

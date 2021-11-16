@@ -67,13 +67,12 @@ public class InterfazGraficaGenerica extends JFrame {
 
   public void pintarCasilla(int ejeX, int ejeY) {
     //panel.remove(this.matrix[ejeX][ejeY]);
-
     matrix[ejeX][ejeY].setOpaque(true);
     matrix[ejeX][ejeY].setIcon(null);
     matrix[ejeX][ejeY].setBackground(Color.blue);
     ImageIcon img222 = new ImageIcon(new ImageIcon("imgs/Barco_amarillo.png").getImage().getScaledInstance(75, 75, 75));
     matrix[ejeX][ejeY].setIcon(img222);
-    matrix[ejeX][ejeY].setBounds((ejeX*75)+5+75, (ejeY*75)+25, 72, 72);
+    matrix[ejeX][ejeY].setBounds((ejeX*75)+5, (ejeY*75)+25, 75, 75);
     this.panel.add(matrix[ejeX][ejeY]);
     
     panel.revalidate();
