@@ -28,7 +28,38 @@ public class Barco extends PiezaAbstracta {
   @Override
   public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
-
+    String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
+    int borde = -1;     // -1 -> 8 -> -1 -> 8
+    int direccion = -1; // -1 -> 1 -> -1 -> 1
+    int x_actual = 0;
+    int y_actual = 0;
+    for(int i = 0; i < 4; ++i) {
+      // checka x en las primeras 2 iteraciones, luego y en las ultimas 2
+      for(int casilla_actual = i < 2 ? ejeXActual+direccion: ejeYActual+direccion; casilla_actual != borde; casilla_actual += direccion) {
+        if ( i < 2 ) {
+          x_actual = casilla_actual;
+          y_actual = ejeYActual;
+        } else {
+          x_actual = ejeXActual;
+          y_actual = casilla_actual;
+        }
+        // System.out.println("Iteracion " + i + " - casilla actual: " + formatCords(x_actual, y_actual));
+        if (checkCasilla(tablero, x_actual, y_actual).equals("null")) {
+          movimientos.add(formatCords(x_actual, y_actual));
+        } else {
+          if (!checkCasilla(tablero, x_actual, y_actual).equals(my_color)) {
+            movimientos.add(formatCords(x_actual, y_actual));
+          }
+          casilla_actual = borde - direccion;
+        }
+      }
+      if (i%2 == 0) { // -1 -> 8 -> -1 -> 8
+        borde = 8;
+      } else {
+        borde = -1;
+      }
+      direccion *= -1;
+    }
     return movimientos;
   }
 
