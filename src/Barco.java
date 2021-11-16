@@ -26,7 +26,7 @@ public class Barco extends PiezaAbstracta {
    * @return true si el movimiento se hizo correctamente
    */
   @Override
-  public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int filas, int columnas, int ejeXActual, int ejeYActual, int direccion) {
+  public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
 
     return movimientos;
@@ -48,5 +48,23 @@ public class Barco extends PiezaAbstracta {
   @Override
   public String to_String() {
     return this.nombre + "\n" + this.color + "\n";
+  }
+
+  /**
+   * Retorna el nombre de la pieza
+   * @return nombre de la pieza
+   */
+  @Override
+  public String getNombre() {
+    return this.nombre;
+  }
+
+  /**
+   * Retorna el color de la pieza
+   * @return Color de la pieza
+   */
+  @Override
+  public String getColor() {
+    return this.color;
   }
 }

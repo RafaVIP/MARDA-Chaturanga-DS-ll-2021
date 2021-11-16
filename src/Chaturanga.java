@@ -195,9 +195,16 @@ public class Chaturanga extends PartidaAbstracta {
     if(cordX < 8 && cordy < 8) {
       System.out.print("Casilla (" + cordX + "," + cordy + "): ");
       if ( tablero.tablero[cordX][cordy].contenido != null) {
-        System.out.println(tablero.tablero[cordX][cordy].contenido.to_String());
+        System.out.println(tablero.tablero[cordX][cordy].contenido.getNombre() + " " + tablero.tablero[cordX][cordy].contenido.getColor());
+        ArrayList<String> movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero, cordX, cordy);
+        System.out.print("Posibles movimientos: ");
+        for(int i = 0; i < movimientos.size(); i++) {   
+          System.out.print(movimientos.get(i) + " ");
+        }
+        System.out.println();
+
       } else {
-        System.out.println("Casilla vacia");
+        System.out.println("Casilla vacia\n");
       }
       this.interfaz.pintarCasilla(cordX, cordy);
     } else {

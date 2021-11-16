@@ -117,6 +117,14 @@ public class Casilla {
   }
 
   /**
+   * Metodo encargado de obtener el colorde la pieza en la casilla actual
+   * @return Color de la pieza en la casilla actual
+   */
+  public String getColor() {
+    return this.contenido.getColor();
+  }
+
+  /**
    * Metodo encargado de revidar si un núméro es par
    * @param numero
    * @return true si es par

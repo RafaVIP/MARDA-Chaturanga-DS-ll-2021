@@ -52,10 +52,15 @@ public class Menu {
 	 */
 	public void cargarPartida() {
 	/* Buscar archivo que toque cargar, jalar el nombre */
-		String filepath = "src/PartidaChaturanga_0.txt";
+		// Lee del archivo donde estan las partidas guardadas
+		// Mete todo en un arraylist
+		// Despliega las opciones en joptionpane
+		// Internamente guarda el filepath que se escogio
+		String filepath = "src/testing_peon.txt";
 		//String filepath = "src/chess.txt";
 		PartidaAbstracta partida = new Chaturanga();
 		partida.cargarPartida(filepath);
 		partida.iniciarPartida();
 	}
 }
+ 
