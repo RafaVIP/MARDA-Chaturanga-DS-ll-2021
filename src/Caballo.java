@@ -28,8 +28,34 @@ public class Caballo extends PiezaAbstracta {
   @Override
   public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
-
+    String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
+    int dos = 2;
+    int uno = 1;
+    for(int i = 0; i < 8; ++i) {
+      if(i < 4) {
+        if (checkMove(tablero, ejeXActual + uno, ejeYActual + dos, my_color)) {
+          movimientos.add(formatCords(ejeXActual + uno, ejeYActual + dos));
+        }
+      } else {
+        if (checkMove(tablero, ejeXActual + dos, ejeYActual + uno, my_color)) {
+          movimientos.add(formatCords(ejeXActual + dos, ejeYActual + uno));
+        }
+      }
+      if(i%2 == 0) {
+        dos *= -1;
+      }
+      uno *= -1;
+    }
     return movimientos;
+  }
+
+  private boolean checkMove(Casilla[][] tablero, int x, int y, String my_color) {
+    if((x > -1 && x < 8) && (y > -1 && y < 8)) {
+      if (!checkCasilla(tablero, x, y).equals(my_color) || checkCasilla(tablero, x, y).equals("null")) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

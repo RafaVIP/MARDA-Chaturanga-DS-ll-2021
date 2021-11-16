@@ -56,7 +56,7 @@ public class Menu {
 		// Mete todo en un arraylist
 		// Despliega las opciones en joptionpane
 		// Internamente guarda el filepath que se escogio
-		String filepath = "src/testing_peon.txt";
+		String filepath = "src/testing_caballo.txt";
 		//String filepath = "src/chess.txt";
 		PartidaAbstracta partida = new Chaturanga();
 		partida.cargarPartida(filepath);
