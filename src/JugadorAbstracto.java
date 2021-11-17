@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  ** Primera iteración Proyecto Programado: Diseño 
  ** Rafael Porras (B75915) 
@@ -29,4 +31,10 @@ public abstract class JugadorAbstracto {
    * @return String (nombre)
    */
   public abstract String getNombre();
+
+    /**
+   * Metodo encargado de obtener el nombre del jugador
+   * @return String (nombre)
+   */
+  public abstract ArrayList<PiezaAbstracta> getArrayPerdidos();
 }

@@ -91,6 +91,11 @@ public class Chaturanga extends PartidaAbstracta {
    * @param interfaz
    */
   public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz) {
+    addButtonReglas(interfaz);
+    addButtonGuardarPartida(interfaz);
+    addButtonPiezasPerdidas(interfaz);
+  }
+  public void addButtonReglas(InterfazGraficaGenerica interfaz){
     /** Agrega el boton de las reglas en la interfaz del juego */
     ActionListener rules = new ActionListener() {
       @Override
@@ -101,33 +106,64 @@ public class Chaturanga extends PartidaAbstracta {
       }
     };
     interfaz.agregarBoton("Reglas", rules, 0, 0);
-
-    /** Guardar Partida */
-    ActionListener guardarPartida = new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent ae) {
-        guardarPartida();
-      }
-    };
-    interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
-
-    /** Color de los jugadores */
-    String datos = "";
-    for (int i = 0; i < this.jugadores.length; i++) {
-      datos += jugadores[i].getNombre() + ": Juega con " + jugadores[i].getColor() + "\n";
-    }
-    System.out.println(datos);
-    final String datos2 = datos;
-    ActionListener players = new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent ae) {
-        System.out.println(datos2);
-        interfaz.mostrarCuadroDialogo(null, datos2);
-      }
-    };
-    interfaz.agregarBoton("Jugadores", players, 204, 0);
   }
 
+  public void addButtonGuardarPartida(InterfazGraficaGenerica interfaz){
+      /** Guardar Partida */
+      ActionListener guardarPartida = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+          guardarPartida();
+        }
+      };
+      interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
+  
+      /** Color de los jugadores */
+      String datos = "";
+      for (int i = 0; i < this.jugadores.length; i++) {
+        datos += jugadores[i].getNombre() + ": Juega con " + jugadores[i].getColor() + "\n";
+      }
+      System.out.println(datos);
+      final String datos2 = datos;
+      ActionListener players = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+          System.out.println(datos2);
+          interfaz.mostrarCuadroDialogo(null, datos2);
+        }
+      };
+      interfaz.agregarBoton("Jugadores", players, 204, 0);
+  }
+  
+  public void addButtonPiezasPerdidas(InterfazGraficaGenerica interfaz) {
+    /** Piezas perdidas */
+    String perdidas = "";
+    for (int i = 0; i < this.jugadores.length; i++) {
+      ArrayList<PiezaAbstracta> arrayPiezasPerdidas = jugadores[i].getArrayPerdidos();
+      perdidas += "\n" + jugadores[i].getNombre() + ": Juega con " + jugadores[i].getColor() + "";
+      if (arrayPiezasPerdidas.size() == 0) {
+        perdidas += "\n   No tiene piezas perdidas \n";
+      } else {
+        perdidas += "\n   Este jugador tiene las siguientes piezas perdidas: \n";
+        for (int j = 0; j < arrayPiezasPerdidas.size(); j++) {
+          System.out.println(arrayPiezasPerdidas.size() + "size");
+          if (arrayPiezasPerdidas.size() > 0) {
+            perdidas += "   " + arrayPiezasPerdidas.get(j).getNombre() + "\n";
+          }
+        }
+
+      }
+    }
+    final String perdidas2 = perdidas;
+    ActionListener piezasPerdidas = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent ae) {
+        System.out.println(perdidas2);
+        interfaz.mostrarCuadroDialogo(null, perdidas2);
+      }
+    };
+    interfaz.agregarBoton("Ver piezas perdidas: ", piezasPerdidas, 306, 0);
+  }
   /*----------------- De Partida Abstracta---------------------*/
 
   // TODO: Segundo Sprint
@@ -167,12 +203,8 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   * Formato: JugadorActual
-   *          Tablero
-   *          Jugador1
-   *          NumeroPiezasPerdidas1
-   *          Jugador2
-   *          NumeroPiezasPerdidas2
+   * Formato: JugadorActual Tablero Jugador1 NumeroPiezasPerdidas1 Jugador2
+   * NumeroPiezasPerdidas2
    */
 
   /**
@@ -196,18 +228,20 @@ public class Chaturanga extends PartidaAbstracta {
   public void enviarCoordenadasMouse(int cordX, int cordy) {
     cordX = (cordX - 5) / 75;
     cordy = (cordy - 25) / 75;
-    if(cordX < 8 && cordy < 8) {
+    if (cordX < 8 && cordy < 8) {
       System.out.print("Casilla (" + cordX + "," + cordy + "): ");
-      if ( tablero.tablero[cordX][cordy].contenido != null) {
-        System.out.println(tablero.tablero[cordX][cordy].contenido.getNombre() + " " + tablero.tablero[cordX][cordy].contenido.getColor());
-        ArrayList<String> movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero, cordX, cordy);
+      if (tablero.tablero[cordX][cordy].contenido != null) {
+        System.out.println(tablero.tablero[cordX][cordy].contenido.getNombre() + " "
+            + tablero.tablero[cordX][cordy].contenido.getColor());
+        ArrayList<String> movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero,
+            cordX, cordy);
         System.out.print("\t\tPosibles movimientos: ");
-        for(int i = 0; i < movimientos.size(); i++) { 
+        for (int i = 0; i < movimientos.size(); i++) {
           String movimiento = movimientos.get(i);
           System.out.print(movimiento + " ");
           int a = movimiento.charAt(1) - 48;
           int b = movimiento.charAt(4) - 48;
-          //System.out.print("<" + a + " " + b + "> ");
+          // System.out.print("<" + a + " " + b + "> ");
           this.interfaz.pintarCasilla(a, b);
         }
         System.out.println();
@@ -215,7 +249,7 @@ public class Chaturanga extends PartidaAbstracta {
       } else {
         System.out.println("Casilla vacia\n");
       }
-      //this.interfaz.pintarCasilla(cordX, cordy);
+      // this.interfaz.pintarCasilla(cordX, cordy);
     } else {
       System.out.println("Fuera de rango");
     }
@@ -227,38 +261,39 @@ public class Chaturanga extends PartidaAbstracta {
 
   /**
    * Metodo encargado de seleccionar el filepath del usuario
+   * 
    * @param filepath la ubicación del archivo
    */
   public String seleccionarPartida(String filepath) {
     ArrayList<String> content = new ArrayList<String>();
     String line = "";
     try {
-        BufferedReader bf = new BufferedReader(new FileReader(filepath));
-        while ((line = bf.readLine()) != null) {
-          String tmp_content = line;
-          content.add(tmp_content);
-        }
-        bf.close();
-        String actual_content[] = new String[content.size()];
-        for (int index = 0;  index < actual_content.length; index++) {
-          actual_content[index] = content.get(index);
-        }
-        int opcion = JOptionPane.showOptionDialog(null, "Elige la partida a guardar", 
-        "Elige...", 0, JOptionPane.QUESTION_MESSAGE, null, actual_content, actual_content[0]);
-        filepath = actual_content[opcion];
+      BufferedReader bf = new BufferedReader(new FileReader(filepath));
+      while ((line = bf.readLine()) != null) {
+        String tmp_content = line;
+        content.add(tmp_content);
+      }
+      bf.close();
+      String actual_content[] = new String[content.size()];
+      for (int index = 0; index < actual_content.length; index++) {
+        actual_content[index] = content.get(index);
+      }
+      int opcion = JOptionPane.showOptionDialog(null, "Elige la partida a guardar", "Elige...", 0,
+          JOptionPane.QUESTION_MESSAGE, null, actual_content, actual_content[0]);
+      filepath = actual_content[opcion];
     } catch (Exception e) {
-        System.out.println(e);
-        System.out.println("Error en lectura del archivo");
+      System.out.println(e);
+      System.out.println("Error en lectura del archivo");
     }
     return filepath;
   }
 
   public int seleccionar_menu() {
-    String[] opciones= {"Nueva Partida","Cargar Partida"};
+    String[] opciones = { "Nueva Partida", "Cargar Partida" };
 
-		int opcion = JOptionPane.showOptionDialog(null, "Elige la forma en la que desea jugar", 
-      "Elige...", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
-    
+    int opcion = JOptionPane.showOptionDialog(null, "Elige la forma en la que desea jugar", "Elige...", 0,
+        JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+
     return opcion;
   }
 }
