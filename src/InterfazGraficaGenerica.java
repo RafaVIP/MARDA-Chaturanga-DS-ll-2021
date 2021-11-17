@@ -9,13 +9,13 @@
 
 import java.awt.Color;
 
-//import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import java.awt.event.*;
 import java.awt.Component;
 
@@ -28,6 +28,8 @@ public class InterfazGraficaGenerica extends JFrame {
   int cordenadaSeleccionadaY = 0;
   boolean seleccionada = false;
   JLabel[][] matrix;
+  final int fila = 8;
+  final int columna = 8;
 
   /// Constructor
   public InterfazGraficaGenerica() {
@@ -48,33 +50,58 @@ public class InterfazGraficaGenerica extends JFrame {
    *
    */
   public void printImage(String filePath, final int ejeX, final int ejeY) {
-    ImageIcon imagen = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(75, 75, 75));
-    matrix = new JLabel[8][8];
-    int x = 0;
-    int y = 0;
-    for (x = 0; x < matrix.length; x++) {
-      for (y = 0; y < matrix[x].length; y++) {
+    ImageIcon imagen = new ImageIcon(new ImageIcon("imgs/Barco_rojo.png").getImage().getScaledInstance(75, 75, 75));
+    matrix = new JLabel[fila][columna];
+    int ejex = 20;
+    int ejey = 25;
+    for (int x = 0; x < fila; x++) {
+      for (int y = 0; y < matrix[x].length; y++) {
+
         matrix[x][y] = new JLabel();
-        matrix[x][y].setBounds(ejeX, ejeY, 72, 72);
-        matrix[x][y].setOpaque(false);
-        matrix[x][y].setIcon(imagen);
-        this.panel.add(matrix[x][y]);
+        matrix[x][y].setBackground(Color.lightGray);
+        matrix[x][y].setOpaque(true);
+        matrix[x][y].setBounds(ejex, ejey, 72, 72);
+        matrix[0][0].setIcon(imagen);
+        panel.add(matrix[x][y]);
+        ejex += 75;
+
+        matrix[x][y].addMouseListener(new MouseAdapter() {// provides empty implementation of all
+          // MouseListener`s methods, allowing us to
+          // override only those which interests us
+          @Override // I override only one method for presentation
+          public void mousePressed(MouseEvent e) {
+
+            borrarIcon(0, 0);
+            pintarIcon("imgs/Barco_rojo.png", 0, 1);
+            pintarmovimiento(0, 2);
+
+            matrix[0][1].setIcon(imagen);
+
+          }
+
+        });
+
       }
+      ejex = 20;
+      ejey += 75;
+
     }
+
     panel.revalidate();
     panel.repaint();
   }
 
   public void pintarCasilla(int ejeX, int ejeY) {
-    //panel.remove(this.matrix[ejeX][ejeY]);
+    // panel.remove(this.matrix[ejeX][ejeY]);
+
     matrix[ejeX][ejeY].setOpaque(true);
     matrix[ejeX][ejeY].setIcon(null);
     matrix[ejeX][ejeY].setBackground(Color.blue);
     ImageIcon img222 = new ImageIcon(new ImageIcon("imgs/Barco_amarillo.png").getImage().getScaledInstance(75, 75, 75));
     matrix[ejeX][ejeY].setIcon(img222);
-    matrix[ejeX][ejeY].setBounds((ejeX*75)+5, (ejeY*75)+25, 75, 75);
+    matrix[ejeX][ejeY].setBounds((ejeX * 75) + 5 + 75, (ejeY * 75) + 25, 72, 72);
     this.panel.add(matrix[ejeX][ejeY]);
-    
+
     panel.revalidate();
     panel.repaint();
   }
@@ -85,11 +112,12 @@ public class InterfazGraficaGenerica extends JFrame {
    * @param title
    */
   public void abrirNuevaInterfaz(String title) {
+
     this.setSize(800, 670);
     this.setTitle(title);
     this.setLocationRelativeTo(null);
     this.panel = new JPanel();
-  
+
     // Este metodo sirve para ver cual casilla se clickea
     panel.addMouseListener(new MouseAdapter() {
       @Override
@@ -129,6 +157,27 @@ public class InterfazGraficaGenerica extends JFrame {
    */
   public void mostrarCuadroDialogo(Component parentComponent, String texto) {
     JOptionPane.showMessageDialog(parentComponent, texto);
+  }
+
+  public void borrarIcon(int fila, int columna) {
+
+    matrix[fila][columna].setIcon(null);
+  }
+
+  public void pintarIcon(String filepath, int fila, int columna) {
+
+    ImageIcon imagen = new ImageIcon(new ImageIcon(filepath).getImage().getScaledInstance(75, 75, 75));
+    matrix[fila][columna].setIcon(imagen);
+  }
+
+  public void pintarmovimiento(int fila, int columna) {
+
+    matrix[fila][columna].setBackground(Color.orange);
+  }
+
+  public void Borramovimiento(int fila, int columna) {
+
+    matrix[fila][columna].setBackground(Color.lightGray);
   }
 
 }

@@ -25,15 +25,15 @@ de capturas, buscando el mate del rey contrario; las características especiales
 
 Movimientos
 
-- Peón: idéntico movimiento que en ajedrez con la particularidad de no poder avanzar dos casillas en su primer movimiento; 
+-Peón: idéntico movimiento que en ajedrez con la particularidad de no poder avanzar dos casillas en su primer movimiento; 
 siempre mueve una casilla hacia delante en su turno y captura avanzando una casilla en diagonal
-- Torre(barco): idéntico movimiento a la torre de ajedrez: movimiento ortogonal en cualquier dirección con número ilimitado
+-Barco: idéntico movimiento a la torre de ajedrez: movimiento ortogonal en cualquier dirección con número ilimitado
  de casillas, sin poder saltar sobre fichas propias ni contrarias
-- Caballo: idéntico movimiento al caballo en ajedrez: Movimiento en L en cualquier dirección saltando por encima de fichas
+-Caballo: idéntico movimiento al caballo en ajedrez: Movimiento en L en cualquier dirección saltando por encima de fichas
  propias y contrarias
-- Elefante: movimiento en diagonal de sólo dos casillas (no una) tanto hacia delante como hacia atrás, pudiendo saltar sobre
+-Elefante: movimiento en diagonal de sólo dos casillas (no una) tanto hacia delante como hacia atrás, pudiendo saltar sobre
  fichas propias y contrarias
-- Visir o Consejero(reina): movimiento de una casilla en diagonal hacia delante o hacia atrás
-- Rey o Rajah: idéntico movimiento al rey del Ajedrez: movimiento ortogonal y diagonal de una casilla hacia delante y hacia
+-Visir o Consejero(reina): movimiento de una casilla en diagonal hacia delante o hacia atrás
+-Rey o Rajah: idéntico movimiento al rey del Ajedrez: movimiento ortogonal y diagonal de una casilla hacia delante y hacia
  atrás. Puede además a lo largo de la partida realizar una sola vez un movimiento en L como un caballo; dicho movimiento no
   puede ser realizado si el rey se encuentra en jaque. No existe el enroque.
