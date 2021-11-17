@@ -8,7 +8,11 @@
  **/
 
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 // import javax.swing.JLabel;
 
@@ -219,5 +223,42 @@ public class Chaturanga extends PartidaAbstracta {
 
   public void enviarTexto(String texto) {
     System.out.println(texto);
+  }
+
+  /**
+   * Metodo encargado de seleccionar el filepath del usuario
+   * @param filepath la ubicación del archivo
+   */
+  public String seleccionarPartida(String filepath) {
+    ArrayList<String> content = new ArrayList<String>();
+    String line = "";
+    try {
+        BufferedReader bf = new BufferedReader(new FileReader(filepath));
+        while ((line = bf.readLine()) != null) {
+          String tmp_content = line;
+          content.add(tmp_content);
+        }
+        bf.close();
+        String actual_content[] = new String[content.size()];
+        for (int index = 0;  index < actual_content.length; index++) {
+          actual_content[index] = content.get(index);
+        }
+        int opcion = JOptionPane.showOptionDialog(null, "Elige la partida a guardar", 
+        "Elige...", 0, JOptionPane.QUESTION_MESSAGE, null, actual_content, actual_content[0]);
+        filepath = actual_content[opcion];
+    } catch (Exception e) {
+        System.out.println(e);
+        System.out.println("Error en lectura del archivo");
+    }
+    return filepath;
+  }
+
+  public int seleccionar_menu() {
+    String[] opciones= {"Nueva Partida","Cargar Partida"};
+
+		int opcion = JOptionPane.showOptionDialog(null, "Elige la forma en la que desea jugar", 
+      "Elige...", 0, JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+    
+    return opcion;
   }
 }

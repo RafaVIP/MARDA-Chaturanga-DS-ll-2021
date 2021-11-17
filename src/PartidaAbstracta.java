@@ -54,4 +54,16 @@ public abstract class PartidaAbstracta {
    * 
    */
   public abstract void enviarTexto(String texto);
+  /**
+   * 
+   * @param filepath
+   * @return
+   */
+  public abstract String seleccionarPartida(String filepath);
+  
+  /**
+   * 
+   * @return
+   */
+  public abstract int seleccionar_menu();
 }
