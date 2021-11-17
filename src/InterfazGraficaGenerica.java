@@ -9,14 +9,12 @@
 
 import java.awt.Color;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.AncestorListener;
 
 import java.awt.event.*;
 import java.awt.Component;
@@ -32,8 +30,6 @@ public class InterfazGraficaGenerica extends JFrame {
   JLabel[][] matrix;
   final int fila = 8;
   final int columna = 8;
-  int n = 5;
-  int m = 15;
 
   /// Constructor
   public InterfazGraficaGenerica() {
@@ -54,31 +50,46 @@ public class InterfazGraficaGenerica extends JFrame {
    *
    */
   public void printImage(String filePath, final int ejeX, final int ejeY) {
-    ImageIcon imagen = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(75, 75, 75));
+    ImageIcon imagen = new ImageIcon(new ImageIcon("imgs/Barco_rojo.png").getImage().getScaledInstance(75, 75, 75));
+    matrix = new JLabel[fila][columna];
+    int ejex = 20;
+    int ejey = 25;
+    for (int x = 0; x < fila; x++) {
+      for (int y = 0; y < matrix[x].length; y++) {
 
-    n = 5;
-    m += 25;
-    matrix[0][0].addMouseListener(new MouseAdapter() {// provides empty implementation of all
-      // MouseListener`s methods, allowing us to
-      // override only those which interests us
-      @Override // I override only one method for presentation
-      public void mousePressed(MouseEvent e) {
+        matrix[x][y] = new JLabel();
+        matrix[x][y].setBackground(Color.lightGray);
+        matrix[x][y].setOpaque(true);
+        matrix[x][y].setBounds(ejex, ejey, 72, 72);
+        matrix[0][0].setIcon(imagen);
+        panel.add(matrix[x][y]);
+        ejex += 75;
 
-        matrix[0][0].setBackground(Color.orange);
+        matrix[x][y].addMouseListener(new MouseAdapter() {// provides empty implementation of all
+          // MouseListener`s methods, allowing us to
+          // override only those which interests us
+          @Override // I override only one method for presentation
+          public void mousePressed(MouseEvent e) {
+
+            borrarIcon(0, 0);
+            pintarIcon("imgs/Barco_rojo.png", 0, 1);
+            pintarmovimiento(0, 2);
+
+            matrix[0][1].setIcon(imagen);
+
+          }
+
+        });
 
       }
-    });
-    matrix[0][1].setBackground(Color.red);
-    matrix[0][2].setBackground(Color.yellow);
-    matrix[0][3].setBackground(Color.blue);
-    matrix[0][4].setBackground(Color.black);
-    matrix[0][5].setBackground(Color.white);
-    matrix[0][6].setBackground(Color.cyan);
+      ejex = 20;
+      ejey += 75;
 
+    }
+
+    panel.revalidate();
+    panel.repaint();
   }
-
-  // panel.revalidate();
-  // panel.repaint();
 
   public void pintarCasilla(int ejeX, int ejeY) {
     // panel.remove(this.matrix[ejeX][ejeY]);
@@ -119,24 +130,6 @@ public class InterfazGraficaGenerica extends JFrame {
     this.panel.setLayout(null);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.setVisible(true);
-
-    matrix = new JLabel[fila][columna];
-
-    for (int x = 0; x < fila; x++) {
-      for (int y = 0; y < columna; y++) {
-
-        matrix[x][y] = new JLabel();
-        matrix[x][y].setBackground(Color.gray);
-        matrix[0][0].setBackground(Color.green);
-        matrix[x][y].setOpaque(true);
-        matrix[x][y].setBounds(n, m, 20, 30);
-        matrix[x][y].setName("(" + x + "," + y + ")");
-        panel.add(matrix[x][y]);
-        n += 20;
-
-      }
-    }
-
   }
 
   /**
@@ -164,6 +157,27 @@ public class InterfazGraficaGenerica extends JFrame {
    */
   public void mostrarCuadroDialogo(Component parentComponent, String texto) {
     JOptionPane.showMessageDialog(parentComponent, texto);
+  }
+
+  public void borrarIcon(int fila, int columna) {
+
+    matrix[fila][columna].setIcon(null);
+  }
+
+  public void pintarIcon(String filepath, int fila, int columna) {
+
+    ImageIcon imagen = new ImageIcon(new ImageIcon(filepath).getImage().getScaledInstance(75, 75, 75));
+    matrix[fila][columna].setIcon(imagen);
+  }
+
+  public void pintarmovimiento(int fila, int columna) {
+
+    matrix[fila][columna].setBackground(Color.orange);
+  }
+
+  public void Borramovimiento(int fila, int columna) {
+
+    matrix[fila][columna].setBackground(Color.lightGray);
   }
 
 }

@@ -163,12 +163,8 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   * Formato: JugadorActual
-   *          Tablero
-   *          Jugador1
-   *          NumeroPiezasPerdidas1
-   *          Jugador2
-   *          NumeroPiezasPerdidas2
+   * Formato: JugadorActual Tablero Jugador1 NumeroPiezasPerdidas1 Jugador2
+   * NumeroPiezasPerdidas2
    */
 
   /**
@@ -192,9 +188,9 @@ public class Chaturanga extends PartidaAbstracta {
   public void enviarCoordenadasMouse(int cordX, int cordy) {
     cordX = (cordX - 5) / 75;
     cordy = (cordy - 25) / 75;
-    if(cordX < 8 && cordy < 8) {
+    if (cordX < 8 && cordy < 8) {
       System.out.print("Casilla (" + cordX + "," + cordy + "): ");
-      if ( tablero.tablero[cordX][cordy].contenido != null) {
+      if (tablero.tablero[cordX][cordy].contenido != null) {
         System.out.println(tablero.tablero[cordX][cordy].contenido.to_String());
       } else {
         System.out.println("Casilla vacia");
