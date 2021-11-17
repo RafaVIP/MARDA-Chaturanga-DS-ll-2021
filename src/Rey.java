@@ -28,8 +28,26 @@ public class Rey extends PiezaAbstracta {
   @Override
   public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
-
+    String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
+    for(int x = ejeXActual-1; x <= ejeXActual+1; ++x) {
+      for(int y = ejeYActual-1; y <= ejeYActual+1; ++y) {
+        if(x != ejeXActual || y != ejeYActual) {
+          if(checkMove(tablero, x, y, my_color)) {
+            movimientos.add(formatCords(x, y));
+          }
+        }
+      }
+    }
     return movimientos;
+  }
+
+  private boolean checkMove(Casilla[][] tablero, int x, int y, String my_color) {
+    if((x > -1 && x < 8) && (y > -1 && y < 8)) {
+      if (!checkCasilla(tablero, x, y).equals(my_color) || checkCasilla(tablero, x, y).equals("null")) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

@@ -30,8 +30,27 @@ public class Reina extends PiezaAbstracta {
   public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
     String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
-
+    int uno_par = 1;   // 1 ->  1 -> -1 -> -1 
+    int uno_impar = 1; // 1 -> -1 ->  1 -> -1
+    for(int i = 0; i < 4; ++i) {
+      if (checkMove(tablero, ejeXActual + uno_par, ejeYActual + uno_impar, my_color)) {
+        movimientos.add(formatCords(ejeXActual + uno_par, ejeYActual + uno_impar));
+      }
+      if(i%2 == 0) {
+        uno_par *= -1;
+      }
+      uno_impar *= -1;
+    }
     return movimientos;
+  }
+
+  private boolean checkMove(Casilla[][] tablero, int x, int y, String my_color) {
+    if((x > -1 && x < 8) && (y > -1 && y < 8)) {
+      if (!checkCasilla(tablero, x, y).equals(my_color) || checkCasilla(tablero, x, y).equals("null")) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

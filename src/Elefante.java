@@ -28,10 +28,8 @@ public class Elefante extends PiezaAbstracta {
     int dos_par = 2;   // 2 ->  2 -> -2 -> -2 
     int dos_impar = 2; // 2 -> -2 ->  2 -> -2
     for(int i = 0; i < 4; ++i) {
-      if(i < 4) {
-        if (checkMove(tablero, ejeXActual + dos_par, ejeYActual + dos_impar, my_color)) {
-          movimientos.add(formatCords(ejeXActual + dos_par, ejeYActual + dos_impar));
-        }
+      if (checkMove(tablero, ejeXActual + dos_par, ejeYActual + dos_impar, my_color)) {
+        movimientos.add(formatCords(ejeXActual + dos_par, ejeYActual + dos_impar));
       }
       if(i%2 == 0) {
         dos_par *= -1;

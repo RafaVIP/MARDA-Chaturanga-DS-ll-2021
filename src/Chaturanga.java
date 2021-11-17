@@ -215,7 +215,7 @@ public class Chaturanga extends PartidaAbstracta {
       } else {
         System.out.println("Casilla vacia\n");
       }
-      this.interfaz.pintarCasilla(cordX, cordy);
+      //this.interfaz.pintarCasilla(cordX, cordy);
     } else {
       System.out.println("Fuera de rango");
     }
