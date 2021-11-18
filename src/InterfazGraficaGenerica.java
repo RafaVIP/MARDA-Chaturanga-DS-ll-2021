@@ -76,14 +76,14 @@ public class InterfazGraficaGenerica extends JFrame {
     inicializarInterfazGrafica();
   }
 
-  public void inicializarInterfazGrafica(){
+  public void inicializarInterfazGrafica() {
     matrix = new JLabel[fila][columna];
     int ejex = 20;
     int ejey = 25;
     for (int x = 0; x < fila; x++) {
       for (int y = 0; y < matrix[x].length; y++) {
         matrix[x][y] = new JLabel();
-        matrix[x][y].setBackground(Color.lightGray);
+        matrix[x][y].setBackground(Color.decode("#d1a456"));
         matrix[x][y].setOpaque(true);
         matrix[x][y].setBounds(ejex, ejey, 72, 72);
         panel.add(matrix[x][y]);
@@ -129,7 +129,7 @@ public class InterfazGraficaGenerica extends JFrame {
     matrix[fila][columna].setIcon(null);
   }
 
-  public void pintarCasillaSeleccionada(int fila, int columna){
+  public void pintarCasillaSeleccionada(int fila, int columna) {
     matrix[fila][columna].setBackground(Color.green);
   }
 
@@ -138,6 +138,6 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   public void borraMovimiento(int fila, int columna) {
-    matrix[fila][columna].setBackground(Color.lightGray);
+    matrix[fila][columna].setBackground(Color.decode("#d1a456"));
   }
 }
