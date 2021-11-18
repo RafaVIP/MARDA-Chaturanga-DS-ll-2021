@@ -6,7 +6,6 @@
  ** Wendy Ortiz (B75594)
  **/
 
-import java.io.*;
 import java.util.ArrayList;
 
 public class Tablero {

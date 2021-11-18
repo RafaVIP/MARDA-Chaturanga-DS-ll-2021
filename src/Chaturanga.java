@@ -1,4 +1,3 @@
-
 /**
  ** Primera iteración Proyecto Programado: Diseño 
  ** Rafael Porras (B75915) 
@@ -11,14 +10,15 @@ import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
-// import javax.swing.JLabel;
 
 public class Chaturanga extends PartidaAbstracta {
   /*----------------- Propios de Chaturanga------------------*/
   InterfazGraficaGenerica interfaz;
+  PiezaAbstracta piezaSeleccionada;
+  ArrayList<String> movimientos;
+  int xPiezaSeleccionada, yPiezaSeleccionada;
 
   /// Contructor
   public Chaturanga() {
@@ -93,8 +93,10 @@ public class Chaturanga extends PartidaAbstracta {
   public void setElementosDeInterfazIniciales(InterfazGraficaGenerica interfaz) {
     addButtonReglas(interfaz);
     addButtonGuardarPartida(interfaz);
+    addButtonJugadores(interfaz);
     addButtonPiezasPerdidas(interfaz);
   }
+
   public void addButtonReglas(InterfazGraficaGenerica interfaz){
     /** Agrega el boton de las reglas en la interfaz del juego */
     ActionListener rules = new ActionListener() {
@@ -117,18 +119,18 @@ public class Chaturanga extends PartidaAbstracta {
         }
       };
       interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
-  
-      /** Color de los jugadores */
+  }
+
+  public void addButtonJugadores(InterfazGraficaGenerica interfaz){
+        /** Color de los jugadores */
       String datos = "";
       for (int i = 0; i < this.jugadores.length; i++) {
         datos += jugadores[i].getNombre() + ": Juega con " + jugadores[i].getColor() + "\n";
       }
-      System.out.println(datos);
       final String datos2 = datos;
       ActionListener players = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent ae) {
-          System.out.println(datos2);
           interfaz.mostrarCuadroDialogo(null, datos2);
         }
       };
@@ -166,8 +168,8 @@ public class Chaturanga extends PartidaAbstracta {
   }
   /*----------------- De Partida Abstracta---------------------*/
 
-  // TODO: Segundo Sprint
   /**
+   * TODO: Segundo Sprint
    * Metodo encargado de Iniciar una partida
    **/
   public void iniciarPartida() {
@@ -194,18 +196,13 @@ public class Chaturanga extends PartidaAbstracta {
     return fileManager.guardarPartida(this);
   }
 
-  // TODO: Segundo Sprint
   /**
+   * TODO: Segundo Sprint
    * Metodo encargado de verificar que el juego haya terminado
    */
   public boolean elJuegoHaTerminado() {
     return false;
   }
-
-  /**
-   * Formato: JugadorActual Tablero Jugador1 NumeroPiezasPerdidas1 Jugador2
-   * NumeroPiezasPerdidas2
-   */
 
   /**
    * Metodo encargado de convertir a un string
@@ -228,35 +225,81 @@ public class Chaturanga extends PartidaAbstracta {
   public void enviarCoordenadasMouse(int cordX, int cordy) {
     cordX = (cordX - 5) / 75;
     cordy = (cordy - 25) / 75;
+
     if (cordX < 8 && cordy < 8) {
-      System.out.print("Casilla (" + cordX + "," + cordy + "): ");
-      if (tablero.tablero[cordX][cordy].contenido != null) {
-        System.out.println(tablero.tablero[cordX][cordy].contenido.getNombre() + " "
-            + tablero.tablero[cordX][cordy].contenido.getColor());
-        ArrayList<String> movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero,
-            cordX, cordy);
-        System.out.print("\t\tPosibles movimientos: ");
-        for (int i = 0; i < movimientos.size(); i++) {
-          String movimiento = movimientos.get(i);
-          System.out.print(movimiento + " ");
+      // Si no ha seleccionado pieza
+      if (piezaSeleccionada == null) {
+        // Si la casilla seleccionada tiene una ficha
+        if (tablero.tablero[cordX][cordy].contenido != null) {
+          // Setea la pieza seleccionada
+          this.piezaSeleccionada = tablero.tablero[cordX][cordy].getContenido();
+          this.xPiezaSeleccionada = cordX;
+          this.yPiezaSeleccionada = cordy;
+          // Toma los posibles movimientos
+          this.movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero, cordX, cordy);
+          // pinta las casillas
+          this.pintarCasillas(this.movimientos);
+          this.interfaz.pintarCasillaSeleccionada(cordy, cordX);
+        } else {
+          System.out.println("Casilla vacia\n");
+        }
+      } else { // Si ya selecciono pieza
+        // Chequea los posibles movimientos
+        for (int posibleMovimiento = 0; posibleMovimiento < this.movimientos.size(); posibleMovimiento++) {
+          String movimiento = movimientos.get(posibleMovimiento);
           int a = movimiento.charAt(1) - 48;
           int b = movimiento.charAt(4) - 48;
-          // System.out.print("<" + a + " " + b + "> ");
-          this.interfaz.pintarCasilla(a, b);
+          // Verificar si la casilla elegida esta dentro de los posibles movimientos
+          if (a == cordX && b == cordy) {
+            // Si hay una pieza enemiga
+            if (this.tablero.tablero[cordX][cordy].getContenido() != null && !this.tablero.tablero[cordX][cordy].getContenido().getColor().equals(this.piezaSeleccionada.getColor())){
+              // Mandar la pienza enemiga a las piezas perdidas
+              
+            }
+            // Pone la pieza nueva
+            this.interfaz.printImage(this.piezaSeleccionada.getImageFilePath(), cordX, cordy);
+            this.tablero.tablero[cordX][cordy].setContenido(this.piezaSeleccionada);
+          
+            // Borra la pieza de la posicion anterior seleccionada
+            this.interfaz.borrarIcon(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
+            this.tablero.tablero[this.xPiezaSeleccionada][this.yPiezaSeleccionada].setCasillaVacia();
+            // Termina el ciclo
+            posibleMovimiento = this.movimientos.size();
+          }
         }
-        System.out.println();
 
-      } else {
-        System.out.println("Casilla vacia\n");
+        // Deselecciona movimientos y pieza seleccionada
+        this.piezaSeleccionada = null;
+        this.interfaz.borraMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
+        limpiarCasillas(this.movimientos);
       }
-      // this.interfaz.pintarCasilla(cordX, cordy);
     } else {
+      // Deselecciona movimientos y pieza seleccionada
+      this.piezaSeleccionada = null;
+      this.interfaz.borraMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
+      limpiarCasillas(this.movimientos);
       System.out.println("Fuera de rango");
     }
   }
 
-  public void enviarTexto(String texto) {
-    System.out.println(texto);
+  public void pintarCasillas(ArrayList<String> movimientos){
+    // pinta los posibles movimientos
+    for (int i = 0; i < movimientos.size(); i++) {
+      String movimiento = movimientos.get(i);
+      int a = movimiento.charAt(1) - 48;
+      int b = movimiento.charAt(4) - 48;
+      this.interfaz.pintarmovimiento(b, a);
+    }
+  }
+
+  public void limpiarCasillas(ArrayList<String> movimientos){
+    // limpia las casillas
+    for (int i = 0; i < movimientos.size(); i++) {
+      String movimiento = movimientos.get(i);
+      int a = movimiento.charAt(1) - 48;
+      int b = movimiento.charAt(4) - 48;
+      this.interfaz.borraMovimiento(b, a);
+    }
   }
 
   /**

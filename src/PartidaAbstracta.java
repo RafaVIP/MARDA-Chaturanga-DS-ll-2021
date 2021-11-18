@@ -50,10 +50,7 @@ public abstract class PartidaAbstracta {
    */
   public abstract void enviarCoordenadasMouse(int cordX, int cordY);
 
-  /**
-   * 
-   */
-  public abstract void enviarTexto(String texto);
+
   /**
    * 
    * @param filepath

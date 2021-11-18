@@ -45,6 +45,7 @@ public class Casilla {
     if (this.contenido != null) {
       casilla.add(imprimirPieza());
     }
+    /*
     // Imprime la casilla
     if ((esPar(this.fila) && !esPar(this.columna)) || (!esPar(this.fila) && esPar(this.columna))) { // Casilla Blanca
       casilla.add(imprimirCasilla("blanca"));
@@ -52,6 +53,7 @@ public class Casilla {
     } else { // Casilla Negra
       casilla.add(imprimirCasilla("negra"));
     }
+    */
     return casilla;
   }
 
@@ -94,8 +96,8 @@ public class Casilla {
    */
   ArrayList<String> getCoordenadasDeDibujo() {
     ArrayList<String> coordenadas = new ArrayList<String>();
-    int ejeX = this.BASEx + (this.TAM_CASILLA * this.fila);
-    int ejeY = this.BASEy + (this.TAM_CASILLA * this.columna);
+    int ejeX = this.fila;
+    int ejeY =this.columna;
     coordenadas.add(Integer.toString(ejeX));
     coordenadas.add(Integer.toString(ejeY));
     return coordenadas;
