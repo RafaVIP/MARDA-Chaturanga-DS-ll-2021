@@ -1,10 +1,7 @@
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161)
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 import java.awt.event.*;
@@ -47,6 +44,9 @@ public class Chaturanga extends PartidaAbstracta {
     imprimirTablero();
   }
 
+  /**
+   * Metodo encargado de imprimir el tablero
+   */
   public void imprimirTablero() {
     /**
      * Recibe: {Casilla, Casilla, ...} Casilla = {Pieza, Casilla} o {Casilla} Pieza
@@ -97,6 +97,11 @@ public class Chaturanga extends PartidaAbstracta {
     addButtonPiezasPerdidas(interfaz);
   }
 
+  /**
+   * Metodo encargado de añadir el botton de las reglas en la interfaz
+   * 
+   * @param interfaz
+   */
   public void addButtonReglas(InterfazGraficaGenerica interfaz) {
     /** Agrega el boton de las reglas en la interfaz del juego */
     ActionListener rules = new ActionListener() {
@@ -110,6 +115,11 @@ public class Chaturanga extends PartidaAbstracta {
     interfaz.agregarBoton("Reglas", rules, 0, 0);
   }
 
+  /**
+   * Metodo encargado de añadir el buton de guardar partida
+   * 
+   * @param interfaz
+   */
   public void addButtonGuardarPartida(InterfazGraficaGenerica interfaz) {
     /** Guardar Partida */
     ActionListener guardarPartida = new ActionListener() {
@@ -121,6 +131,11 @@ public class Chaturanga extends PartidaAbstracta {
     interfaz.agregarBoton("Guardar", guardarPartida, 102, 0);
   }
 
+  /**
+   * Metodo encargado de añadir el boton de jugadores a la interfaz
+   * 
+   * @param interfaz
+   */
   public void addButtonJugadores(InterfazGraficaGenerica interfaz) {
     /** Color de los jugadores */
     String datos = "";
@@ -137,8 +152,13 @@ public class Chaturanga extends PartidaAbstracta {
     interfaz.agregarBoton("Jugadores", players, 204, 0);
   }
 
+  /**
+   * Metodo encargado de añadir el boton de las piezas perdidas a la interfaz
+   * 
+   * @param interfaz
+   */
   public String piezasPerdidas() {
-
+    /** Piezas perdidas */
     String perdidas = "";
     for (int i = 0; i < this.jugadores.length; i++) {
       ArrayList<PiezaAbstracta> arrayPiezasPerdidas = jugadores[i].getArrayPerdidos();
@@ -148,7 +168,6 @@ public class Chaturanga extends PartidaAbstracta {
       } else {
         perdidas += "\n   Este jugador tiene las siguientes piezas perdidas: \n";
         for (int j = 0; j < arrayPiezasPerdidas.size(); j++) {
-          System.out.println(arrayPiezasPerdidas.size() + "size");
           if (arrayPiezasPerdidas.size() > 0) {
             perdidas += "   " + arrayPiezasPerdidas.get(j).getNombre() + "\n";
           }
@@ -157,7 +176,6 @@ public class Chaturanga extends PartidaAbstracta {
       }
     }
     return perdidas;
-
   }
 
   public void addButtonPiezasPerdidas(InterfazGraficaGenerica interfaz) {
@@ -165,7 +183,6 @@ public class Chaturanga extends PartidaAbstracta {
     ActionListener piezasPerdidas = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent ae) {
-
         interfaz.mostrarCuadroDialogo(null, piezasPerdidas());
       }
     };
@@ -174,7 +191,7 @@ public class Chaturanga extends PartidaAbstracta {
   /*----------------- De Partida Abstracta---------------------*/
 
   /**
-   * TODO: Segundo Sprint Metodo encargado de Iniciar una partida
+   * Metodo encargado de Iniciar una partida
    **/
   public void iniciarPartida() {
     /*
@@ -201,8 +218,9 @@ public class Chaturanga extends PartidaAbstracta {
   }
 
   /**
-   * TODO: Segundo Sprint Metodo encargado de verificar que el juego haya
-   * terminado
+   * Metodo encargado de verificar que el juego haya terminado
+   * 
+   * @return True si el juego a terminado
    */
   public boolean elJuegoHaTerminado() {
     return false;
@@ -321,6 +339,12 @@ public class Chaturanga extends PartidaAbstracta {
     return movimientos;
   }
 
+  /**
+   * Metodo encargado de enviar las coordenadas para los action listener del mouse
+   * 
+   * @param cordX
+   * @param cordy
+   */
   public void enviarCoordenadasMouse(int cordX, int cordy) {
     cordX = (cordX - 5) / 75;
     cordy = (cordy - 25) / 75;
@@ -355,16 +379,11 @@ public class Chaturanga extends PartidaAbstracta {
             // Si hay una pieza enemiga
             if (this.tablero.tablero[cordX][cordy].getContenido() != null && !this.tablero.tablero[cordX][cordy]
                 .getContenido().getColor().equals(this.piezaSeleccionada.getColor())) {
-
               for (int i = 0; i < this.jugadores.length; i++) {
-
                 if (jugadores[i].getColor().equals(this.tablero.tablero[cordX][cordy].getContenido().getColor())) {
-
                   jugadores[i].setArrayPerdidos(this.tablero.tablero[cordX][cordy].getContenido());
                 }
-
               }
-
             }
             // Pone la pieza nueva
             this.interfaz.printImage(this.piezaSeleccionada.getImageFilePath(), cordX, cordy);
@@ -379,7 +398,6 @@ public class Chaturanga extends PartidaAbstracta {
             posibleMovimiento = this.movimientos.size();
           }
         }
-
         // Deselecciona movimientos y pieza seleccionada
         this.piezaSeleccionada = null;
         this.interfaz.borraMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
@@ -394,6 +412,11 @@ public class Chaturanga extends PartidaAbstracta {
     }
   }
 
+  /**
+   * Metodo encargado de pintar las casillas con los movimientos
+   * 
+   * @param movimientos
+   */
   public void pintarCasillas(ArrayList<String> movimientos) {
     // pinta los posibles movimientos
     for (int i = 0; i < movimientos.size(); i++) {
@@ -404,6 +427,11 @@ public class Chaturanga extends PartidaAbstracta {
     }
   }
 
+  /**
+   * Metodo encargado de limpiar las casillas del tablero
+   * 
+   * @param movimientos
+   */
   public void limpiarCasillas(ArrayList<String> movimientos) {
     // limpia las casillas
     for (int i = 0; i < movimientos.size(); i++) {
@@ -443,6 +471,12 @@ public class Chaturanga extends PartidaAbstracta {
     return filepath;
   }
 
+  /**
+   * Metodo encargado de mostrat el menu en pantalla para la seleccion de las
+   * partidas
+   * 
+   * @return opcion que el usuario seleciono
+   */
   public int seleccionar_menu() {
     String[] opciones = { "Nueva Partida", "Cargar Partida" };
 

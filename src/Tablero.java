@@ -1,9 +1,6 @@
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161)
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 import java.util.ArrayList;
@@ -18,6 +15,7 @@ public class Tablero {
 
   /**
    * Metodo constructor encargado de construir el objeto tablero
+   * 
    * @param filas
    * @param columnas
    * @param interfaz
@@ -30,24 +28,25 @@ public class Tablero {
 
   /**
    * Crea una pieza abstracta distinta
+   * 
    * @param tipo
    * @param color
-   * @return
+   * @return PiezaAbstracta
    */
   private PiezaAbstracta crearPiezaAbstracta(final String tipo, final String color) {
-    if(tipo.equals("rey")) {
+    if (tipo.equals("rey")) {
       return new Rey(color);
     }
-    if(tipo.equals("elefante")) {
+    if (tipo.equals("elefante")) {
       return new Elefante(color);
     }
-    if(tipo.equals("barco")) {
+    if (tipo.equals("barco")) {
       return new Barco(color);
     }
-    if(tipo.equals("caballo")) {
+    if (tipo.equals("caballo")) {
       return new Caballo(color);
     }
-    if(tipo.equals("peon")) {
+    if (tipo.equals("peon")) {
       return new Peon(color);
     }
     return null;
@@ -55,6 +54,8 @@ public class Tablero {
 
   /**
    * Metodo encargado de imprimir el tablero en pantalla
+   * 
+   * @return ArrayList<ArrayList<ArrayList<String>>>
    */
   public ArrayList<ArrayList<ArrayList<String>>> imprimirTablero() {
     ArrayList<ArrayList<ArrayList<String>>> tablero = new ArrayList<ArrayList<ArrayList<String>>>();
@@ -68,6 +69,7 @@ public class Tablero {
 
   /**
    * Metodo encargado de convertir a string
+   * 
    * @return String convertido
    */
   public String toString() {
