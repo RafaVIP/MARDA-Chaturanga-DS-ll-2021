@@ -46,21 +46,22 @@ public abstract class PartidaAbstracta {
   public abstract String to_String();
 
   /**
-   * 
+   * Metodo encargado de enviar las coordenas al mouse
    */
   public abstract void enviarCoordenadasMouse(int cordX, int cordY);
 
-
   /**
+   * Metodo encargado de seleccionar la partida
    * 
    * @param filepath
-   * @return
+   * @return el string con el filepath
    */
   public abstract String seleccionarPartida(String filepath);
-  
+
   /**
+   * metodo encargado de mostrar las opciones para seleccionar en el menu
    * 
-   * @return
+   * @return la opcion que se selecciono del menu
    */
   public abstract int seleccionar_menu();
 }

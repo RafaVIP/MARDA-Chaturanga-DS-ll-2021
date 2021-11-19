@@ -1,11 +1,8 @@
 import java.util.ArrayList;
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161) 
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 public class Peon extends PiezaAbstracta {
@@ -22,7 +19,8 @@ public class Peon extends PiezaAbstracta {
 
   /**
    * Override de Metodo movimiento heredado de Pieza Abstracta, indica el
-   *        movimiento de la ficha
+   * movimiento de la ficha
+   * 
    * @return true si el movimiento se hizo correctamente
    */
   @Override
@@ -36,24 +34,34 @@ public class Peon extends PiezaAbstracta {
       direccion = 1;
     }
     // Revisar movimiento frontal
-    if (checkCasilla(tablero, ejeXActual+direccion, ejeYActual).equals("null")) {
-        // System.out.println("Valida para avanzar: " + formatCords(ejeXActual+direccion, ejeYActual));
-        movimientos.add(formatCords(ejeXActual+direccion, ejeYActual));
+    if (checkCasilla(tablero, ejeXActual + direccion, ejeYActual).equals("null")) {
+      // System.out.println("Valida para avanzar: " +
+      // formatCords(ejeXActual+direccion, ejeYActual));
+      movimientos.add(formatCords(ejeXActual + direccion, ejeYActual));
     }
     // Revisar para comer en las 2 diagonales
-    if(checkTake(tablero, ejeXActual+direccion, ejeYActual-1, my_color)) {
-      movimientos.add(formatCords(ejeXActual+direccion, ejeYActual-1));
+    if (checkTake(tablero, ejeXActual + direccion, ejeYActual - 1, my_color)) {
+      movimientos.add(formatCords(ejeXActual + direccion, ejeYActual - 1));
     }
-    if(checkTake(tablero, ejeXActual+direccion, ejeYActual+1, my_color)) {
-      movimientos.add(formatCords(ejeXActual+direccion, ejeYActual+1));
+    if (checkTake(tablero, ejeXActual + direccion, ejeYActual + 1, my_color)) {
+      movimientos.add(formatCords(ejeXActual + direccion, ejeYActual + 1));
     }
     return movimientos;
   }
 
+  /**
+   * Verificar si la pieza puede comer en diagonal
+   * 
+   * @param tablero
+   * @param x
+   * @param y
+   * @param my_color
+   * @return True si se puede comer en diagonal
+   */
   private boolean checkTake(Casilla[][] tablero, int x, int y, String my_color) {
-    if(y > -1 && y < 8) {
+    if (y > -1 && y < 8) {
       if (!checkCasilla(tablero, x, y).equals(my_color) && !checkCasilla(tablero, x, y).equals("null")) {
-        // System.out.println("Valida para comer: " +  formatCords(x, y));
+        // System.out.println("Valida para comer: " + formatCords(x, y));
         return true;
       }
     }
@@ -62,6 +70,7 @@ public class Peon extends PiezaAbstracta {
 
   /**
    * Override de Metodo encargado de obtener el path del archivo imagen
+   * 
    * @return String del path de la imagen
    */
   @Override
@@ -71,6 +80,7 @@ public class Peon extends PiezaAbstracta {
 
   /**
    * Override de Metodo encargado de convertir a string
+   * 
    * @return String
    */
   @Override
@@ -80,6 +90,7 @@ public class Peon extends PiezaAbstracta {
 
   /**
    * Retorna el nombre de la pieza
+   * 
    * @return nombre de la pieza
    */
   @Override
@@ -89,6 +100,7 @@ public class Peon extends PiezaAbstracta {
 
   /**
    * Retorna el color de la pieza
+   * 
    * @return Color de la pieza
    */
   @Override

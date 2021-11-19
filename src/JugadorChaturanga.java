@@ -1,10 +1,7 @@
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161)
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 import java.util.ArrayList;
@@ -20,7 +17,6 @@ public class JugadorChaturanga extends JugadorAbstracto {
 
   /// constructor
   public JugadorChaturanga(ArrayList<String> colorArray) {
-    // TODO: Sprint 2 verificar fichas perdidas
     this.piezasPerdidas = new ArrayList<PiezaAbstracta>();
     pedirDatos(colorArray);
   }

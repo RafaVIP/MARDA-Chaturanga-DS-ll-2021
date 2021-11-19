@@ -1,11 +1,8 @@
 import java.util.ArrayList;
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161) 
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 public class Elefante extends PiezaAbstracta {
@@ -20,18 +17,25 @@ public class Elefante extends PiezaAbstracta {
     this.color = color;
   }
 
-  /***/
+  /**
+   * Metodo encargado de verificar los posibles movimientos para la pieza elefante
+   * 
+   * @param tablero
+   * @param ejeXActual
+   * @param ejeYActual
+   * @return ArrayList<String>
+   */
   @Override
-  public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual){
+  public ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
     String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
-    int dos_par = 2;   // 2 ->  2 -> -2 -> -2 
-    int dos_impar = 2; // 2 -> -2 ->  2 -> -2
-    for(int i = 0; i < 4; ++i) {
+    int dos_par = 2; // 2 -> 2 -> -2 -> -2
+    int dos_impar = 2; // 2 -> -2 -> 2 -> -2
+    for (int i = 0; i < 4; ++i) {
       if (checkMove(tablero, ejeXActual + dos_par, ejeYActual + dos_impar, my_color)) {
         movimientos.add(formatCords(ejeXActual + dos_par, ejeYActual + dos_impar));
       }
-      if(i%2 == 0) {
+      if (i % 2 == 0) {
         dos_par *= -1;
       }
       dos_impar *= -1;
@@ -39,8 +43,17 @@ public class Elefante extends PiezaAbstracta {
     return movimientos;
   }
 
+  /**
+   * Metodo encargado de verificar si un movimiento es valido para el elefante
+   * 
+   * @param tablero
+   * @param x
+   * @param y
+   * @param my_color
+   * @return True si el movimiento es valido
+   */
   private boolean checkMove(Casilla[][] tablero, int x, int y, String my_color) {
-    if((x > -1 && x < 8) && (y > -1 && y < 8)) {
+    if ((x > -1 && x < 8) && (y > -1 && y < 8)) {
       if (!checkCasilla(tablero, x, y).equals(my_color) || checkCasilla(tablero, x, y).equals("null")) {
         return true;
       }
@@ -50,6 +63,7 @@ public class Elefante extends PiezaAbstracta {
 
   /**
    * Override de Metodo encargado de obtener el path del archivo imagen
+   * 
    * @return String del path de la imagen
    */
   @Override
@@ -59,6 +73,7 @@ public class Elefante extends PiezaAbstracta {
 
   /**
    * Override de Metodo encargado de convertir a string
+   * 
    * @return String
    */
   @Override
@@ -68,6 +83,7 @@ public class Elefante extends PiezaAbstracta {
 
   /**
    * Retorna el nombre de la pieza
+   * 
    * @return nombre de la pieza
    */
   @Override
@@ -77,6 +93,7 @@ public class Elefante extends PiezaAbstracta {
 
   /**
    * Retorna el color de la pieza
+   * 
    * @return Color de la pieza
    */
   @Override

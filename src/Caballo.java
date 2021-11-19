@@ -1,11 +1,8 @@
 import java.util.ArrayList;
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161) 
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 public class Caballo extends PiezaAbstracta {
@@ -22,7 +19,8 @@ public class Caballo extends PiezaAbstracta {
 
   /**
    * Override de Metodo movimiento heredado de Pieza Abstracta, indica el
-   *        movimiento de la ficha
+   * movimiento de la ficha
+   * 
    * @return true si el movimiento se hizo correctamente
    */
   @Override
@@ -31,8 +29,8 @@ public class Caballo extends PiezaAbstracta {
     String my_color = tablero[ejeXActual][ejeYActual].contenido.getColor();
     int dos = 2;
     int uno = 1;
-    for(int i = 0; i < 8; ++i) {
-      if(i < 4) {
+    for (int i = 0; i < 8; ++i) {
+      if (i < 4) {
         if (checkMove(tablero, ejeXActual + uno, ejeYActual + dos, my_color)) {
           movimientos.add(formatCords(ejeXActual + uno, ejeYActual + dos));
         }
@@ -41,7 +39,7 @@ public class Caballo extends PiezaAbstracta {
           movimientos.add(formatCords(ejeXActual + dos, ejeYActual + uno));
         }
       }
-      if(i%2 == 0) {
+      if (i % 2 == 0) {
         dos *= -1;
       }
       uno *= -1;
@@ -49,8 +47,17 @@ public class Caballo extends PiezaAbstracta {
     return movimientos;
   }
 
+  /**
+   * Método encargado de revisar si el movimiento del caballo es valido
+   * 
+   * @param tablero
+   * @param x
+   * @param y
+   * @param my_color
+   * @return boolean true if the move is valid
+   */
   private boolean checkMove(Casilla[][] tablero, int x, int y, String my_color) {
-    if((x > -1 && x < 8) && (y > -1 && y < 8)) {
+    if ((x > -1 && x < 8) && (y > -1 && y < 8)) {
       if (!checkCasilla(tablero, x, y).equals(my_color) || checkCasilla(tablero, x, y).equals("null")) {
         return true;
       }
@@ -60,6 +67,7 @@ public class Caballo extends PiezaAbstracta {
 
   /**
    * Override de Metodo encargado de obtener el path del archivo imagen
+   * 
    * @return String del path de la imagen
    */
   @Override
@@ -69,6 +77,7 @@ public class Caballo extends PiezaAbstracta {
 
   /**
    * Override de Metodo encargado de convertir a string
+   * 
    * @return String
    */
   @Override
@@ -78,6 +87,7 @@ public class Caballo extends PiezaAbstracta {
 
   /**
    * Retorna el nombre de la pieza
+   * 
    * @return nombre de la pieza
    */
   @Override
@@ -87,6 +97,7 @@ public class Caballo extends PiezaAbstracta {
 
   /**
    * Retorna el color de la pieza
+   * 
    * @return Color de la pieza
    */
   @Override

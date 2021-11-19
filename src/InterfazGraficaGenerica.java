@@ -1,10 +1,7 @@
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161)
- ** Wendy Ortiz (B75594)
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 import java.awt.Color;
@@ -76,6 +73,9 @@ public class InterfazGraficaGenerica extends JFrame {
     inicializarInterfazGrafica();
   }
 
+  /**
+   * Metodo encragado de inicializar la interfaz Grafica
+   */
   public void inicializarInterfazGrafica() {
     matrix = new JLabel[fila][columna];
     int ejex = 20;
@@ -124,19 +124,43 @@ public class InterfazGraficaGenerica extends JFrame {
     JOptionPane.showMessageDialog(parentComponent, texto);
   }
 
+  /**
+   * Metodo encargado de borrar un Icon en el tablero
+   * 
+   * @param fila
+   * @param columna
+   */
   public void borrarIcon(int fila, int columna) {
 
     matrix[fila][columna].setIcon(null);
   }
 
+  /**
+   * Metodo encargado de pintar la casilla seleccionada en la interfaz grafica
+   * 
+   * @param fila
+   * @param columna
+   */
   public void pintarCasillaSeleccionada(int fila, int columna) {
     matrix[fila][columna].setBackground(Color.green);
   }
 
+  /**
+   * Metodo encargado de pintar el posible movimiento
+   * 
+   * @param fila
+   * @param columna
+   */
   public void pintarmovimiento(int fila, int columna) {
     matrix[fila][columna].setBackground(Color.orange);
   }
 
+  /**
+   * Metodo encargado de borrar un Movimiento en la interfaz
+   * 
+   * @param fila
+   * @param columna
+   */
   public void borraMovimiento(int fila, int columna) {
     matrix[fila][columna].setBackground(Color.decode("#d1a456"));
   }

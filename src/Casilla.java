@@ -1,12 +1,9 @@
 import java.util.ArrayList;
 
 /**
- ** Primera iteración Proyecto Programado: Diseño 
- ** Rafael Porras (B75915) 
- ** Fabian Gonzalez (B83493) 
- ** Kevin Salas (B87161) 
- ** Wendy Ortiz (B75594)
-**/
+ ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
+ **/
 
 public class Casilla {
   /// Atributos de la clase
@@ -19,6 +16,7 @@ public class Casilla {
 
   /**
    * Constructor de la clase
+   * 
    * @param fila
    * @param columna
    */
@@ -30,6 +28,7 @@ public class Casilla {
 
   /**
    * Metodo encargado de configurar el contenido de una pieza abstracta
+   * 
    * @param contenido
    */
   public void setContenido(PiezaAbstracta contenido) {
@@ -38,28 +37,31 @@ public class Casilla {
 
   /**
    * Metodo encargado de imprimir casilla
-   * Arraylist<Arraylist<String>> = {{filepath,x,y},{Caballo,x,y}} o {{filepath,x,y},{}}
+   * 
+   * @return ArrayList<ArrayList<String>>
    */
   ArrayList<ArrayList<String>> imprimir() {
+    // Arraylist<Arraylist<String>> = {{filepath,x,y},{Caballo,x,y}} o
+    // {{filepath,x,y},{}}
     ArrayList<ArrayList<String>> casilla = new ArrayList<ArrayList<String>>();
     if (this.contenido != null) {
       casilla.add(imprimirPieza());
     }
     /*
-    // Imprime la casilla
-    if ((esPar(this.fila) && !esPar(this.columna)) || (!esPar(this.fila) && esPar(this.columna))) { // Casilla Blanca
-      casilla.add(imprimirCasilla("blanca"));
-
-    } else { // Casilla Negra
-      casilla.add(imprimirCasilla("negra"));
-    }
-    */
+     * // Imprime la casilla if ((esPar(this.fila) && !esPar(this.columna)) ||
+     * (!esPar(this.fila) && esPar(this.columna))) { // Casilla Blanca
+     * casilla.add(imprimirCasilla("blanca"));
+     * 
+     * } else { // Casilla Negra casilla.add(imprimirCasilla("negra")); }
+     */
     return casilla;
   }
 
   /**
    * Metodo encargado de imprimir casilla con su respectivo color
+   * 
    * @param color
+   * @return ArrayList<String>
    */
   ArrayList<String> imprimirCasilla(final String color) {
     ArrayList<String> casilla = new ArrayList<String>();
@@ -68,7 +70,7 @@ public class Casilla {
     // Agrega la casilla
     casilla.add(filePath);
     // Agrega las coordenadas donde deberia imprimirse
-    for (int coordenada = 0; coordenada < coordenadas.size(); coordenada++){
+    for (int coordenada = 0; coordenada < coordenadas.size(); coordenada++) {
       casilla.add(coordenadas.get(coordenada));
     }
     return casilla;
@@ -76,6 +78,8 @@ public class Casilla {
 
   /**
    * Metodo encargado de imprimir la pieza en la casilla
+   * 
+   * @return ArrayList<String>
    */
   ArrayList<String> imprimirPieza() {
     ArrayList<String> pieza = new ArrayList<String>();
@@ -84,7 +88,7 @@ public class Casilla {
     // Agrega la pieza
     pieza.add(filePath);
     // Agrega las coordenadas donde deberia imprimirse
-    for (int coordenada = 0; coordenada < coordenadas.size(); coordenada++){
+    for (int coordenada = 0; coordenada < coordenadas.size(); coordenada++) {
       pieza.add(coordenadas.get(coordenada));
     }
     return pieza;
@@ -92,12 +96,14 @@ public class Casilla {
 
   /**
    * Metodo encargado de dibujar en la interfaz
+   * 
    * @param filePath
+   * @return ArrayList<String>
    */
   ArrayList<String> getCoordenadasDeDibujo() {
     ArrayList<String> coordenadas = new ArrayList<String>();
     int ejeX = this.fila;
-    int ejeY =this.columna;
+    int ejeY = this.columna;
     coordenadas.add(Integer.toString(ejeX));
     coordenadas.add(Integer.toString(ejeY));
     return coordenadas;
@@ -112,6 +118,7 @@ public class Casilla {
 
   /**
    * Metodo encargado de obtener el contenido
+   * 
    * @return PiezaAbstracta
    */
   PiezaAbstracta getContenido() {
@@ -120,6 +127,7 @@ public class Casilla {
 
   /**
    * Metodo encargado de obtener el colorde la pieza en la casilla actual
+   * 
    * @return Color de la pieza en la casilla actual
    */
   public String getColor() {
@@ -128,6 +136,7 @@ public class Casilla {
 
   /**
    * Metodo encargado de revidar si un núméro es par
+   * 
    * @param numero
    * @return true si es par
    */
