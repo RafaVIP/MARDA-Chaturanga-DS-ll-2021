@@ -18,7 +18,7 @@ Implementación de un Chaturanga con los patrones de Diseño vistos en clase
 3. Por ultimo se mostrará el tablero de juegos.
 
 ***Modelo de clases:***
-![UML](https://drive.google.com/file/d/1hJU2NQ648tYRIYSwVbsJUVlg0XUtBIlG/view?usp=sharing)
+![](https://i.imgur.com/wOav4TU.jpg)
 
 
 **Link :** [Acceso al modelo actualizado](https://lucid.app/lucidchart/5ab7cf6b-e7b0-41e3-a822-30268901e57f/edit?invitationId=inv_cba40b48-ef38-4f71-a1f6-81cd0827e5ec&page=2GWogsdkf0.o#)
