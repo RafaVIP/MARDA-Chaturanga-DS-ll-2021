@@ -25,15 +25,17 @@ public class JugadorChaturanga extends JugadorAbstracto {
   }
 
   /// Constructor para partidas cargadas
-  public JugadorChaturanga(String nombre, String color, ArrayList<PiezaAbstracta> piezasPerdidas, int cantidadPiezasPerdidas) {
+  public JugadorChaturanga(String nombre, String color, ArrayList<PiezaAbstracta> piezasPerdidas,
+      int cantidadPiezasPerdidas) {
     this.nombre = nombre;
     this.color = color;
     this.piezasPerdidas = piezasPerdidas;
     this.cantidadPiezasPerdidas = cantidadPiezasPerdidas;
   }
-  
+
   /**
    * Metodo encargado de asignar y pedir los datos al jugador
+   * 
    * @param colorArray un arreglo con los colores disponibles para el juego
    */
   public void pedirDatos(ArrayList<String> colorArray) {
@@ -49,30 +51,39 @@ public class JugadorChaturanga extends JugadorAbstracto {
 
   /**
    * Metodo encargado de retornar el valor del atributo color
+   * 
    * @return String devuleve el valor del atributo color para este jugador
    */
   public String getColor() {
     return this.color;
   }
 
-   /**
+  /**
    * Metodo encargado de retornar el valor del atributo nombre
+   * 
    * @return String devuleve el valor del atributo nombre del jugador
    */
   public String getNombre() {
     return this.nombre;
   }
 
-   /**
+  /**
    * Metodo encargado de retornar el valor del atributo nombre
+   * 
    * @return String devuleve el valor del atributo nombre del jugador
    */
   public ArrayList<PiezaAbstracta> getArrayPerdidos() {
     return this.piezasPerdidas;
   }
 
+  public void setArrayPerdidos(PiezaAbstracta pieza) {
+    System.out.println(pieza.getNombre());
+    this.piezasPerdidas.add(pieza);
+  }
+
   /**
    * Metodo encargado de convertir a string
+   * 
    * @return retorna un string
    */
   public String to_String() {
