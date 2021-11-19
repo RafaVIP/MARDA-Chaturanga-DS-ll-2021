@@ -39,5 +39,9 @@ public abstract class JugadorAbstracto {
    */
   public abstract ArrayList<PiezaAbstracta> getArrayPerdidos();
 
+  /**
+   * Metodo encargado de cambiar valores en arrayPerdidos
+   * @param pieza
+   */
   public abstract void setArrayPerdidos(PiezaAbstracta pieza);
 }

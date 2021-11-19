@@ -72,7 +72,10 @@ public class JugadorChaturanga extends JugadorAbstracto {
   public ArrayList<PiezaAbstracta> getArrayPerdidos() {
     return this.piezasPerdidas;
   }
-
+  /**
+   * Metodo encargado de modificar el arrayPerdidos
+   * @param PiezaAbstracta
+   */
   public void setArrayPerdidos(PiezaAbstracta pieza) {
     System.out.println(pieza.getNombre());
     this.piezasPerdidas.add(pieza);

@@ -38,6 +38,7 @@ public class Menu {
 
 	/**
 	 * Metodo encargado de crear una nueva partida
+	 * @param PartidaAbstracta
 	 */
 	public void crearNuevaPartida(PartidaAbstracta partida) {
 		partida.cargarPartida("src/inicio.txt");
@@ -46,6 +47,7 @@ public class Menu {
 
 	/**
 	 * Metodo encargado de cargar una partida anterior
+	 * @param PartidaAbstracta
 	 */
 	public void cargarPartida(PartidaAbstracta partida) {
 		/* Buscar archivo que toque cargar, jalar el nombre */

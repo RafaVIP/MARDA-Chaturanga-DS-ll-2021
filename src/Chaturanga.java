@@ -177,7 +177,10 @@ public class Chaturanga extends PartidaAbstracta {
     }
     return perdidas;
   }
-
+  /**
+   * Metodo encargado de añadir el botton de las piezas perdidas
+   * @param interfaz
+   */
   public void addButtonPiezasPerdidas(InterfazGraficaGenerica interfaz) {
 
     ActionListener piezasPerdidas = new ActionListener() {
@@ -244,10 +247,15 @@ public class Chaturanga extends PartidaAbstracta {
     return chaturanga;
   }
 
-  // Esta matriz basicamente marca todos los lugares donde
-  // se pueden atacar las piezas enemigas. Se usa para revisar
-  // que jugadas son validas.
-  // Safe = "" ||
+  
+
+  /**
+   * Esta matriz marca todos los lugares donde se pueden atacar 
+   * las piezas enemigas. Se usa para revisar que jugadas son validas. 
+   * Safe = "" ||
+   * @param tablero
+   * @return ArrayList<String>
+   */
   public ArrayList<String> crearJacqueMatriz(Casilla[][] tablero) {
     ArrayList<String> jacque_matriz = new ArrayList<String>();
     Casilla[][] tablero_copia = tablero;
@@ -278,6 +286,11 @@ public class Chaturanga extends PartidaAbstracta {
     return jacque_matriz;
   }
 
+  /**
+   * Metodo encargado de copiar una matriz
+   * @param tablero
+   * @return Casilla[][] copia
+   */
   public Casilla[][] copiarTablero(Casilla[][] tablero) {
     Casilla[][] nuevo_tablero = new Casilla[8][8];
     FileManagerChaturanga creadorDePiezas = new FileManagerChaturanga();
@@ -297,7 +310,11 @@ public class Chaturanga extends PartidaAbstracta {
     return nuevo_tablero;
   }
 
-  // Remueve movimientos que ponen en peligro al rey
+  /**
+   * Remueve movimientos que ponen en peligro al rey
+   * @param movimientos
+   * @return ArrayList<String>
+   */
   public ArrayList<String> filtrarMovimientos(ArrayList<String> movimientos) {
     String my_color = (this.jugadorActual % 2 == 0) ? "blanco" : "rojo";
     // Remover movimientos de piezas rojas, si es turno blanco y viceversa

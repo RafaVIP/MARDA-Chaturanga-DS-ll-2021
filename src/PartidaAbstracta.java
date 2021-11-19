@@ -47,6 +47,8 @@ public abstract class PartidaAbstracta {
 
   /**
    * Metodo encargado de enviar las coordenas al mouse
+   * @param int
+   * @param int
    */
   public abstract void enviarCoordenadasMouse(int cordX, int cordY);
 
