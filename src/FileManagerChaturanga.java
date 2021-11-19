@@ -106,7 +106,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
     * @param color Color de la pieza
     * @return La pieza creada a partir de los 2 parametros
     */
-    private PiezaAbstracta crearPiezaAbstracta(final String tipo, final String color) {
+    public PiezaAbstracta crearPiezaAbstracta(final String tipo, final String color) {
         if(tipo.equals("Rey")) {
           return new Rey(color);
         }

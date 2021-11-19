@@ -1,3 +1,3 @@
 src/PartidaChaturanga_0.txt
 src/PartidaChaturanga_1.txt
-src/PartidaChaturanga_2.txt
+src/PartidaChaturanga_6.txt

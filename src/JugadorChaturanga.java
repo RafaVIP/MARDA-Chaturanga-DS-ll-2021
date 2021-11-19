@@ -20,7 +20,6 @@ public class JugadorChaturanga extends JugadorAbstracto {
 
   /// constructor
   public JugadorChaturanga(ArrayList<String> colorArray) {
-    // TODO: Sprint 2 verificar fichas perdidas
     this.piezasPerdidas = new ArrayList<PiezaAbstracta>();
     pedirDatos(colorArray);
   }

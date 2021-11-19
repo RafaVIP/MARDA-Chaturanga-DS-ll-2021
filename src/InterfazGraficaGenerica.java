@@ -125,7 +125,6 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   public void borrarIcon(int fila, int columna) {
-
     matrix[fila][columna].setIcon(null);
   }
 
