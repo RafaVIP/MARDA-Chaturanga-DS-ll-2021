@@ -112,6 +112,8 @@ public class InterfazGraficaGenerica extends JFrame {
     boton.setBackground(Color.LIGHT_GRAY);
     boton.addActionListener(action);
     this.panel.add(boton);
+    this.panel.revalidate();
+    this.panel.repaint();
   }
 
   /**
