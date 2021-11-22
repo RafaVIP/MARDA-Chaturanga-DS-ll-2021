@@ -55,7 +55,7 @@ public class InterfazGraficaGenerica extends JFrame {
    */
   public void abrirNuevaInterfaz(String title) {
 
-    this.setSize(800, 670);
+    this.setSize(655, 670);
     this.setTitle(title);
     this.setLocationRelativeTo(null);
     this.panel = new JPanel();

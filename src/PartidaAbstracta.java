@@ -11,11 +11,6 @@ public abstract class PartidaAbstracta {
   int TOTAL_JUGADORES;
 
   /**
-   * Metodo encargado de iniciar una partida
-   */
-  public abstract void iniciarPartida();
-
-  /**
    * Metodo encargado de verificar que el juego haya terminado
    * 
    * @return true si ya termino

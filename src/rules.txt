@@ -16,7 +16,7 @@ primera fila de cada jugador (como en ajedrez), pero situado el rey siempre a la
 -Objetivo del juego-
 
 Como en el ajedrez, el objetivo es dar jaque mate al rey contrario. El ahogo del rey, que en ajedrez provoca el final de 
-la partida en tablas, en Chaturanga provoca la victoria del rey ahogado.
+la partida en tablas, en Chaturanga provoca la victoria.
 
 -Desarrollo del juego-
 
@@ -35,5 +35,4 @@ siempre mueve una casilla hacia delante en su turno y captura avanzando una casi
  fichas propias y contrarias
 -Visir o Consejero(reina): movimiento de una casilla en diagonal hacia delante o hacia atrás
 -Rey o Rajah: idéntico movimiento al rey del Ajedrez: movimiento ortogonal y diagonal de una casilla hacia delante y hacia
- atrás. Puede además a lo largo de la partida realizar una sola vez un movimiento en L como un caballo; dicho movimiento no
-  puede ser realizado si el rey se encuentra en jaque. No existe el enroque.
+ atrás.
