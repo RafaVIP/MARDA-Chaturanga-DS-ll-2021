@@ -42,7 +42,6 @@ public class Menu {
 	 */
 	public void crearNuevaPartida(PartidaAbstracta partida) {
 		partida.cargarPartida("src/inicio.txt");
-		partida.iniciarPartida();
 	}
 
 	/**
@@ -53,6 +52,5 @@ public class Menu {
 		/* Buscar archivo que toque cargar, jalar el nombre */
 		String filepath = partida.seleccionarPartida("src/Partidas_guardadas.txt");
 		partida.cargarPartida(filepath);
-		partida.iniciarPartida();
 	}
 }

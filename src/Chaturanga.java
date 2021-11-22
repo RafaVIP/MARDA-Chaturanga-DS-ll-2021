@@ -194,23 +194,6 @@ public class Chaturanga extends PartidaAbstracta {
   /*----------------- De Partida Abstracta---------------------*/
 
   /**
-   * Metodo encargado de Iniciar una partida
-   **/
-  public void iniciarPartida() {
-    /*
-     * int jugadorActual = 0; int [2] coordenadas elegidas;
-     * while(!elJuegoHaTerminado()){ coordenadasElegidas =
-     * jugador.solicitarCasillaAMoverse(); // Check si la casilla elegida es valida
-     * if (tablero[x_actual][y_actual].movimiento(x_actual, y_actual, x_solicitado,
-     * y_solicitado)) { tablero[x_solicitado][y_solicitado] =
-     * tablero[x_actual][y_actual].getContenido();
-     * tablero[x_actual][y_actual].setCasillaVacia(); } else {
-     * 
-     * } }
-     */
-  }
-
-  /**
    * Metodo encargado de guardar una partida en un .txt
    * 
    * @return true si guarda correctamente
@@ -226,6 +209,7 @@ public class Chaturanga extends PartidaAbstracta {
    * @return True si el juego a terminado
    */
   public boolean elJuegoHaTerminado() {
+    JOptionPane.showMessageDialog(null, "Ganador" + this.jugadores[this.jugadorActual%2].getNombre());
     return false;
   }
 
@@ -247,7 +231,39 @@ public class Chaturanga extends PartidaAbstracta {
     return chaturanga;
   }
 
-  
+  // Comprueba si el jugador contrario puede mover alguna pieza o si ya perdio
+  private boolean quedanMovimientos() {
+    ArrayList<String> movimientos = new ArrayList<String>();
+    String my_color = (this.jugadorActual % 2 == 0) ? "blanco" : "rojo";
+    int posibles_movimientos = 0;
+    for(int x = 0; x < 8; ++x) {
+      for(int y = 0; y < 8; ++y) {
+        try{
+          if(tablero.tablero[x][y].getContenido() != null) {
+            // Si a mi color contrario no le quedan movimientos, entonces victoria
+            if(tablero.tablero[x][y].contenido.getColor().equals(my_color) != false) {
+              movimientos = tablero.tablero[x][y].contenido.getPosiblesMovimientos(tablero.tablero, x, y);
+              System.out.println("Sel casilla: (" + x + ", " + y + ")");
+              movimientos = filtrarMovimientos(movimientos, x, y, tablero.tablero[x][y].contenido);
+              if(movimientos.size() > 0) {
+                ++posibles_movimientos;
+                for(int que = 0; que < movimientos.size(); ++que) {
+                  System.out.println("Aun valido: " + movimientos.get(que) + " soy " + my_color + " (" + x + ", " + y + ")");
+                }
+                return true;
+              }
+            }
+          }
+        } catch (Exception t) {
+          System.out.println("Error en casilla: (" + x + ", " + y + ")");
+        }
+      }
+    }
+    if(posibles_movimientos == 0) {
+      return false;
+    }
+    return true;
+  }
 
   /**
    * Esta matriz marca todos los lugares donde se pueden atacar 
@@ -256,7 +272,7 @@ public class Chaturanga extends PartidaAbstracta {
    * @param tablero
    * @return ArrayList<String>
    */
-  public ArrayList<String> crearJacqueMatriz(Casilla[][] tablero) {
+  public ArrayList<String> crearJaqueMatriz(Casilla[][] tablero) {
     ArrayList<String> jacque_matriz = new ArrayList<String>();
     Casilla[][] tablero_copia = tablero;
     String my_color = (this.jugadorActual % 2 == 0) ? "blanco" : "rojo";
@@ -312,14 +328,17 @@ public class Chaturanga extends PartidaAbstracta {
 
   /**
    * Remueve movimientos que ponen en peligro al rey
-   * @param movimientos
+   * @param movimientos Movimientos a filtrar
+   * @param x_sel x seleccionada
+   * @param y_sel y seleccionada
+   * @param piezaSeleccionada_actual pieza seleccionada
    * @return ArrayList<String>
    */
-  public ArrayList<String> filtrarMovimientos(ArrayList<String> movimientos) {
+  public ArrayList<String> filtrarMovimientos(ArrayList<String> movimientos, int x_sel, int y_sel, PiezaAbstracta piezaSeleccionada_actual) {
     String my_color = (this.jugadorActual % 2 == 0) ? "blanco" : "rojo";
     // Remover movimientos de piezas rojas, si es turno blanco y viceversa
     if (movimientos.size() > 0) {
-      if (this.tablero.tablero[xPiezaSeleccionada][yPiezaSeleccionada].getColor().equals(my_color) == false) {
+      if (this.tablero.tablero[x_sel][y_sel].getColor().equals(my_color) == false) {
         int mov_len = movimientos.size() - 1;
         for (int i = mov_len; i >= 0; --i) {
           movimientos.remove(i);
@@ -327,16 +346,25 @@ public class Chaturanga extends PartidaAbstracta {
       }
     }
     int total_moves = movimientos.size() - 1;
+    boolean once = false;
     for (int current_mov = total_moves; current_mov >= 0; --current_mov) {
       Casilla[][] tablero_temporal = copiarTablero(this.tablero.tablero);
+      if (tablero_temporal[x_sel][y_sel].contenido != null) {
+        if (tablero_temporal[x_sel][y_sel].contenido.getColor().equals(my_color)) {
+          if (tablero_temporal[x_sel][y_sel].contenido.getNombre().equals("Rey") && once == false) {
+            System.out.println("Tengo seleccionado al rey (" + x_sel + ", " + y_sel + ")");
+            once = true;
+          }
+        }
+      }
       // Hacer la jugada en el tablero temporal
       String movimiento = movimientos.get(current_mov);
       int a = movimiento.charAt(1) - 48;
       int b = movimiento.charAt(4) - 48;
-      tablero_temporal[a][b].setContenido(piezaSeleccionada);
-      tablero_temporal[this.xPiezaSeleccionada][this.yPiezaSeleccionada].setCasillaVacia();
+      tablero_temporal[a][b].setContenido(piezaSeleccionada_actual);
+      tablero_temporal[x_sel][y_sel].setCasillaVacia();
       // Actualizar la jacque matriz temporal
-      ArrayList<String> jacque_matriz = crearJacqueMatriz(tablero_temporal);
+      ArrayList<String> jacque_matriz = crearJaqueMatriz(tablero_temporal);
       // Revisar si el rey se encuentra en Jaque en la jacque matriz temporal
       for (int x = 0; x < 8; ++x) {
         for (int y = 0; y < 8; ++y) {
@@ -346,6 +374,7 @@ public class Chaturanga extends PartidaAbstracta {
               if (tablero_temporal[x][y].contenido.getColor().equals(my_color)) {
                 if (tablero_temporal[x][y].contenido.getNombre().equals("Rey")) {
                   movimientos.remove(current_mov);
+                  System.out.println("Eliminando jugada en (" + x + ", " + y + ")" );
                 }
               }
             }
@@ -378,7 +407,7 @@ public class Chaturanga extends PartidaAbstracta {
           this.movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero, cordX,
               cordy);
           // Remueve los movimientos que exponen al rey
-          this.movimientos = filtrarMovimientos(movimientos);
+          this.movimientos = filtrarMovimientos(movimientos, cordX, cordy, piezaSeleccionada);
           // pinta las casillas
           this.pintarCasillas(this.movimientos);
           this.interfaz.pintarCasillaSeleccionada(cordy, cordX);
@@ -410,6 +439,10 @@ public class Chaturanga extends PartidaAbstracta {
             this.tablero.tablero[this.xPiezaSeleccionada][this.yPiezaSeleccionada].setCasillaVacia();
             // Se formaliza el turno
             ++this.jugadorActual;
+            // Fin de juego?
+            if(quedanMovimientos() == false) {
+              elJuegoHaTerminado();
+            }
             System.out.println("Turno actual: " + (jugadorActual % 2 == 0 ? "blanco" : "rojo"));
             // Termina el ciclo
             posibleMovimiento = this.movimientos.size();
