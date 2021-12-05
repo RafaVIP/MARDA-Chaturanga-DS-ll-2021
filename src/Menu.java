@@ -19,7 +19,7 @@ public class Menu {
 	 * Metodo encargado de mostrarles las opciones de menu al usuario
 	 */
 	public void desplegarMenuPrincipal() {
-		PartidaAbstracta partida = new Chaturanga();
+		ControladorPartida partida = new ControladorPartida();
 		int opcion = partida.seleccionar_menu();
 		switch (opcion) {
 		case 0:
@@ -40,7 +40,7 @@ public class Menu {
 	 * Metodo encargado de crear una nueva partida
 	 * @param PartidaAbstracta
 	 */
-	public void crearNuevaPartida(PartidaAbstracta partida) {
+	public void crearNuevaPartida(ControladorPartida partida) {
 		partida.cargarPartida("src/inicio.txt");
 	}
 
@@ -48,7 +48,7 @@ public class Menu {
 	 * Metodo encargado de cargar una partida anterior
 	 * @param PartidaAbstracta
 	 */
-	public void cargarPartida(PartidaAbstracta partida) {
+	public void cargarPartida(ControladorPartida partida) {
 		/* Buscar archivo que toque cargar, jalar el nombre */
 		String filepath = partida.seleccionarPartida("src/Partidas_guardadas.txt");
 		partida.cargarPartida(filepath);

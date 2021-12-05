@@ -19,7 +19,7 @@ import java.awt.Component;
 public class InterfazGraficaGenerica extends JFrame {
   /// Atributos de la clase
   JPanel panel;
-  PartidaAbstracta partida;
+  ControladorPartida partida;
   JLabel label;
   JLabel[][] matrix;
   final int fila = 8;
@@ -30,7 +30,7 @@ public class InterfazGraficaGenerica extends JFrame {
   }
 
   /// Constructor
-  public InterfazGraficaGenerica(String title, PartidaAbstracta partida) {
+  public InterfazGraficaGenerica(String title, ControladorPartida partida) {
     abrirNuevaInterfaz(title);
     this.partida = partida;
   }

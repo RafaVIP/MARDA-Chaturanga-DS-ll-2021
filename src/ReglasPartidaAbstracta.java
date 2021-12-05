@@ -1,9 +1,9 @@
 /**
- ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ ** Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
  * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
-public abstract class PartidaAbstracta {
+public abstract class ReglasPartidaAbstracta {
   /// Atributos de la clase
   Tablero tablero;
   JugadorAbstracto[] jugadores;

@@ -34,7 +34,7 @@ public abstract class FileManagerDePartidasAbstracto {
      * @param partida Recibe la partida actual
      * @return true si la partida se guardo correctamente
      */
-    public abstract boolean guardarPartida(PartidaAbstracta partida);
+    public abstract boolean guardarPartida(ControladorPartida partida);
 
     /**
      * Metodo encargado de leer el archivo

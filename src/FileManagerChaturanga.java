@@ -142,7 +142,7 @@ public class FileManagerChaturanga extends FileManagerDePartidasAbstracto {
      * @param partida Recibe la partida actual
      * @return true si la partida se guardo correctamente
      */
-    public boolean guardarPartida(PartidaAbstracta partida) {
+    public boolean guardarPartida(ControladorPartida partida) {
         try {
             // Guarda archivo con las partidas guardadas
             String filename = getFilename();
