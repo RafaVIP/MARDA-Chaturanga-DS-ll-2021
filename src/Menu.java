@@ -28,9 +28,6 @@ public class Menu {
 		case 1:
 			cargarPartida(partida);
 			break;
-		case 3:
-			// Nothing
-			break;
 		default:
 			System.out.println("Error\n");
 		}

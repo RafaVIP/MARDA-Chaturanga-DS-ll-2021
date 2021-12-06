@@ -264,7 +264,12 @@ public class ControladorPartida {
     }
   }
 
-  public void piezaSeleccionada(int cordX, int cordy) {
+  /**
+   * Cuando se selecciona una pieza
+   * @param cordX cord x del movimiento
+   * @param cordy cord y del movimiento
+   */
+  private void piezaSeleccionada(int cordX, int cordy) {
     // Si la casilla seleccionada tiene una ficha
     if (tablero.tablero[cordX][cordy].contenido != null) {
       // Setea la pieza seleccionada
@@ -284,7 +289,12 @@ public class ControladorPartida {
     }
   }
 
-  public void movimientoSeleccionado(int cordX, int cordy) {
+  /**
+   * Cuando un movimiento esta seleccionado, se confirma o descarta
+   * @param cordX cord x del movimiento
+   * @param cordy cord y del movimiento
+   */
+  private void movimientoSeleccionado(int cordX, int cordy) {
     // Chequea los posibles movimientos
     for (int posibleMovimiento = 0; posibleMovimiento < this.movimientos.size(); posibleMovimiento++) {
       String movimiento = movimientos.get(posibleMovimiento);
