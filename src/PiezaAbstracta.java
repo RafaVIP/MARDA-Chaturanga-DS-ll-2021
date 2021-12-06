@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
  * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
@@ -11,11 +11,8 @@ public abstract class PiezaAbstracta {
    * Metodo encargado de verificar los movimientos validos para la pieza
    * 
    * @param tablero
-   * @param filas
-   * @param columnas
    * @param ejeXActual
    * @param ejeYActual
-   * @param direccion
    * @return Arraylist de string en formato [0] = x,y [1] = x1,y1
    */
   abstract ArrayList<String> getPosiblesMovimientos(Casilla[][] tablero, int ejeXActual, int ejeYActual);

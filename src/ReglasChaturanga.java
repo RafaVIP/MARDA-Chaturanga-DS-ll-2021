@@ -1,18 +1,16 @@
 
 /**
- ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
  * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
 import java.util.ArrayList;
 
-public class ReglasChaturanga { // extends ReglasPartidaAbstracta {
-  /*----------------- Propios de Chaturanga------------------*/
-
+public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasPartidaAbstracta {
   /// Contructor
   public ReglasChaturanga() {}
 
-  // Comprueba si el jugador contrario puede mover alguna pieza o si ya perdio
+  @Override
   public boolean quedanMovimientos(Casilla[][] tablero, int jugadorActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
     String my_color = (jugadorActual % 2 == 0) ? "blanco" : "rojo";
@@ -50,7 +48,8 @@ public class ReglasChaturanga { // extends ReglasPartidaAbstracta {
    * Esta matriz marca todos los lugares donde se pueden atacar 
    * las piezas enemigas. Se usa para revisar que jugadas son validas. 
    * Safe = "" ||
-   * @param tablero
+   * @param tablero tablero donde crear dicha matriz
+   * @param jugadorActual jugador que tiene el turno actual
    * @return ArrayList<String>
    */
   private ArrayList<String> crearJaqueMatriz(Casilla[][] tablero, int jugadorActual) {
@@ -88,7 +87,7 @@ public class ReglasChaturanga { // extends ReglasPartidaAbstracta {
    * @param tablero
    * @return Casilla[][] copia
    */
-  public Casilla[][] copiarTablero(Casilla[][] tablero) {
+  private Casilla[][] copiarTablero(Casilla[][] tablero) {
     Casilla[][] nuevo_tablero = new Casilla[8][8];
     FileManagerChaturanga creadorDePiezas = new FileManagerChaturanga();
     for (int x = 0; x < 8; ++x) {
@@ -107,14 +106,7 @@ public class ReglasChaturanga { // extends ReglasPartidaAbstracta {
     return nuevo_tablero;
   }
 
-  /**
-   * Remueve movimientos que ponen en peligro al rey
-   * @param movimientos Movimientos a filtrar
-   * @param x_sel x seleccionada
-   * @param y_sel y seleccionada
-   * @param piezaSeleccionada_actual pieza seleccionada
-   * @return ArrayList<String>
-   */
+  @Override
   public ArrayList<String> filtrarMovimientos(Casilla[][] tablero, int jugadorActual, ArrayList<String> movimientos, int x_sel, int y_sel, PiezaAbstracta piezaSeleccionada_actual) {
     String my_color = (jugadorActual % 2 == 0) ? "blanco" : "rojo";
     // Remover movimientos de piezas rojas, si es turno blanco y viceversa

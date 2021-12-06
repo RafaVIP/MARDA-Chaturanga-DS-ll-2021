@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
 
 public class ControladorPartida {
   /// Atributos de la clase
-  ReglasChaturanga reglasChaturanga;
+  ReglasPartidaAbstracta reglasChaturanga;
   Tablero tablero;
   JugadorAbstracto[] jugadores;
   int jugadorActual;
   int TOTAL_JUGADORES;
-
-  /*----------------- Propios de Chaturanga------------------*/
+  /// Para graficar
   InterfazGraficaGenerica interfaz;
+  /// Para el estado de juego
   PiezaAbstracta piezaSeleccionada;
   ArrayList<String> movimientos;
   int xPiezaSeleccionada, yPiezaSeleccionada;

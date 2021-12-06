@@ -1,5 +1,5 @@
 /**
- ** Primera iteración Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
+ * Proyecto Programado: Diseño Rafael Porras (B75915) Fabian
  * Gonzalez (B83493) Kevin Salas (B87161) Wendy Ortiz (B75594)
  **/
 
@@ -38,7 +38,7 @@ public class Menu {
 
 	/**
 	 * Metodo encargado de crear una nueva partida
-	 * @param PartidaAbstracta
+	 * @param partida
 	 */
 	public void crearNuevaPartida(ControladorPartida partida) {
 		partida.cargarPartida("src/inicio.txt");
@@ -46,7 +46,7 @@ public class Menu {
 
 	/**
 	 * Metodo encargado de cargar una partida anterior
-	 * @param PartidaAbstracta
+	 * @param partida
 	 */
 	public void cargarPartida(ControladorPartida partida) {
 		/* Buscar archivo que toque cargar, jalar el nombre */
