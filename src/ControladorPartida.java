@@ -266,7 +266,7 @@ public class ControladorPartida {
     } else {
       // Deselecciona movimientos y pieza seleccionada
       this.piezaSeleccionada = null;
-      this.interfaz.borraMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
+      this.interfaz.borrarMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
       limpiarCasillas(this.movimientos);
       System.out.println("Fuera de rango");
     }
@@ -341,7 +341,7 @@ public class ControladorPartida {
     }
     // Deselecciona movimientos y pieza seleccionada
     this.piezaSeleccionada = null;
-    this.interfaz.borraMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
+    this.interfaz.borrarMovimiento(this.yPiezaSeleccionada, this.xPiezaSeleccionada);
     limpiarCasillas(this.movimientos);
   }
 
@@ -356,7 +356,7 @@ public class ControladorPartida {
       String movimiento = movimientos.get(i);
       int a = movimiento.charAt(1) - 48;
       int b = movimiento.charAt(4) - 48;
-      this.interfaz.pintarmovimiento(b, a);
+      this.interfaz.pintarMovimiento(b, a);
     }
   }
 
@@ -371,7 +371,7 @@ public class ControladorPartida {
       String movimiento = movimientos.get(i);
       int a = movimiento.charAt(1) - 48;
       int b = movimiento.charAt(4) - 48;
-      this.interfaz.borraMovimiento(b, a);
+      this.interfaz.borrarMovimiento(b, a);
     }
   }
 

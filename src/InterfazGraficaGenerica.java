@@ -151,7 +151,7 @@ public class InterfazGraficaGenerica extends JFrame {
    * @param fila
    * @param columna
    */
-  public void pintarmovimiento(int fila, int columna) {
+  public void pintarMovimiento(int fila, int columna) {
     matrix[fila][columna].setBackground(Color.orange);
   }
 
@@ -161,7 +161,7 @@ public class InterfazGraficaGenerica extends JFrame {
    * @param fila
    * @param columna
    */
-  public void borraMovimiento(int fila, int columna) {
+  public void borrarMovimiento(int fila, int columna) {
     matrix[fila][columna].setBackground(Color.decode("#d1a456"));
   }
 }
