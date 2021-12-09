@@ -24,5 +24,6 @@ public abstract class ReglasPartidaAbstracta {
    * @param piezaSeleccionada_actual pieza a la que se le consultan sus movimientos
    * @return Si quedan movimientos, true
    */
-  abstract public ArrayList<String> filtrarMovimientos(Casilla[][] tablero, int jugadorActual, ArrayList<String> movimientos, int x_sel, int y_sel, PiezaAbstracta piezaSeleccionada_actual);
+  abstract public ArrayList<String> filtrarMovimientos(Casilla[][] tablero, int jugadorActual,
+   ArrayList<String> movimientos, int x_sel, int y_sel, PiezaAbstracta piezaSeleccionada_actual);
 }

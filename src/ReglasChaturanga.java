@@ -6,28 +6,41 @@
 
 import java.util.ArrayList;
 
-public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasPartidaAbstracta {
-  /// Contructor
-  public ReglasChaturanga() {}
+public class ReglasChaturanga extends ReglasPartidaAbstracta {
+  /// Constructor
+  public ReglasChaturanga() {
+  }
 
+  /**
+   * Metodo encargado de revisar si hay movimientos disponibles para determinar
+   * elfinal del juego
+   * 
+   * @param tablero
+   * @param jugadorActual
+   * @return true si quedan movimientos
+   */
   @Override
   public boolean quedanMovimientos(Casilla[][] tablero, int jugadorActual) {
     ArrayList<String> movimientos = new ArrayList<String>();
     String my_color = (jugadorActual % 2 == 0) ? "blanco" : "rojo";
     int posibles_movimientos = 0;
-    for(int x = 0; x < 8; ++x) {
-      for(int y = 0; y < 8; ++y) {
-        try{
-          if(tablero[x][y].getContenido() != null) {
+    // se recorre la matriz para verificar si existen movimientos
+    for (int x = 0; x < 8; ++x) {
+      for (int y = 0; y < 8; ++y) {
+        try {
+          if (tablero[x][y].getContenido() != null) {
             // Si a mi color contrario no le quedan movimientos, entonces victoria
-            if(tablero[x][y].contenido.getColor().equals(my_color) != false) {
+            if (tablero[x][y].contenido.getColor().equals(my_color) != false) {
               movimientos = tablero[x][y].contenido.getPosiblesMovimientos(tablero, x, y);
               System.out.println("Sel casilla: (" + x + ", " + y + ")");
-              movimientos = filtrarMovimientos(tablero, jugadorActual, movimientos, x, y, tablero[x][y].contenido);
-              if(movimientos.size() > 0) {
+              movimientos = filtrarMovimientos(tablero, jugadorActual, movimientos, x, y,
+                  tablero[x][y].contenido);
+
+              if (movimientos.size() > 0) {
                 ++posibles_movimientos;
-                for(int que = 0; que < movimientos.size(); ++que) {
-                  System.out.println("Aun valido: " + movimientos.get(que) + " soy " + my_color + " (" + x + ", " + y + ")");
+                for (int que = 0; que < movimientos.size(); ++que) {
+                  System.out.println("Aun valido: " + movimientos.get(que) + " soy "
+                      + my_color + " (" + x + ", " + y + ")");
                 }
                 return true;
               }
@@ -38,17 +51,18 @@ public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasP
         }
       }
     }
-    if(posibles_movimientos == 0) {
+    if (posibles_movimientos == 0) {
       return false;
     }
     return true;
   }
 
   /**
-   * Esta matriz marca todos los lugares donde se pueden atacar 
-   * las piezas enemigas. Se usa para revisar que jugadas son validas. 
+   * Esta matriz marca todos los lugares donde se pueden atacar
+   * las piezas enemigas. Se usa para revisar que jugadas son validas.
    * Safe = "" ||
-   * @param tablero tablero donde crear dicha matriz
+   * 
+   * @param tablero       tablero donde crear dicha matriz
    * @param jugadorActual jugador que tiene el turno actual
    * @return ArrayList<String>
    */
@@ -67,7 +81,8 @@ public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasP
       for (int y = 0; y < 8; ++y) {
         if (tablero_copia[x][y].contenido != null) {
           if (tablero_copia[x][y].getColor().equals(my_color) == false) {
-            ArrayList<String> movimientos = tablero_copia[x][y].contenido.getPosiblesMovimientos(tablero_copia, x, y);
+            ArrayList<String> movimientos = tablero_copia[x][y].contenido.getPosiblesMovimientos(
+                tablero_copia, x, y);
             // Los lugares donde puedo mover mis piezas son zonas de peligro o "jaque"
             for (int current_mov = 0; current_mov < movimientos.size(); ++current_mov) {
               String movimiento = movimientos.get(current_mov);
@@ -84,6 +99,7 @@ public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasP
 
   /**
    * Metodo encargado de copiar una matriz
+   * 
    * @param tablero
    * @return Casilla[][] copia
    */
@@ -106,8 +122,22 @@ public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasP
     return nuevo_tablero;
   }
 
+  /**
+   * Merodo encargado de remover algunos movimientos que hacen las jugadas
+   * peligrosas
+   * 
+   * @param tablero
+   * @param jugadorActual
+   * @param movimientos
+   * @param x_sel
+   * @param y_sel
+   * @param piezaSeleccionada_actual
+   * @return ArrayList<String> retorna un array de los posibles movimientos
+   */
   @Override
-  public ArrayList<String> filtrarMovimientos(Casilla[][] tablero, int jugadorActual, ArrayList<String> movimientos, int x_sel, int y_sel, PiezaAbstracta piezaSeleccionada_actual) {
+  public ArrayList<String> filtrarMovimientos(Casilla[][] tablero, int jugadorActual,
+      ArrayList<String> movimientos, int x_sel, int y_sel, PiezaAbstracta piezaSeleccionada_actual) {
+
     String my_color = (jugadorActual % 2 == 0) ? "blanco" : "rojo";
     // Remover movimientos de piezas rojas, si es turno blanco y viceversa
     if (movimientos.size() > 0) {
@@ -147,7 +177,7 @@ public class ReglasChaturanga extends ReglasPartidaAbstracta{ // extends ReglasP
               if (tablero_temporal[x][y].contenido.getColor().equals(my_color)) {
                 if (tablero_temporal[x][y].contenido.getNombre().equals("Rey")) {
                   movimientos.remove(current_mov);
-                  System.out.println("Eliminando jugada en (" + x + ", " + y + ")" );
+                  System.out.println("Eliminando jugada en (" + x + ", " + y + ")");
                 }
               }
             }

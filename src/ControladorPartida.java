@@ -17,14 +17,16 @@ public class ControladorPartida {
   JugadorAbstracto[] jugadores;
   int jugadorActual;
   int TOTAL_JUGADORES;
+
   /// Para graficar
   InterfazGraficaGenerica interfaz;
+
   /// Para el estado de juego
   PiezaAbstracta piezaSeleccionada;
   ArrayList<String> movimientos;
   int xPiezaSeleccionada, yPiezaSeleccionada;
 
-  /// Contructor
+  /// Constructor
   public ControladorPartida() {
     this.TOTAL_JUGADORES = 2;
     this.interfaz = new InterfazGraficaGenerica("Chaturanga", this);
@@ -106,12 +108,13 @@ public class ControladorPartida {
   }
 
   /**
-   * Metodo encargado de añadir el botton de las reglas en la interfaz
+   * Metodo encargado de añadir el boton de las reglas en la interfaz
    * 
    * @param interfaz
    */
   public void addButtonReglas(InterfazGraficaGenerica interfaz) {
     /** Agrega el boton de las reglas en la interfaz del juego */
+    /// action listener para el boton
     ActionListener rules = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent ae) {
@@ -124,13 +127,14 @@ public class ControladorPartida {
   }
 
   /**
-   * Metodo encargado de añadir el buton de guardar partida
+   * Metodo encargado de añadir el boton de guardar partida
    * 
    * @param interfaz
    */
   public void addButtonGuardarPartida(InterfazGraficaGenerica interfaz) {
     /** Guardar Partida */
     ActionListener guardarPartida = new ActionListener() {
+      /// action listener para el boton
       @Override
       public void actionPerformed(ActionEvent ae) {
         guardarPartida();
@@ -151,6 +155,7 @@ public class ControladorPartida {
       datos += jugadores[i].getNombre() + ": Juega con " + jugadores[i].getColor() + "\n";
     }
     final String datos2 = datos;
+    /// action listener para el boton
     ActionListener players = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent ae) {
@@ -185,12 +190,14 @@ public class ControladorPartida {
     }
     return perdidas;
   }
+
   /**
    * Metodo encargado de añadir el botton de las piezas perdidas
+   * 
    * @param interfaz
    */
   public void addButtonPiezasPerdidas(InterfazGraficaGenerica interfaz) {
-
+    /// action listener para el boton
     ActionListener piezasPerdidas = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent ae) {
@@ -199,6 +206,7 @@ public class ControladorPartida {
     };
     interfaz.agregarBoton("P.perdidas", piezasPerdidas, 306, 0);
   }
+
   /*----------------- De Partida Abstracta---------------------*/
 
   /**
@@ -217,7 +225,7 @@ public class ControladorPartida {
    * @return True si el juego a terminado
    */
   public boolean elJuegoHaTerminado() {
-    JOptionPane.showMessageDialog(null, "Ganador: " + this.jugadores[this.jugadorActual%2].getNombre());
+    JOptionPane.showMessageDialog(null, "Ganador: " + this.jugadores[this.jugadorActual % 2].getNombre());
     return false;
   }
 
@@ -239,7 +247,7 @@ public class ControladorPartida {
     return chaturanga;
   }
 
-   /**
+  /**
    * Metodo encargado de enviar las coordenadas para los action listener del mouse
    * 
    * @param cordX
@@ -266,6 +274,7 @@ public class ControladorPartida {
 
   /**
    * Cuando se selecciona una pieza
+   * 
    * @param cordX cord x del movimiento
    * @param cordy cord y del movimiento
    */
@@ -280,7 +289,8 @@ public class ControladorPartida {
       this.movimientos = tablero.tablero[cordX][cordy].contenido.getPosiblesMovimientos(tablero.tablero, cordX,
           cordy);
       // Remueve los movimientos que exponen al rey
-      this.movimientos = reglasChaturanga.filtrarMovimientos(this.tablero.tablero, this.jugadorActual, movimientos, cordX, cordy, piezaSeleccionada);
+      this.movimientos = reglasChaturanga.filtrarMovimientos(this.tablero.tablero, this.jugadorActual, movimientos,
+          cordX, cordy, piezaSeleccionada);
       // pinta las casillas
       this.pintarCasillas(this.movimientos);
       this.interfaz.pintarCasillaSeleccionada(cordy, cordX);
@@ -290,7 +300,8 @@ public class ControladorPartida {
   }
 
   /**
-   * Cuando un movimiento esta seleccionado, se confirma o descarta
+   * Confirma o descarta un movimiento esta seleccionado
+   * 
    * @param cordX cord x del movimiento
    * @param cordy cord y del movimiento
    */
@@ -320,7 +331,7 @@ public class ControladorPartida {
         // Se formaliza el turno
         ++this.jugadorActual;
         // Fin de juego?
-        if(reglasChaturanga.quedanMovimientos(this.tablero.tablero, this.jugadorActual) == false) {
+        if (reglasChaturanga.quedanMovimientos(this.tablero.tablero, this.jugadorActual) == false) {
           elJuegoHaTerminado();
         }
         System.out.println("Turno actual: " + (jugadorActual % 2 == 0 ? "blanco" : "rojo"));
@@ -368,6 +379,7 @@ public class ControladorPartida {
    * Metodo encargado de seleccionar el filepath del usuario
    * 
    * @param filepath la ubicación del archivo
+   * @return String de la partida seleccionada
    */
   public String seleccionarPartida(String filepath) {
     ArrayList<String> content = new ArrayList<String>();

@@ -47,13 +47,6 @@ public class Casilla {
     if (this.contenido != null) {
       casilla.add(imprimirPieza());
     }
-    /*
-     * // Imprime la casilla if ((esPar(this.fila) && !esPar(this.columna)) ||
-     * (!esPar(this.fila) && esPar(this.columna))) { // Casilla Blanca
-     * casilla.add(imprimirCasilla("blanca"));
-     * 
-     * } else { // Casilla Negra casilla.add(imprimirCasilla("negra")); }
-     */
     return casilla;
   }
 
